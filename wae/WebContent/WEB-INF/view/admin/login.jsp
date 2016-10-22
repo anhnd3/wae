@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,17 +53,33 @@
 						<h3 class="panel-title">Please Sign In</h3>
 					</div>
 					<div class="panel-body">
-						<form:form role="form" action="waetools/execute-login"
+						<form:form role="form" action="execute-login"
 							modelAttribute="user" method="POST">
 							<fieldset>
 								<div class="form-group">
 									<form:input path="email" cssClass="form-control"
-										placeholder="E-mail" autofocus="autofocus" />
+										placeholder="E-mail" autofocus="autofocus" required="true" />
 								</div>
 								<div class="form-group">
 									<form:password path="password" cssClass="form-control"
-										placeholder="Password" />
+										placeholder="Password" required="" />
 								</div>
+								<c:if test="${ errCount > 0 }">
+									<div class="alert alert-danger alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">×</button>
+										<form:errors path="email" />
+										<br />
+										<form:errors path="password" />
+									</div>
+								</c:if>
+								<c:if test="${ checkAdmin }">
+									<div class="alert alert-danger alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-hidden="true">×</button>
+										You aren't the admin.
+									</div>
+								</c:if>
 								<input type="submit" class="btn btn-lg btn-success btn-block"
 									value="Login">
 							</fieldset>

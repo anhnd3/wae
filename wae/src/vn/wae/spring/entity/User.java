@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "user")
@@ -17,9 +21,12 @@ public class User {
 	int id;
 
 	@Column(name = "email")
+	@NotBlank(message = "Email is not blank")
+	@Email
 	String email;
 
 	@Column(name = "password")
+	@NotBlank(message = "Password is not blank")
 	String password;
 
 	@Column(name = "privilege")
