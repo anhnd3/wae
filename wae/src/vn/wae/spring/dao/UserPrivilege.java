@@ -1,7 +1,7 @@
 package vn.wae.spring.dao;
 
 public enum UserPrivilege {
-	USER(0), ADMIN(1);
+	USER(0), ADMIN(1), MASTER(2);
 
 	private final int value;
 

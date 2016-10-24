@@ -23,7 +23,7 @@ public class Message {
 	String email;
 
 	@Column(name = "phone_number")
-	long phoneNumber;
+	String phoneNumber;
 
 	@Column(name = "subject")
 	String subject;
@@ -34,7 +34,7 @@ public class Message {
 	public Message() {
 	}
 
-	public Message(int id, String name, String email, long phoneNumber, String subject, String message) {
+	public Message(int id, String name, String email, String phoneNumber, String subject, String message) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -43,7 +43,7 @@ public class Message {
 		this.message = message;
 	}
 
-	public Message(String name, String email, long phoneNumber, String subject, String message) {
+	public Message(String name, String email, String phoneNumber, String subject, String message) {
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
@@ -75,11 +75,11 @@ public class Message {
 		this.email = email;
 	}
 
-	public long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

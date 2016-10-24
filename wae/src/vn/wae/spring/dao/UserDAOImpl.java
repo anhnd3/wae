@@ -106,11 +106,11 @@ public class UserDAOImpl implements UserDAO {
 			// return true;
 			// }
 			User user = getUser(email);
-			if (user != null && user.getId() > 0 && StringUtils.isNullOrEmpty(user.getEmail())
-					&& StringUtils.isNullOrEmpty(user.getPassword())) {
+			if (user != null && user.getId() > 0 && !StringUtils.isNullOrEmpty(user.getEmail())
+					&& !StringUtils.isNullOrEmpty(user.getPassword())) {
 				String passwordMD5 = DigestUtils.md5DigestAsHex(password.getBytes("UTF-8"));
 				if (user.getPassword().equalsIgnoreCase(passwordMD5)
-						&& UserPrivilege.fromValue(user.getPrivilege()).equals(UserPrivilege.ADMIN)) {
+						&& !UserPrivilege.fromValue(user.getPrivilege()).equals(UserPrivilege.USER)) {
 					return true;
 				}
 			}
