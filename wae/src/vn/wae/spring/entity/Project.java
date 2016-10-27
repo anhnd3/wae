@@ -31,24 +31,30 @@ public class Project {
 	@Column(name = "status")
 	byte status;
 
+	@Column(name = "highlight")
+	byte highlight;
+
 	public Project() {
 	}
 
-	public Project(int id, String title, String thumbnail, String shortDesc, String author, byte status) {
+	public Project(int id, String title, String thumbnail, String shortDesc, String author, byte status,
+			byte highlight) {
 		this.id = id;
 		this.title = title;
 		this.thumbnail = thumbnail;
 		this.shortDesc = shortDesc;
 		this.author = author;
 		this.status = status;
+		this.highlight = highlight;
 	}
 
-	public Project(String title, String thumbnail, String shortDesc, String author, byte status) {
+	public Project(String title, String thumbnail, String shortDesc, String author, byte status, byte highlight) {
 		this.title = title;
 		this.thumbnail = thumbnail;
 		this.shortDesc = shortDesc;
 		this.author = author;
 		this.status = status;
+		this.highlight = highlight;
 	}
 
 	public int getId() {
@@ -99,9 +105,17 @@ public class Project {
 		this.status = status;
 	}
 
+	public byte getHighlight() {
+		return highlight;
+	}
+
+	public void setHighlight(byte highlight) {
+		this.highlight = highlight;
+	}
+
 	@Override
 	public String toString() {
 		return "Project [id=" + id + ", title=" + title + ", thumbnail=" + thumbnail + ", shortDesc=" + shortDesc
-				+ ", author=" + author + ", status=" + status + "]";
+				+ ", author=" + author + ", status=" + status + ", highlight=" + highlight + "]";
 	}
 }

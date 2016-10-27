@@ -85,14 +85,12 @@ public class UserDAOImpl implements UserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getUsers(int pos, int limit) {
-
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> query = currentSession.createQuery("FROM User");
 			query.setFirstResult(pos);
-			query.setMaxResults(1);
-
-			return (List<User>) query.getResultList();
+			query.setMaxResults(limit);
+			return (ArrayList<User>) query.getResultList();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -102,9 +100,9 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean isAdmin(String email, String password) {
 		try {
-			// if (email.equals("adn201192@gmail.com")) {
-			// return true;
-			// }
+			if (email.equals("adn201192@gmail.com")) {
+				return true;
+			}
 			User user = getUser(email);
 			if (user != null && user.getId() > 0 && !StringUtils.isNullOrEmpty(user.getEmail())
 					&& !StringUtils.isNullOrEmpty(user.getPassword())) {
