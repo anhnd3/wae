@@ -7,9 +7,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import vn.wae.spring.entity.Team;
+import vn.wae.spring.entity.Teammate;
 
+@Repository
 public class TeamDAOImpl implements TeamDAO {
 
 	@Autowired
@@ -20,7 +22,7 @@ public class TeamDAOImpl implements TeamDAO {
 	}
 
 	@Override
-	public int saveTeam(Team team) {
+	public int saveTeam(Teammate team) {
 		try {
 			Session currentSession = getCurrentSession();
 			currentSession.saveOrUpdate(team);
@@ -45,25 +47,25 @@ public class TeamDAOImpl implements TeamDAO {
 	}
 
 	@Override
-	public Team getTeam(int teamId) {
+	public Teammate getTeam(int teamId) {
 		try {
 			Session currentSession = getCurrentSession();
-			return currentSession.get(Team.class, teamId);
+			return currentSession.get(Teammate.class, teamId);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return new Team();
+		return new Teammate();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Team> getTeams(int pos, int limit) {
+	public List<Teammate> getTeams(int pos, int limit) {
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> query = currentSession.createQuery("FROM Team");
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);
-			return (ArrayList<Team>) query.getResultList();
+			return (ArrayList<Teammate>) query.getResultList();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

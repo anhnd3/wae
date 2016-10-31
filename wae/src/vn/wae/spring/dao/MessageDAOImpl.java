@@ -62,9 +62,10 @@ public class MessageDAOImpl implements MessageDAO {
 	public List<Message> getMessages(int pos, int limit) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("FROM Message");
+			Query<?> query = currentSession.createQuery("FROM Message m ORDER BY m.id DESC");
 			query.setMaxResults(limit);
 			query.setFirstResult(pos);
+
 			return (ArrayList<Message>) query.getResultList();
 		} catch (Exception ex) {
 			ex.printStackTrace();

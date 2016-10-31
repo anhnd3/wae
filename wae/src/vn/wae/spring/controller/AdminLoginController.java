@@ -22,13 +22,13 @@ import vn.wae.spring.entity.User;
 import vn.wae.spring.service.AdminService;
 
 @Controller
-public class AdminController {
+public class AdminLoginController {
 
 	@Autowired
 	private AdminService adminService;
 
 	@RequestMapping("/waetools")
-	public String bootstrap(Model model, @CookieValue(name = "wae.user.admin", defaultValue = "false") String cookie) {
+	public String waetools(Model model, @CookieValue(name = "wae.user.admin", defaultValue = "false") String cookie) {
 		if (StringUtils.isNullOrEmpty(cookie) || cookie.equals("false")) {
 			return "redirect:/waetools/login";
 		}
@@ -37,20 +37,18 @@ public class AdminController {
 
 	@RequestMapping("/waetools/login")
 	public String login(Model model) {
-		// first access
+
 		if (!model.containsAttribute("user")) {
 			model.addAttribute("user", new User());
 			model.addAttribute("checkAdmin", false);
 		}
 
-		// get attribute redirect after execute-login
-		// result error
 		Object objResult = model.asMap().get("org.springframework.validation.BindingResult.user");
 		if (objResult != null) {
 			BindingResult result = (BindingResult) objResult;
 			model.addAttribute("errCount", result.getErrorCount());
 		}
-		// result check admin
+
 		Object objIsAdmin = model.asMap().get("isAdmin");
 		if (objIsAdmin != null) {
 			boolean isAdmin = (boolean) objIsAdmin;
@@ -58,7 +56,6 @@ public class AdminController {
 				model.addAttribute("checkAdmin", true);
 			}
 		}
-
 		return "admin/login";
 	}
 
@@ -66,14 +63,12 @@ public class AdminController {
 	public String executeLogin(@Valid @ModelAttribute("user") User user, BindingResult result,
 			HttpServletResponse response, RedirectAttributes redirectAttrs) {
 
-		// check form login error
 		if (result.hasErrors()) {
 			redirectAttrs.addFlashAttribute("org.springframework.validation.BindingResult.user", result);
 			redirectAttrs.addFlashAttribute("user", user);
 			return "redirect:/waetools/login";
 		}
 
-		// check user login is admin
 		boolean isAdmin = adminService.isAdmin(user.getEmail(), user.getPassword());
 		if (!isAdmin) {
 			redirectAttrs.addFlashAttribute("isAdmin", isAdmin);
@@ -105,14 +100,13 @@ public class AdminController {
 	public String dashboard(Model model,
 			@CookieValue(name = "wae.user.admin", defaultValue = "false") String cookieAdmin,
 			@CookieValue(name = "wae.user.admin.type", defaultValue = "1") String cookieAdminType) {
+
 		if (StringUtils.isNullOrEmpty(cookieAdmin) || cookieAdmin.equals("false")) {
 			return "redirect:/waetools/login";
 		}
-		// if
-		// (cookieAdminType.equals(String.valueOf(UserPrivilege.MASTER.getValue())))
-		// {
-		model.addAttribute("modifyAdmin", "true");
-		// }
+		if (cookieAdminType.equals(String.valueOf(UserPrivilege.ADMIN.getValue()))) {
+			model.addAttribute("modifyAdmin", "true");
+		}
 		return "admin/dashboard";
 	}
 }

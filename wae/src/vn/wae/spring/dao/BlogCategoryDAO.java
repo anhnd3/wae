@@ -6,12 +6,12 @@ import vn.wae.spring.entity.BlogCategory;
 
 public interface BlogCategoryDAO {
 
-	public int saveCategory(BlogCategory category);
+	public int saveBlogCategory(BlogCategory category);
 
-	public int deleteCategory(int categoryId);
+	public int deleteBlogCategory(int categoryId);
 
-	public BlogCategory getCategory(int categoryId);
+	public BlogCategory getBlogCategory(int categoryId);
 
-	public List<BlogCategory> getCategorys(int pos, int limit);
+	public List<BlogCategory> getBlogCategories(int pos, int limit);
 
 }

@@ -1,5 +1,7 @@
 package vn.wae.spring.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,47 +9,61 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
+
 @Entity
 @Table(name = "team")
-public class Team {
+public class Teammate implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6561751438228980238L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "`id`")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@Column(name = "name")
+	@Column(name = "`name`")
+	@NotBlank(message = "Name is not blank")
 	String name;
 
-	@Column(name = "avatar")
+	@Column(name = "`avatar`")
+	@NotBlank(message = "Avatar is not blank")
+	@URL(message = "URL format fail")
 	String avatar;
 
-	@Column(name = "title")
+	@Column(name = "`title`")
+	@NotBlank(message = "Title is not blank")
 	String title;
 
-	@Column(name = "short_desc")
+	@Column(name = "`short_desc`")
 	String shortDesc;
 
-	@Column(name = "facebook")
+	@Column(name = "`facebook`")
+	@URL(message = "URL format fail")
 	String facebook;
 
-	@Column(name = "twitter")
+	@Column(name = "`twitter`")
 	String twitter;
 
-	@Column(name = "linkedin")
+	@Column(name = "`linkedin`")
+	@URL(message = "URL format fail")
 	String linkedIn;
 
-	@Column(name = "google_plus")
+	@Column(name = "`google_plus`")
 	String googlePlus;
 
-	@Column(name = "status")
-	byte status;
+	@Column(name = "`status`", columnDefinition = "TINYINT(1)")
+	boolean status;
 
-	public Team() {
+	public Teammate() {
 	}
 
-	public Team(int id, String name, String avatar, String title, String shortDesc, String facebook, String twitter,
-			String linkedIn, String googlePlus, byte status) {
+	public Teammate(int id, String name, String avatar, String title, String shortDesc, String facebook, String twitter,
+			String linkedIn, String googlePlus, boolean status) {
 		this.id = id;
 		this.name = name;
 		this.avatar = avatar;
@@ -60,8 +76,8 @@ public class Team {
 		this.status = status;
 	}
 
-	public Team(String name, String avatar, String title, String shortDesc, String facebook, String twitter,
-			String linkedIn, String googlePlus, byte status) {
+	public Teammate(String name, String avatar, String title, String shortDesc, String facebook, String twitter,
+			String linkedIn, String googlePlus, boolean status) {
 		this.name = name;
 		this.avatar = avatar;
 		this.title = title;
@@ -145,17 +161,17 @@ public class Team {
 		this.googlePlus = googlePlus;
 	}
 
-	public byte getStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(byte status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
 	@Override
 	public String toString() {
-		return "Team [id=" + id + ", name=" + name + ", avatar=" + avatar + ", title=" + title + ", shortDesc="
+		return "Teammate [id=" + id + ", name=" + name + ", avatar=" + avatar + ", title=" + title + ", shortDesc="
 				+ shortDesc + ", facebook=" + facebook + ", twitter=" + twitter + ", linkedIn=" + linkedIn
 				+ ", googlePlus=" + googlePlus + ", status=" + status + "]";
 	}

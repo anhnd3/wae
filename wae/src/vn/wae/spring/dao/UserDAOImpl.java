@@ -28,8 +28,10 @@ public class UserDAOImpl implements UserDAO {
 	public int saveUser(User user) {
 		try {
 			Session currentSession = getCurrentSession();
-			String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes("UTF-8"));
-			user.setPassword(password);
+			if (user.getId() == 0) {
+				String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes("UTF-8"));
+				user.setPassword(password);
+			}
 			currentSession.saveOrUpdate(user);
 			return user.getId();
 		} catch (Exception ex) {
@@ -100,9 +102,6 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean isAdmin(String email, String password) {
 		try {
-			if (email.equals("adn201192@gmail.com")) {
-				return true;
-			}
 			User user = getUser(email);
 			if (user != null && user.getId() > 0 && !StringUtils.isNullOrEmpty(user.getEmail())
 					&& !StringUtils.isNullOrEmpty(user.getPassword())) {

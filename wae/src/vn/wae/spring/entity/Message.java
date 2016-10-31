@@ -1,5 +1,7 @@
 package vn.wae.spring.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,26 +11,31 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "message")
-public class Message {
+public class Message implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -271141140033941342L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "`id`")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@Column(name = "name")
+	@Column(name = "`name`")
 	String name;
 
-	@Column(name = "email")
+	@Column(name = "`email`")
 	String email;
 
-	@Column(name = "phone_number")
+	@Column(name = "`phone_number`")
 	String phoneNumber;
 
-	@Column(name = "subject")
+	@Column(name = "`subject`")
 	String subject;
 
-	@Column(name = "message")
+	@Column(name = "`message`")
 	String message;
 
 	public Message() {
@@ -89,6 +96,14 @@ public class Message {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	@Override

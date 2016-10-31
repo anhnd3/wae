@@ -1,5 +1,7 @@
 package vn.wae.spring.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,35 +9,46 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
+
 @Entity
 @Table(name = "course")
-public class Course {
+public class Course implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -212819144150214492L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "`id`")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@Column(name = "title")
+	@Column(name = "`title`")
+	@NotBlank(message = "Course name is not blank")
 	String title;
 
-	@Column(name = "thumbnail")
+	@Column(name = "`thumbnail`")
+	@NotBlank(message = "Thumbnail is not blank")
+	@URL(message = "URL format fail")
 	String thumbnail;
 
-	@Column(name = "desc")
+	@Column(name = "`desc`")
+	@NotBlank(message = "Description is not blank")
 	String desc;
 
-	@Column(name = "teacher")
+	@Column(name = "`teacher`")
 	String teacher;
 
-	@Column(name = "status")
-	byte status;
+	@Column(name = "`status`", columnDefinition = "TINYINT(1)")
+	boolean status;
 
 	public Course() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public Course(int id, String title, String thumbnail, String desc, String teacher, byte status) {
+	public Course(int id, String title, String thumbnail, String desc, String teacher, boolean status) {
 		this.id = id;
 		this.title = title;
 		this.thumbnail = thumbnail;
@@ -44,7 +57,7 @@ public class Course {
 		this.status = status;
 	}
 
-	public Course(String title, String thumbnail, String desc, String teacher, byte status) {
+	public Course(String title, String thumbnail, String desc, String teacher, boolean status) {
 		this.title = title;
 		this.thumbnail = thumbnail;
 		this.desc = desc;
@@ -92,11 +105,11 @@ public class Course {
 		this.teacher = teacher;
 	}
 
-	public byte getStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(byte status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 

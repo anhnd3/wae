@@ -62,7 +62,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 	public List<Project> getProjects(int pos, int limit) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("FROM Project");
+			Query<?> query = currentSession.createQuery("FROM Project p ORDER BY p.id DESC");
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);
 			return (ArrayList<Project>) query.getResultList();

@@ -23,9 +23,11 @@ public class CourseDAOImpl implements CourseDAO {
 
 	@Override
 	public int saveCourse(Course course) {
+		System.out.println(course);
 		try {
 			Session currentSession = getCurrentSession();
 			currentSession.saveOrUpdate(course);
+			System.out.println(course);
 			return course.getId();
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -62,7 +64,7 @@ public class CourseDAOImpl implements CourseDAO {
 	public List<Course> getCourses(int pos, int limit) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("FROM Course");
+			Query<?> query = currentSession.createQuery("FROM Course c ORDER BY c.id DESC");
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);
 			return (ArrayList<Course>) query.getResultList();

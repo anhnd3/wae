@@ -1,5 +1,7 @@
 package vn.wae.spring.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,40 +9,50 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
+
 @Entity
 @Table(name = "project")
-public class Project {
+public class Project implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2694593358757525015L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "`id`")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@Column(name = "title")
-	String title;
+	@Column(name = "`name`")
+	String name;
 
-	@Column(name = "thumbnail")
+	@Column(name = "`thumbnail`")
+	@NotBlank(message = "Thumbnail is not blank")
+	@URL(message = "URL format fail")
 	String thumbnail;
 
-	@Column(name = "short_desc")
+	@Column(name = "`short_desc`")
 	String shortDesc;
 
-	@Column(name = "author")
+	@Column(name = "`author`")
 	String author;
 
-	@Column(name = "status")
-	byte status;
+	@Column(name = "`status`", columnDefinition = "TINYINT(1)")
+	boolean status;
 
-	@Column(name = "highlight")
-	byte highlight;
+	@Column(name = "`highlight`", columnDefinition = "TINYINT(1)")
+	boolean highlight;
 
 	public Project() {
 	}
 
-	public Project(int id, String title, String thumbnail, String shortDesc, String author, byte status,
-			byte highlight) {
+	public Project(int id, String name, String thumbnail, String shortDesc, String author, boolean status,
+			boolean highlight) {
 		this.id = id;
-		this.title = title;
+		this.name = name;
 		this.thumbnail = thumbnail;
 		this.shortDesc = shortDesc;
 		this.author = author;
@@ -48,8 +60,8 @@ public class Project {
 		this.highlight = highlight;
 	}
 
-	public Project(String title, String thumbnail, String shortDesc, String author, byte status, byte highlight) {
-		this.title = title;
+	public Project(String name, String thumbnail, String shortDesc, String author, boolean status, boolean highlight) {
+		this.name = name;
 		this.thumbnail = thumbnail;
 		this.shortDesc = shortDesc;
 		this.author = author;
@@ -65,12 +77,12 @@ public class Project {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getThumbnail() {
@@ -97,25 +109,25 @@ public class Project {
 		this.author = author;
 	}
 
-	public byte getStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(byte status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 
-	public byte getHighlight() {
+	public boolean getHighlight() {
 		return highlight;
 	}
 
-	public void setHighlight(byte highlight) {
+	public void setHighlight(boolean highlight) {
 		this.highlight = highlight;
 	}
 
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", title=" + title + ", thumbnail=" + thumbnail + ", shortDesc=" + shortDesc
+		return "Project [id=" + id + ", name=" + name + ", thumbnail=" + thumbnail + ", shortDesc=" + shortDesc
 				+ ", author=" + author + ", status=" + status + ", highlight=" + highlight + "]";
 	}
 }

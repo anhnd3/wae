@@ -7,9 +7,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import vn.wae.spring.entity.BlogCategory;
 
+@Repository
 public class BlogCategoryDAOImpl implements BlogCategoryDAO {
 
 	@Autowired
@@ -20,7 +22,7 @@ public class BlogCategoryDAOImpl implements BlogCategoryDAO {
 	}
 
 	@Override
-	public int saveCategory(BlogCategory category) {
+	public int saveBlogCategory(BlogCategory category) {
 		try {
 			Session currentSession = getCurrentSession();
 			currentSession.saveOrUpdate(category);
@@ -32,7 +34,7 @@ public class BlogCategoryDAOImpl implements BlogCategoryDAO {
 	}
 
 	@Override
-	public int deleteCategory(int categoryId) {
+	public int deleteBlogCategory(int categoryId) {
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> query = currentSession.createQuery("DELETE FROM BlogCategory c WHERE c.id=:categoryId");
@@ -45,7 +47,7 @@ public class BlogCategoryDAOImpl implements BlogCategoryDAO {
 	}
 
 	@Override
-	public BlogCategory getCategory(int categoryId) {
+	public BlogCategory getBlogCategory(int categoryId) {
 		try {
 			Session currentSession = getCurrentSession();
 			return currentSession.get(BlogCategory.class, categoryId);
@@ -57,7 +59,7 @@ public class BlogCategoryDAOImpl implements BlogCategoryDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<BlogCategory> getCategorys(int pos, int limit) {
+	public List<BlogCategory> getBlogCategories(int pos, int limit) {
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> query = currentSession.createQuery("FROM BlogCategory");

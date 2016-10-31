@@ -1,5 +1,7 @@
 package vn.wae.spring.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,44 +11,49 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "blog")
-public class Blog {
+public class Blog implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6582436474041635461L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "`id`")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@Column(name = "title")
+	@Column(name = "`title`")
 	String title;
 
-	@Column(name = "time")
+	@Column(name = "`time`")
 	long time;
 
-	@Column(name = "short_desc")
+	@Column(name = "`short_desc`")
 	String shortDesc;
 
-	@Column(name = "full_desc")
+	@Column(name = "`full_desc`")
 	String fullDesc;
 
-	@Column(name = "thumbnail")
+	@Column(name = "`thumbnail`")
 	String thumbnail;
 
-	@Column(name = "full_image")
+	@Column(name = "`full_image`")
 	String fullImage;
 
-	@Column(name = "highlight")
+	@Column(name = "`highlight`")
 	byte highlight;
 
-	@Column(name = "author")
+	@Column(name = "`author`")
 	String author;
 
-	@Column(name = "status")
+	@Column(name = "`status`")
 	byte status;
 
-	@Column(name = "views")
+	@Column(name = "`views`")
 	long views;
 
-	@Column(name = "categoryId")
+	@Column(name = "`categoryId`")
 	int categoryId;
 
 	public Blog() {

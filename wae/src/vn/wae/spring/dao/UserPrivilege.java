@@ -1,18 +1,24 @@
 package vn.wae.spring.dao;
 
 public enum UserPrivilege {
-	USER(0), ADMIN(1), MASTER(2);
+	USER(0, "User"), MOD(1, "Mod"), ADMIN(2, "Admin");
 
 	private final int value;
+	private final String desc;
 
-	private UserPrivilege(int value) {
+	private UserPrivilege(int value, String desc) {
 		this.value = value;
+		this.desc = desc;
 	}
 
 	public int getValue() {
 		return this.value;
 	}
-	
+
+	public String getDesc() {
+		return this.desc;
+	}
+
 	public static UserPrivilege fromValue(int value) {
 		UserPrivilege[] arrPrivilege = UserPrivilege.values();
 		for (UserPrivilege tmpPrivilege : arrPrivilege) {

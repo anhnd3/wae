@@ -1,5 +1,7 @@
 package vn.wae.spring.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,23 +14,28 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5943534425243780091L;
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "`id`")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	@Column(name = "email")
+	@Column(name = "`email`")
 	@NotBlank(message = "Email is not blank")
 	@Email
 	String email;
 
-	@Column(name = "password")
+	@Column(name = "`password`")
 	@NotBlank(message = "Password is not blank")
 	String password;
 
-	@Column(name = "privilege")
+	@Column(name = "`privilege`")
 	byte privilege;
 
 	public User() {
