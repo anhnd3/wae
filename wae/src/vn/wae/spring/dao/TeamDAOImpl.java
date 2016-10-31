@@ -37,7 +37,7 @@ public class TeamDAOImpl implements TeamDAO {
 	public int deleteTeam(int teamId) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("DELETE FROM Team t WHERE t.id=:teamId");
+			Query<?> query = currentSession.createQuery("DELETE FROM Teammate t WHERE t.id=:teamId");
 			query.setParameter("teamId", teamId);
 			return query.executeUpdate();
 		} catch (Exception ex) {
@@ -62,7 +62,7 @@ public class TeamDAOImpl implements TeamDAO {
 	public List<Teammate> getTeams(int pos, int limit) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("FROM Team");
+			Query<?> query = currentSession.createQuery("FROM Teammate");
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);
 			return (ArrayList<Teammate>) query.getResultList();

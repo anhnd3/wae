@@ -7,12 +7,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.wae.spring.dao.BlogCategoryDAO;
+import vn.wae.spring.dao.BlogDAO;
 import vn.wae.spring.dao.CourseDAO;
 import vn.wae.spring.dao.MessageDAO;
 import vn.wae.spring.dao.PartnerDAO;
 import vn.wae.spring.dao.ProjectDAO;
 import vn.wae.spring.dao.TeamDAO;
 import vn.wae.spring.dao.UserDAO;
+import vn.wae.spring.entity.Blog;
 import vn.wae.spring.entity.BlogCategory;
 import vn.wae.spring.entity.Course;
 import vn.wae.spring.entity.Message;
@@ -29,6 +31,9 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private BlogCategoryDAO blogCategoryDAO;
+
+	@Autowired
+	private BlogDAO blogDAO;
 
 	@Autowired
 	private CourseDAO courseDAO;
@@ -219,4 +224,27 @@ public class AdminServiceImpl implements AdminService {
 		return teamDAO.getTeams(pos, limit);
 	}
 
+	@Override
+	@Transactional
+	public int saveBlog(Blog blog) {
+		return blogDAO.saveBlog(blog);
+	}
+
+	@Override
+	@Transactional
+	public int deleteBlog(int blogId) {
+		return blogDAO.deleteBlog(blogId);
+	}
+
+	@Override
+	@Transactional
+	public Blog getBlog(int blogId) {
+		return blogDAO.getBlog(blogId);
+	}
+
+	@Override
+	@Transactional
+	public List<Blog> getBlogs(int blogCategoryId, int pos, int limit) {
+		return blogDAO.getBlogsByCategory(pos, limit, blogCategoryId);
+	}
 }

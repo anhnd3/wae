@@ -89,10 +89,17 @@ public class AdminLoginController {
 	public String logout(Model model, HttpServletResponse response, HttpServletRequest request) {
 		Cookie[] cookies = request.getCookies();
 		for (Cookie tmpCookie : cookies) {
-			if (tmpCookie.getName().equals("wae")) {
-				tmpCookie.setMaxAge(-1);
+			switch (tmpCookie.getName()) {
+			case "wae.user.admin":
+				tmpCookie.setMaxAge(0);
+				break;
+			case "wae.user.admin.type":
+				tmpCookie.setMaxAge(0);
+				break;
 			}
+			response.addCookie(tmpCookie);
 		}
+
 		return "redirect:/waetools/login";
 	}
 

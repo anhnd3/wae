@@ -2,6 +2,7 @@ package vn.wae.spring.service;
 
 import java.util.List;
 
+import vn.wae.spring.entity.Blog;
 import vn.wae.spring.entity.BlogCategory;
 import vn.wae.spring.entity.Course;
 import vn.wae.spring.entity.Message;
@@ -61,7 +62,7 @@ public interface AdminService {
 	public Project getProject(int projectId);
 
 	public List<Project> getProjects(int pos, int limit);
-	
+
 	public int saveTeam(Teammate team);
 
 	public int deleteTeam(int teamId);
@@ -69,5 +70,13 @@ public interface AdminService {
 	public Teammate getTeam(int teamId);
 
 	public List<Teammate> getTeams(int pos, int limit);
+
+	public int saveBlog(Blog blog);
+
+	public int deleteBlog(int blogId);
+
+	public Blog getBlog(int blogId);
+
+	public List<Blog> getBlogs(int blogCategoryId, int pos, int limit);
 
 }

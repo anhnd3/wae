@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>WAE Tools - Blog Category Listing</title>
+<title>WAE Tools - Blog Listing</title>
 
 <!-- Bootstrap Core CSS -->
 <link
@@ -65,7 +66,7 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Blog Category</h1>
+					<h1 class="page-header">${blogCategory.name }'sBlog</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -74,7 +75,8 @@
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							Blog Category listing <a href="blog-category-form"><button
+							${blogCategory.name }'s blog listing <a
+								href="blog-form?blogCategoryId=${blogCategory.id }"><button
 									type="button" class="btn btn-primary btn-xs"
 									style="float: right;">Create</button></a>
 						</div>
@@ -86,26 +88,45 @@
 								<thead>
 									<tr>
 										<th>Id</th>
-										<th>Category</th>
+										<th>Title</th>
+										<th>Time</th>
+										<th>Author</th>
+										<th>Highlight</th>
 										<th>Status</th>
 										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${blogCategories }" var="tmpCategory">
+									<c:forEach items="${blogs }" var="tmpBlog">
 										<tr>
-											<td>${tmpCategory.id }</td>
-											<td><a href="blog?blogCategoryId=${tmpCategory.id }">${tmpCategory.name }</a></td>
-											<c:if test="${tmpCategory.status == true }">
-												<td><i class="fa fa-check"></i></td>
-											</c:if>
-											<c:if test="${tmpCategory.status == false }">
-												<td><i class="fa fa-ban"></i></td>
-											</c:if>
-											<td><a href="blog-category-detail?id=${tmpCategory.id }"><i
+											<td>${tmpBlog.id }</td>
+											<td>${tmpBlog.title }</td>
+											<td><jsp:useBean id="dateValue" class="java.util.Date" />
+												<jsp:setProperty name="dateValue" property="time"
+													value="${tmpBlog.time }" /> <fmt:formatDate
+													value="${dateValue}" pattern="MM/dd/yyyy HH:mm" /></td>
+											<td>${tmpBlog.author }</td>
+											<c:choose>
+												<c:when test="${tmpBlog.highlight == true }">
+													<td><i class="fa fa-check"></i></td>
+												</c:when>
+												<c:otherwise>
+													<td><i class="fa fa-ban"></i></td>
+												</c:otherwise>
+											</c:choose>
+											<c:choose>
+												<c:when test="${tmpBlog.status == true }">
+													<td><i class="fa fa-check"></i></td>
+												</c:when>
+												<c:otherwise>
+													<td><i class="fa fa-ban"></i></td>
+												</c:otherwise>
+											</c:choose>
+											<td><a
+												href="blog-detail?blogCategoryId=${tmpBlog.categoryId }&id=${tmpBlog.id }"><i
 													class="fa fa-edit"></i> </a>| <a
-												onclick="return confirm('Do you want to delete blog category: ${tmpCategory.name}?')"
-												href="blog-category-delete?id=${tmpCategory.id }"><i
+												onclick="return confirm('Do you want to delete blog: ${tmpBlog.title}?')"
+												href="blog-delete?blogCategoryId=${tmpBlog.categoryId }&id=${tmpBlog.id }"><i
 													class="fa fa-trash-o"></i></a></td>
 										</tr>
 									</c:forEach>

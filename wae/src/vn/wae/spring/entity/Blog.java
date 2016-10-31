@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
+
 @Entity
 @Table(name = "blog")
 public class Blog implements Serializable {
@@ -24,6 +27,7 @@ public class Blog implements Serializable {
 	int id;
 
 	@Column(name = "`title`")
+	@NotBlank(message = "Blog Title is not blank")
 	String title;
 
 	@Column(name = "`time`")
@@ -36,19 +40,21 @@ public class Blog implements Serializable {
 	String fullDesc;
 
 	@Column(name = "`thumbnail`")
+	@URL(message = "URL format fail")
 	String thumbnail;
 
 	@Column(name = "`full_image`")
+	@URL(message = "URL format fail")
 	String fullImage;
 
-	@Column(name = "`highlight`")
-	byte highlight;
+	@Column(name = "`highlight`", columnDefinition = "TINYINT(1)")
+	boolean highlight;
 
 	@Column(name = "`author`")
 	String author;
 
-	@Column(name = "`status`")
-	byte status;
+	@Column(name = "`status`", columnDefinition = "TINYINT(1)")
+	boolean status;
 
 	@Column(name = "`views`")
 	long views;
@@ -60,7 +66,7 @@ public class Blog implements Serializable {
 	}
 
 	public Blog(String title, long time, String shortDesc, String fullDesc, String thumbnail, String fullImage,
-			byte highlight, String author, byte status, long views, int categoryId) {
+			boolean highlight, String author, boolean status, long views, int categoryId) {
 		this.title = title;
 		this.time = time;
 		this.shortDesc = shortDesc;
@@ -75,7 +81,7 @@ public class Blog implements Serializable {
 	}
 
 	public Blog(int id, String title, long time, String shortDesc, String fullDesc, String thumbnail, String fullImage,
-			byte highlight, String author, byte status, long views, int categoryId) {
+			boolean highlight, String author, boolean status, long views, int categoryId) {
 		this.id = id;
 		this.title = title;
 		this.time = time;
@@ -146,11 +152,11 @@ public class Blog implements Serializable {
 		this.fullImage = fullImage;
 	}
 
-	public byte getHighlight() {
+	public boolean getHighlight() {
 		return highlight;
 	}
 
-	public void setHighlight(byte highlight) {
+	public void setHighlight(boolean highlight) {
 		this.highlight = highlight;
 	}
 
@@ -162,11 +168,11 @@ public class Blog implements Serializable {
 		this.author = author;
 	}
 
-	public byte getStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(byte status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 

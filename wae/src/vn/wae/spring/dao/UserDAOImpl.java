@@ -28,7 +28,8 @@ public class UserDAOImpl implements UserDAO {
 	public int saveUser(User user) {
 		try {
 			Session currentSession = getCurrentSession();
-			if (user.getId() == 0) {
+
+			if (!user.getPassword().matches("[a-fA-F0-9]{32}")) {
 				String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes("UTF-8"));
 				user.setPassword(password);
 			}
