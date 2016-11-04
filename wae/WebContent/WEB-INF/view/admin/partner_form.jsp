@@ -70,7 +70,7 @@
 								<div class="col-lg-12">
 									<form:form role="form" action="partner-form-execute"
 										modelAttribute="partner" method="POST">
-										<div class="form-group col-lg-5">
+										<div class="form-group col-lg-3">
 											<label>Partner Name</label>
 											<form:input path="name" cssClass="form-control"
 												placeholder="Partner name" autofocus="autofocus"
@@ -78,7 +78,15 @@
 											<p class="help-block alert-danger"></p>
 											<form:hidden path="id" />
 										</div>
-										<div class="form-group col-lg-7">
+										<div class="form-group col-lg-4">
+											<label>Target Link</label>
+											<form:input path="targetLink" cssClass="form-control"
+												placeholder="Target Link" />
+											<p class="help-block alert-danger">
+												<form:errors path="targetLink" />
+											</p>
+										</div>
+										<div class="form-group col-lg-5">
 											<label>Thumbnail</label>
 											<form:input path="thumbnail" cssClass="form-control"
 												placeholder="Thumbnail" />

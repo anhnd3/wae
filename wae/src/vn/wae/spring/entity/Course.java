@@ -36,8 +36,12 @@ public class Course implements Serializable {
 	String thumbnail;
 
 	@Column(name = "`desc`")
-	@NotBlank(message = "Description is not blank")
+	@NotBlank(message = "Short description is not blank")
 	String desc;
+
+	@Column(name = "`full_desc`")
+	@NotBlank(message = "Full description is not blank")
+	String fullDesc;
 
 	@Column(name = "`teacher`")
 	String teacher;
@@ -48,19 +52,22 @@ public class Course implements Serializable {
 	public Course() {
 	}
 
-	public Course(int id, String title, String thumbnail, String desc, String teacher, boolean status) {
+	public Course(int id, String title, String thumbnail, String desc, String fullDesc, String teacher,
+			boolean status) {
 		this.id = id;
 		this.title = title;
 		this.thumbnail = thumbnail;
 		this.desc = desc;
+		this.fullDesc = fullDesc;
 		this.teacher = teacher;
 		this.status = status;
 	}
 
-	public Course(String title, String thumbnail, String desc, String teacher, boolean status) {
+	public Course(String title, String thumbnail, String desc, String fullDesc, String teacher, boolean status) {
 		this.title = title;
 		this.thumbnail = thumbnail;
 		this.desc = desc;
+		this.fullDesc = fullDesc;
 		this.teacher = teacher;
 		this.status = status;
 	}
@@ -97,6 +104,14 @@ public class Course implements Serializable {
 		this.desc = desc;
 	}
 
+	public String getFullDesc() {
+		return fullDesc;
+	}
+
+	public void setFullDesc(String fullDesc) {
+		this.fullDesc = fullDesc;
+	}
+
 	public String getTeacher() {
 		return teacher;
 	}
@@ -115,7 +130,7 @@ public class Course implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", title=" + title + ", thumbnail=" + thumbnail + ", desc=" + desc + ", teacher="
-				+ teacher + ", status=" + status + "]";
+		return "Course [id=" + id + ", title=" + title + ", thumbnail=" + thumbnail + ", desc=" + desc + ", fullDesc="
+				+ fullDesc + ", teacher=" + teacher + ", status=" + status + "]";
 	}
 }

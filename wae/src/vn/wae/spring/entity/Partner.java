@@ -34,6 +34,10 @@ public class Partner implements Serializable {
 	@URL(message = "URL format fail")
 	String thumbnail;
 
+	@Column(name = "`target_link`")
+	@URL(message = "URL format fail")
+	String targetLink;
+
 	@Column(name = "`short_desc`")
 	String shortDesc;
 
@@ -45,19 +49,19 @@ public class Partner implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Partner(int id, String name, String thumbnail, String shortDesc, boolean status) {
-		super();
+	public Partner(int id, String name, String thumbnail, String targetLink, String shortDesc, boolean status) {
 		this.id = id;
 		this.name = name;
 		this.thumbnail = thumbnail;
+		this.targetLink = targetLink;
 		this.shortDesc = shortDesc;
 		this.status = status;
 	}
 
-	public Partner(String name, String thumbnail, String shortDesc, boolean status) {
-		super();
+	public Partner(String name, String thumbnail, String targetLink, String shortDesc, boolean status) {
 		this.name = name;
 		this.thumbnail = thumbnail;
+		this.targetLink = targetLink;
 		this.shortDesc = shortDesc;
 		this.status = status;
 	}
@@ -102,9 +106,17 @@ public class Partner implements Serializable {
 		this.status = status;
 	}
 
+	public String getTargetLink() {
+		return targetLink;
+	}
+
+	public void setTargetLink(String targetLink) {
+		this.targetLink = targetLink;
+	}
+
 	@Override
 	public String toString() {
-		return "Partner [id=" + id + ", name=" + name + ", thumbnail=" + thumbnail + ", shortDesc=" + shortDesc
-				+ ", status=" + status + "]";
+		return "Partner [id=" + id + ", name=" + name + ", thumbnail=" + thumbnail + ", targetLink=" + targetLink
+				+ ", shortDesc=" + shortDesc + ", status=" + status + "]";
 	}
 }

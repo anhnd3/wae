@@ -37,25 +37,30 @@ public class AdminLoginController {
 
 	@RequestMapping("/waetools/login")
 	public String login(Model model) {
+		User user = new User();
+		Boolean checkAdmin = false;
 
-		if (!model.containsAttribute("user")) {
-			model.addAttribute("user", new User());
-			model.addAttribute("checkAdmin", false);
-		}
-
-		Object objResult = model.asMap().get("org.springframework.validation.BindingResult.user");
-		if (objResult != null) {
-			BindingResult result = (BindingResult) objResult;
-			model.addAttribute("errCount", result.getErrorCount());
-		}
-
-		Object objIsAdmin = model.asMap().get("isAdmin");
-		if (objIsAdmin != null) {
-			boolean isAdmin = (boolean) objIsAdmin;
-			if (!isAdmin) {
-				model.addAttribute("checkAdmin", true);
+		if (model.containsAttribute("user")) {
+			user = (User) model.asMap().get("user");
+			Object objResult = model.asMap().get("org.springframework.validation.BindingResult.user");
+			if (objResult != null) {
+				BindingResult result = (BindingResult) objResult;
+				model.addAttribute("errCount", result.getErrorCount());
 			}
 		}
+
+		if (model.containsAttribute("isAdmin")) {
+			Object objIsAdmin = model.asMap().get("isAdmin");
+			if (objIsAdmin != null) {
+				boolean isAdmin = (boolean) objIsAdmin;
+				if (!isAdmin) {
+					checkAdmin = true;
+				}
+			}
+		}
+
+		model.addAttribute("user", user);
+		model.addAttribute("checkAdmin", checkAdmin);
 		return "admin/login";
 	}
 

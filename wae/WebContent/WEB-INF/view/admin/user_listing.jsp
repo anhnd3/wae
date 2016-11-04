@@ -161,8 +161,7 @@
 	<script>
 		$(document).ready(
 				function() {
-					$('#
-		user-table').DataTable(
+					$('#user-table').DataTable(
 							{
 								responsive : true,
 								"iDisplayLength" : -1,

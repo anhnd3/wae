@@ -101,6 +101,12 @@
 											</p>
 										</div>
 										<div class="form-group col-lg-12">
+											<label>Content</label>
+											<form:textarea rows="10" path="fullDesc" id="fullDesc"
+												cssClass="form-control" placeholder="Content" />
+											<p class="help-block alert-danger"></p>
+										</div>
+										<div class="form-group col-lg-12">
 											<label>Status</label>
 											<div class="checkbox">
 												<label> <form:checkbox path="status" />Enable
@@ -137,6 +143,14 @@
 	<!-- Bootstrap Core JavaScript -->
 	<script
 		src="${pageContext.request.contextPath }/resources/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- CKEditor -->
+	<script src="//cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
+	<script type="text/javascript">
+		CKEDITOR.replace('fullDesc', {
+			height : '300px'
+		});
+	</script>
 
 	<!-- Metis Menu Plugin JavaScript -->
 	<script
