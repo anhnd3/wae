@@ -157,7 +157,7 @@ public class AdminBlogController {
 
 	@RequestMapping("/waetools/blog-form-execute")
 	public String blogFormExecute(@Valid @ModelAttribute("blog") Blog blog, BindingResult result,
-			HttpServletResponse response, RedirectAttributes redirectAttrs) {
+			RedirectAttributes redirectAttrs) {
 
 		if (result.hasErrors()) {
 			redirectAttrs.addFlashAttribute("org.springframework.validation.BindingResult.blog", result);

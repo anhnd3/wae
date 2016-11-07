@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import vn.wae.spring.dao.BlogCategoryDAO;
 import vn.wae.spring.dao.BlogDAO;
 import vn.wae.spring.dao.CourseDAO;
+import vn.wae.spring.dao.EmailUserDAO;
 import vn.wae.spring.dao.MessageDAO;
 import vn.wae.spring.dao.PartnerDAO;
 import vn.wae.spring.dao.ProjectDAO;
@@ -17,6 +18,7 @@ import vn.wae.spring.dao.UserDAO;
 import vn.wae.spring.entity.Blog;
 import vn.wae.spring.entity.BlogCategory;
 import vn.wae.spring.entity.Course;
+import vn.wae.spring.entity.EmailUser;
 import vn.wae.spring.entity.Message;
 import vn.wae.spring.entity.Partner;
 import vn.wae.spring.entity.Project;
@@ -49,6 +51,9 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private TeamDAO teamDAO;
+
+	@Autowired
+	private EmailUserDAO emailUserDAO;
 
 	@Override
 	@Transactional
@@ -246,5 +251,17 @@ public class AdminServiceImpl implements AdminService {
 	@Transactional
 	public List<Blog> getBlogs(int blogCategoryId, int pos, int limit) {
 		return blogDAO.getBlogsByCategory(pos, limit, blogCategoryId);
+	}
+
+	@Override
+	@Transactional
+	public int deleteEmailUser(int emailUserId) {
+		return emailUserDAO.deleteEmail(emailUserId);
+	}
+
+	@Override
+	@Transactional
+	public List<EmailUser> getEmailUses(int pos, int limit) {
+		return emailUserDAO.getEmails(pos, limit);
 	}
 }

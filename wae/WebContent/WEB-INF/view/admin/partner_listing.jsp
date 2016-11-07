@@ -159,7 +159,7 @@
 					$('#partner-table').DataTable(
 							{
 								responsive : true,
-								"iDisplayLength" : -1,
+								"iDisplayLength" : 100,
 								"aLengthMenu" : [
 										[ 10, 15, 25, 35, 50, 100, -1 ],
 										[ 10, 15, 25, 35, 50, 100, "All" ] ],

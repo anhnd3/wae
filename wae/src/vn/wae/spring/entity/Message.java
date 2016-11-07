@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name = "message")
 public class Message implements Serializable {
@@ -27,6 +30,7 @@ public class Message implements Serializable {
 	String name;
 
 	@Column(name = "`email`")
+	@Email(message = "Email format fail")
 	String email;
 
 	@Column(name = "`phone_number`")
@@ -36,6 +40,7 @@ public class Message implements Serializable {
 	String subject;
 
 	@Column(name = "`message`")
+	@NotBlank(message = "Message is not blank")
 	String message;
 
 	public Message() {

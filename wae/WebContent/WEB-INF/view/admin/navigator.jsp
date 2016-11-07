@@ -39,6 +39,8 @@
 				<li><a href="project"><i class="fa fa-photo fa-fw"></i>
 						Project</a></li>
 				<li><a href="team"><i class="fa fa-users fa-fw"></i> Team</a></li>
+				<li><a href="email"><i class="fa fa-envelope-square fa-fw"></i>
+						Email User</a></li>
 				<c:if test="${param.modifyAdmin == 'true'}">
 					<li><a href="user"><i class="fa fa-user fa-fw"></i> Admin</a></li>
 				</c:if>

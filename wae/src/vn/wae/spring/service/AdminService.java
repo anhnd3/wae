@@ -5,6 +5,7 @@ import java.util.List;
 import vn.wae.spring.entity.Blog;
 import vn.wae.spring.entity.BlogCategory;
 import vn.wae.spring.entity.Course;
+import vn.wae.spring.entity.EmailUser;
 import vn.wae.spring.entity.Message;
 import vn.wae.spring.entity.Partner;
 import vn.wae.spring.entity.Project;
@@ -78,5 +79,9 @@ public interface AdminService {
 	public Blog getBlog(int blogId);
 
 	public List<Blog> getBlogs(int blogCategoryId, int pos, int limit);
+	
+	public int deleteEmailUser(int emailUserId);
+
+	public List<EmailUser> getEmailUses(int pos, int limit);
 
 }
