@@ -237,7 +237,7 @@
 						</p>
 					</div>
 					<div class="col-md-4 col-sm-4">
-						<i class="fa fa-map-marker"></i>
+						<i class="fa fa-facebook"></i>
 						<h4>Address</h4>
 						<p>
 							123 Some Street, <br> Sed varius nulla <br> Some City,

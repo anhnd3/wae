@@ -13,5 +13,7 @@ public interface PartnerDAO {
 	public Partner getPartner(int partnerId);
 
 	public List<Partner> getPartners(int pos, int limit);
+	
+	public List<Partner> getPartnersAvailable(int pos, int limit);
 
 }

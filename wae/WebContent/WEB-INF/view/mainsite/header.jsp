@@ -25,12 +25,13 @@
 		<nav class="collapse navbar-collapse navbar-right" role="navigation">
 			<div class="main-menu">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="">Trang chủ</a></li>
-					<li><a href="${pageContext.request.contextPath }/about">Về chúng tôi</a></li>
+					<li><a href="${pageContext.request.contextPath }">Trang chủ</a></li>
+					<li><a href="${pageContext.request.contextPath }/about">Giới thiệu</a></li>
 					<li><a href="${pageContext.request.contextPath }/course">Khoá học</a></li>
-					<li><a href="${pageContext.request.contextPath }/blog">Bài viết</a></li>
+					<li><a href="${pageContext.request.contextPath }/tutorial">Bài giảng</a></li>
+					<li><a href="${pageContext.request.contextPath }/news">Tin tức</a></li>
 					<li><a href="${pageContext.request.contextPath }/project">Dự án</a></li>
-					<li><a href="${pageContext.request.contextPath }/service">Cánh tay robot</a></li>
+					<li><a href="${pageContext.request.contextPath }/service">Kỹ thuật tự động</a></li>
 					<li><a href="${pageContext.request.contextPath }/contact">Liên hệ</a></li>
 				</ul>
 			</div>

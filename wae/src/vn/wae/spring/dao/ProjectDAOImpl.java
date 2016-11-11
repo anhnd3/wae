@@ -74,7 +74,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Project> getProjectsHighlight(int limit, byte highlight) {
+	public List<Project> getProjectsHighlight(int limit, boolean highlight) {
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> query = currentSession.createQuery("FROM Project p WHERE p.highlight=:highlight");

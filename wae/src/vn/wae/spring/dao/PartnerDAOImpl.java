@@ -72,4 +72,19 @@ public class PartnerDAOImpl implements PartnerDAO {
 		return new ArrayList<>();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Partner> getPartnersAvailable(int pos, int limit) {
+		try {
+			Session currentSession = getCurrentSession();
+			Query<?> query = currentSession.createQuery("FROM Partner p where p.status = true");
+			query.setFirstResult(pos);
+			query.setMaxResults(limit);
+			return (ArrayList<Partner>) query.getResultList();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return new ArrayList<>();
+	}
+
 }

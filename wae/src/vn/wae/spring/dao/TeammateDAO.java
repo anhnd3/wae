@@ -4,7 +4,7 @@ import java.util.List;
 
 import vn.wae.spring.entity.Teammate;
 
-public interface TeamDAO {
+public interface TeammateDAO {
 
 	public int saveTeam(Teammate team);
 
@@ -13,4 +13,6 @@ public interface TeamDAO {
 	public Teammate getTeam(int teamId);
 
 	public List<Teammate> getTeams(int pos, int limit);
+	
+	public List<Teammate> getTeamsAvailable(int pos, int limit);
 }

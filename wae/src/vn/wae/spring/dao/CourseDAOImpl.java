@@ -74,4 +74,19 @@ public class CourseDAOImpl implements CourseDAO {
 		return new ArrayList<>();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Course> getCoursesAvailable(int pos, int limit) {
+		try {
+			Session currentSession = getCurrentSession();
+			Query<?> query = currentSession.createQuery("FROM Course c WHERE c.status = true ORDER BY c.id DESC");
+			query.setFirstResult(pos);
+			query.setMaxResults(limit);
+			return (ArrayList<Course>) query.getResultList();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return new ArrayList<>();
+	}
+
 }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import vn.wae.spring.entity.Teammate;
 
 @Repository
-public class TeamDAOImpl implements TeamDAO {
+public class TeammateDAOImpl implements TeammateDAO {
 
 	@Autowired
 	SessionFactory sessionFactory;
@@ -63,6 +63,21 @@ public class TeamDAOImpl implements TeamDAO {
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> query = currentSession.createQuery("FROM Teammate");
+			query.setFirstResult(pos);
+			query.setMaxResults(limit);
+			return (ArrayList<Teammate>) query.getResultList();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return new ArrayList<>();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Teammate> getTeamsAvailable(int pos, int limit) {
+		try {
+			Session currentSession = getCurrentSession();
+			Query<?> query = currentSession.createQuery("FROM Teammate t WHERE t.status = true");
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);
 			return (ArrayList<Teammate>) query.getResultList();

@@ -13,7 +13,7 @@ import vn.wae.spring.dao.EmailUserDAO;
 import vn.wae.spring.dao.MessageDAO;
 import vn.wae.spring.dao.PartnerDAO;
 import vn.wae.spring.dao.ProjectDAO;
-import vn.wae.spring.dao.TeamDAO;
+import vn.wae.spring.dao.TeammateDAO;
 import vn.wae.spring.dao.UserDAO;
 import vn.wae.spring.entity.Blog;
 import vn.wae.spring.entity.BlogCategory;
@@ -50,7 +50,7 @@ public class AdminServiceImpl implements AdminService {
 	private ProjectDAO projectDAO;
 
 	@Autowired
-	private TeamDAO teamDAO;
+	private TeammateDAO teamDAO;
 
 	@Autowired
 	private EmailUserDAO emailUserDAO;

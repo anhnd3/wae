@@ -74,7 +74,7 @@ public class BlogDAOImpl implements BlogDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Blog> getBlogsHighLight(int pos, int limit, byte highlight) {
+	public List<Blog> getBlogsHighLight(int pos, int limit, boolean highlight) {
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> query = currentSession.createQuery("FROM Blog b WHERE b.highlight=:highlight");

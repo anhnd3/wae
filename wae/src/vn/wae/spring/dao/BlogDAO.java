@@ -14,7 +14,7 @@ public interface BlogDAO {
 
 	public List<Blog> getBlogs(int pos, int limit);
 
-	public List<Blog> getBlogsHighLight(int pos, int limit, byte highlight);
+	public List<Blog> getBlogsHighLight(int pos, int limit, boolean highlight);
 
 	public List<Blog> getBlogsByCategory(int pos, int limit, int categoryId);
 }
