@@ -132,9 +132,7 @@
 											alt="this is a title">
 										<div class="overlay">
 											<div class="buttons">
-												<a rel="gallery" class="fancybox"
-													href="${tmpCourse.thumbnail }">${tmpCourse.title }</a> <a
-													target="_blank" href="#">Chi tiết</a>
+												<a target="_blank" href="#">Chi tiết</a>
 											</div>
 										</div>
 									</div>
@@ -174,9 +172,7 @@
 											alt="this is a title">
 										<div class="overlay">
 											<div class="buttons">
-												<a rel="gallery" class="fancybox"
-													href="${tmpBlog.thumbnail }">${tmpBlog.title }</a> <a
-													target="_blank" href="#">Chi tiết</a>
+												<a target="_blank" href="#">Chi tiết</a>
 											</div>
 										</div>
 									</div>
@@ -217,8 +213,7 @@
 										<div class="overlay">
 											<div class="buttons">
 												<a rel="gallery" class="fancybox"
-													href="${tmpProject.thumbnail }">${tmpProject.name }</a> <a
-													target="_blank" href="#">Chi tiết</a>
+													href="${tmpProject.thumbnail }">${tmpProject.name }</a>
 											</div>
 										</div>
 									</div>
@@ -242,29 +237,9 @@
             ==================================================
             Partner Section Start
             ================================================== -->
-	<section id="clients">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2 class="subtitle text-center wow fadeInUp animated"
-						data-wow-duration="500ms" data-wow-delay=".3s">Our Happy
-						Clinets</h2>
-					<p class="subtitle-des text-center wow fadeInUp animated"
-						data-wow-duration="500ms" data-wow-delay=".5s">Lorem ipsum
-						dolor sit amet, consectetur adipisicing elit. Labore, error.</p>
-					<div id="clients-logo" class="owl-carousel">
-						<c:forEach items="${partners }" var="tmpPartner">
-							<div>
-								<a href="${tmpPartner.targetLink }" target="_blank"> <img
-									src="${tmpPartner.thumbnail }" alt="${tmpPartner.name }">
-								</a>
-							</div>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<jsp:include page="/WEB-INF/view/mainsite/partner.jsp">
+		<jsp:param value="${partners }" name="partners" />
+	</jsp:include>
 	<!--
             ==================================================
             Footer Section Start

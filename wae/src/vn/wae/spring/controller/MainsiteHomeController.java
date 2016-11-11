@@ -101,7 +101,6 @@ public class MainsiteHomeController {
 
 	@PostMapping(value = "/countdown/send-message")
 	public String sendMessage(@Valid @ModelAttribute("message") Message message, BindingResult result) {
-		System.out.println(message);
 		if (!result.hasErrors()) {
 			mainsiteService.saveMessage(message);
 		}

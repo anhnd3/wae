@@ -41,8 +41,8 @@
 					<div class="block">
 						<h2>Giới thiệu</h2>
 						<ol class="breadcrumb">
-							<li><a href="${pageContext.request.contextPath }"> <i
-									class="ion-ios-home"></i> Trang chủ
+							<li><a href="${pageContext.request.contextPath }"> <i class="ion-ios-home"></i>
+									Trang chủ
 							</a></li>
 							<li class="active">Giới thiệu</li>
 						</ol>
@@ -52,111 +52,111 @@
 		</div>
 	</section>
 
-	<section id="contact-section">
+	<!-- 
+        ================================================== 
+            Company Description Section Start
+        ================================================== -->
+	<section class="company-description">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
-					<div class="block">
-						<h2 class="subtitle wow fadeInDown" data-wow-duration="500ms"
-							data-wow-delay=".3s">Contact With Me</h2>
-						<p class="subtitle-des wow fadeInDown" data-wow-duration="500ms"
-							data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Dolore, ea! consectetur adipisicing elit.
-							Dolore, ea!</p>
-						<div class="contact-form">
-							<form id="contact-form" method="post" action="sendmail.php"
-								role="form">
-
-								<div class="form-group wow fadeInDown" data-wow-duration="500ms"
-									data-wow-delay=".6s">
-									<input type="text" placeholder="Your Name" class="form-control"
-										name="name" id="name">
-								</div>
-
-								<div class="form-group wow fadeInDown" data-wow-duration="500ms"
-									data-wow-delay=".8s">
-									<input type="email" placeholder="Your Email"
-										class="form-control" name="email" id="email">
-								</div>
-
-								<div class="form-group wow fadeInDown" data-wow-duration="500ms"
-									data-wow-delay="1s">
-									<input type="text" placeholder="Subject" class="form-control"
-										name="subject" id="subject">
-								</div>
-
-								<div class="form-group wow fadeInDown" data-wow-duration="500ms"
-									data-wow-delay="1.2s">
-									<textarea rows="6" placeholder="Message" class="form-control"
-										name="message" id="message"></textarea>
-								</div>
-
-
-								<div id="submit" class="wow fadeInDown"
-									data-wow-duration="500ms" data-wow-delay="1.4s">
-									<input type="submit" id="contact-submit"
-										class="btn btn-default btn-send" value="Send Message">
-								</div>
-
-							</form>
-						</div>
-					</div>
+				<div class="col-md-6 wow fadeInLeft" data-wow-delay=".1s">
+					<img src="${pageContext.request.contextPath }/resources/mainsite/images/about/about-company.jpg" alt=""
+						class="img-responsive">
 				</div>
 				<div class="col-md-6">
-					<div class="map-area">
-						<h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms"
-							data-wow-delay=".3s">Find Us</h2>
-						<p class="subtitle-des wow fadeInDown" data-wow-duration="500ms"
-							data-wow-delay=".5s">Si aute quis eu proident o cupidatat ne
-							anim nescius, et est praesentibus, o quorum vidisse expetendis,
-							nostrud eram quibusdam ad nam nostrud ubi.</p>
-						<div class="map">
-							<iframe
-								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.277552998015!2d90.3678744!3d23.773128800000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c0ae4adf3cb9%3A0x7f2cf443b764e4a4!2sShishu+Mela!5e0!3m2!1sen!2s!4v1435516022247"
-								width="100%" height="400" frameborder="0" style="border: 0"
-								allowfullscreen></iframe>
+					<div class="block">
+						<h3 class="subtitle wow fadeInUp" data-wow-delay=".1s"
+							data-wow-duration="500ms">Why We are Different</h3>
+						<p class="wow fadeInUp" data-wow-delay=".2s"
+							data-wow-duration="500ms">Sed ut perspiciatis unde omnis iste
+							natus error sit voluptatem accusantium doloremque laudantium,
+							totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
+							quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+							ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+							sed quia consequun. Lorem ipsum dolor sit amet, consectetur
+							adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+							dolore magna aliqua.</p>
+						<p class="wow fadeInUp" data-wow-delay=".3s"
+							data-wow-duration="500ms">Temporibus autem quibusdam et aut
+							officiis debitis aut rerum necessitatibus saepe eveniet ut et
+							voluptates repudiandae sint et molestiae non recusandae.</p>
 
-						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row address-details">
-				<div class="col-md-3">
-					<div class="address wow fadeInLeft" data-wow-duration="500ms"
-						data-wow-delay=".3s">
-						<i class="ion-ios-location-outline"></i>
-						<h5>
-							125 , Kings Street,Melbourne <br>United Kingdom,600562
-						</h5>
-					</div>
+		</div>
+	</section>
+
+	<!-- 
+        ================================================== 
+            Company Feature Section Start
+        ================================================== -->
+	<section class="about-feature clearfix">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="block about-feature-1 wow fadeInDown"
+					data-wow-duration="500ms" data-wow-delay=".1s">
+					<h2>Why Choose Us</h2>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+						voluptas.</p>
 				</div>
-				<div class="col-md-3">
-					<div class="address wow fadeInLeft" data-wow-duration="500ms"
-						data-wow-delay=".5s">
-						<i class="ion-ios-location-outline"></i>
-						<h5>
-							125 , Kings Street,Melbourne <br>United Kingdom,600562
-						</h5>
-					</div>
+				<div class="block about-feature-2 wow fadeInDown"
+					data-wow-duration="500ms" data-wow-delay=".2s">
+					<h2 class="item_title">What You Get</h2>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+						voluptas.</p>
 				</div>
-				<div class="col-md-3">
-					<div class="email wow fadeInLeft" data-wow-duration="500ms"
-						data-wow-delay=".7s">
-						<i class="ion-ios-email-outline"></i>
-						<p>
-							support@themefisher.com<br>support@themefisher.com
-						</p>
-					</div>
+				<div class="block about-feature-3 wow fadeInDown"
+					data-wow-duration="500ms" data-wow-delay=".3s">
+					<h2 class="item_title">Meet The Energy</h2>
+					<p>Sed ut perspiciatis unde omnis iste natus error sit
+						voluptatem accusantium doloremque laudantium, totam rem aperiam,
+						eaque ipsa quae ab illo inventore veritatis et quasi architecto
+						beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+						voluptas.</p>
 				</div>
-				<div class="col-md-3">
-					<div class="phone wow fadeInLeft" data-wow-duration="500ms"
-						data-wow-delay=".9s">
-						<i class="ion-ios-telephone-outline"></i>
-						<p>
-							+07 052 245 022<br>+07 999 999 999
-						</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- 
+        ================================================== 
+            Team Section Start
+        ================================================== -->
+	<section id="team">
+		<div class="container">
+			<div class="row">
+				<h2 class="subtitle text-center">Thành viên</h2>
+				<c:forEach items="${teams }" var="tmpTeam">
+					<div class="col-md-3">
+						<div class="team-member wow fadeInLeft" data-wow-duration="500ms"
+							data-wow-delay=".3s">
+							<div class="team-img">
+								<img src="${tmpTeam.avatar }" class="team-pic"
+									alt="${tmpTeam.name }">
+							</div>
+							<h3 class="team_name">${tmpTeam.name }w</h3>
+							<p class="team_designation">${tmpTeam.title }</p>
+							<p class="team_text">${tmpTeam.shortDesc }</p>
+							<p class="social-icons">
+								<a href="${tmpTeam.facebook }" class="facebook" target="_blank"><i
+									class="ion-social-facebook-outline"></i></a> <a
+									href="${tmpTeam.twitter }" target="_blank"><i
+									class="ion-social-twitter-outline"></i></a> <a
+									href="${tmpTeam.linkedIn }" target="_blank"><i
+									class="ion-social-linkedin-outline"></i></a> <a
+									href="${tmpTeam.googlePlus }" target="_blank"><i
+									class="ion-social-googleplus-outline"></i></a>
+							</p>
+						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</section>
@@ -165,29 +165,9 @@
             ==================================================
             Partner Section Start
             ================================================== -->
-	<section id="clients">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2 class="subtitle text-center wow fadeInUp animated"
-						data-wow-duration="500ms" data-wow-delay=".3s">Our Happy
-						Clinets</h2>
-					<p class="subtitle-des text-center wow fadeInUp animated"
-						data-wow-duration="500ms" data-wow-delay=".5s">Lorem ipsum
-						dolor sit amet, consectetur adipisicing elit. Labore, error.</p>
-					<div id="clients-logo" class="owl-carousel">
-						<c:forEach items="${partners }" var="tmpPartner">
-							<div>
-								<a href="${tmpPartner.targetLink }" target="_blank"> <img
-									src="${tmpPartner.thumbnail }" alt="${tmpPartner.name }">
-								</a>
-							</div>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	<jsp:include page="/WEB-INF/view/mainsite/partner.jsp">
+		<jsp:param value="${partners }" name="partners"/>
+	</jsp:include>
 	<!--
             ==================================================
             Footer Section Start

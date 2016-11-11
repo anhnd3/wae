@@ -418,7 +418,7 @@ figure .overlay:hover a {
 figure .buttons {
 	position: absolute;
 	top: 45%;
-	left: 24%;
+	left: 35%;
 }
 
 figure figcaption {
@@ -605,7 +605,7 @@ figure figcaption p {
 }
 
 #footer {
-	background: #fff;
+	background: #F7F7F7;
 	padding: 25px 0;
 	color: #555;
 }
