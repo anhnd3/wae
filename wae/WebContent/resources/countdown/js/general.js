@@ -60,10 +60,18 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$(".validate").validate();
 	$(document).on('submit', '.contact-form', function() {
+		var data = {};
+		data.id = $('#id').val()
+		data.email = $('#email').val();
+		console.log(data);
 	    $.ajax({
 	      url : $(this).attr('action'),
 	      type : $(this).attr('method'),
-	      data : $(this).serialize(),
+//	      data : $(this).serialize(),
+	      data: JSON.stringify(data),
+	      dataType: 'json',
+	      contentType : "application/json",
+	      timeout: 600000,
 	      success : function(data) {
 	    	  if(parseInt(data) === -1) {
 	    		  $('.form-respond').html("<div class='content-message'><h2>Error sending Try again later.</h2></div>");

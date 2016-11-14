@@ -37,14 +37,14 @@
 	<div class="about-us">
 		<a href="#" class="fa fa-file-text-o tool-tip" data-toggle="modal"
 			data-target=".bs-example-modal-lg" data-placement="right"
-			title="About"></a>
+			title="Giới thiệu"></a>
 	</div>
 	<!-- About Icon end here -->
 	<!-- Contact Icon start here -->
 	<div class="contact-us">
 		<a href="#" class="fa fa-envelope-o tool-tip" data-toggle="modal"
 			data-target=".bs-example-modal-lg2" data-placement="left"
-			title="Contact"></a>
+			title="Liên hệ"></a>
 	</div>
 	<!-- Contact Icon end here -->
 	<!-- Main container start here -->
@@ -60,30 +60,30 @@
 			<div class="container">
 				<div id="countdown_dashboard" class="fade-in">
 					<div class="dash weeks_dash">
-						<span class="dash_title">weeks</span>
+						<span class="dash_title">tuần</span>
 						<div class="digit">0</div>
 						<div class="digit">0</div>
 					</div>
 					<div class="dash days_dash">
-						<span class="dash_title">days</span>
+						<span class="dash_title">ngày</span>
 						<div class="digit">0</div>
 						<div class="digit">0</div>
 					</div>
 
 					<div class="dash hours_dash">
-						<span class="dash_title">hours</span>
+						<span class="dash_title">giờ</span>
 						<div class="digit">0</div>
 						<div class="digit">0</div>
 					</div>
 
 					<div class="dash minutes_dash">
-						<span class="dash_title">minutes</span>
+						<span class="dash_title">phút</span>
 						<div class="digit">0</div>
 						<div class="digit">0</div>
 					</div>
 
 					<div class="dash seconds_dash">
-						<span class="dash_title">seconds</span>
+						<span class="dash_title">giây</span>
 						<div class="digit">0</div>
 						<div class="digit">0</div>
 					</div>
@@ -105,10 +105,10 @@
 						</span>
 						<form:input type="email" path="email" id="email" name="email"
 							cssClass="required email"
-							placeholder="Enter your email here to stay tuned"
-							htmlEscape="true" />
-						<form:hidden path="id" />
-						<button id="submit" type="submit" class="btn-submit">Submit</button>
+							placeholder="Đăng ký email để nhận tin tức" htmlEscape="true" />
+						<form:hidden path="id" name="id" id="id" />
+						<button id="submit" type="submit" class="btn-submit">Đăng
+							ký</button>
 					</div>
 				</div>
 				<div class="form-respond"></div>
@@ -116,7 +116,7 @@
 		</section>
 		<!-- Newsletter end here -->
 		<!-- Social icons start here -->
-		<ul class="connect-us row fade-down">
+		<!-- <ul class="connect-us row fade-down">
 			<li><a href="#" class="fb tool-tip" title="Facebook"><i
 					class="fa fa-facebook"></i></a></li>
 			<li><a href="#" class="twitter tool-tip" title="Twitter"><i
@@ -131,12 +131,12 @@
 					class="fa fa-dribbble"></i></a></li>
 			<li><a href="#" class="pinterest tool-tip" title="Pinterest"><i
 					class="fa fa-pinterest-square"></i></a></li>
-		</ul>
+		</ul> -->
 		<!-- Social icons end here -->
 		<!-- Footer start here -->
 		<footer class="fade-down">
-			<p class="footer-text">&copy; We are engineer 2016, All Rights
-				Reserved.</p>
+			<p class="footer-text">&copy; We are engineer 2016. Developed by
+				AnhND</p>
 		</footer>
 		<!-- Footer end here -->
 	</section>
@@ -147,43 +147,41 @@
 		<a href="#" class="fa fa-times cls-pop" data-dismiss="modal"></a>
 		<div class="modal-dialog modal-lg clearfix">
 			<div class="modal-content pop-up">
-				<h3>About US</h3>
+				<h3>Giới thiệu</h3>
 				<div class="clearfix">
 					<div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-							a risus sapien. Aenean non purus dolor. In ante nisl, gravida nec
-							feugiat a, congue vel quam. Vivamus nisl ante, feugiat at sapien
-							et, molestie ornare neque. Quisque mattis leo at odio malesuada,
-							sed ullamcorper quam condimentum. Curabitur suscipit purus ac
-							urna vestibulum tristique. Aliquam at massa vitae diam rhoncus
-							malesuada. Duis vitae lacus risus. Cras sit amet felis in felis
-							imperdiet tincidunt vitae vel augue. Donec consectetur faucibus
-							orci, et lacinia felis eleifend non. Integer risus turpis,
-							pulvinar nec consectetur quis, lacinia sed urna. Phasellus a
-							vehicula ante, a blandit libero.</p>
-						<p>Morbi et venenatis quam. Class aptent taciti sociosqu ad
-							litora torquent per conubia nostra, per inceptos himenaeos. Ut ut
-							tellus id nunc suscipit hendrerit vitae at ipsum. Nullam vel
-							metus in ipsum rutrum rhoncus. Aliquam vel condimentum leo. Nulla
-							ac tellus quis lacus condimentum tincidunt. Pellentesque ac
-							vulputate felis. Suspendisse quis laoreet elit, et venenatis ex.
-							Vivamus sit amet leo leo. Phasellus eu orci diam. Integer et
-							lectus ipsum. Cras eget commodo eros. Proin eleifend eros ut
-							justo vulputate, sed ultrices justo elementum. Nunc ac felis
-							tristique, pretium neque quis, dignissim eros.</p>
+						<p>
+							<strong>WAE (We Are Engineers)</strong> là trung tâm đào tạo và
+							cung cấp giải pháp ở 2 lĩnh vực Giáo dục và Giải pháp kĩ thuật.
+							WAE hoạt động dựa trên nền tảng kiến thức (Knowledge) và thực
+							hành (Practical) với phương châm “Thực hành là trên hết”. Chúng
+							tôi không dạy lí thuyết “suông”, luôn luôn có đầy đủ thiết bị cho
+							bạn thực hành và “nghịch” ngay tại lớp.
+						</p>
+						<ul>
+							<li>Ở mảng Giáo dục: WAE đào tạo kiến thức từ sơ khởi đến
+								chuyên sâu về lập trình và điện tử với các mảng chính: Lập trình
+								chuyên sâu, IoT (Internet of thing) và Kỹ thuật tự động (Robot,
+								các máy CNC) trong Arduino.</li>
+							<li>Ở mảng Giải pháp kĩ thuật: WAE tư vấn và cung cấp các
+								giải pháp lẫn mô hình kĩ thuật theo nhu cầu từ học tập cho đến
+								sản xuất đời sống của từng cá nhân hoặc doanh nghiệp.</li>
+						</ul>
+
+						<p>
+							<strong>Vì sao nên chọn lớp học WAE?</strong>
+						</p>
+						<ul>
+							<li>Phương pháp tiếp cận từ thực tế: Không bị bó buộc bởi
+								giáo trình, không “bó tay” trước các đề tài mở, WAE giúp “hiện
+								thực hóa” ý tưởng của các bạn học viên theo 3 bước: Có ý tưởng
+								-> Hình thành đề tài -> Thực hành tại lớp học</li>
+							<li>Tư vấn, giải quyết ngay tại chỗ mọi thắc mắc, dưới sự
+								hướng dẫn của chúng tôi, những người có kinh nghiệm giảng dạy và
+								thích “bị hỏi”.</li>
+						</ul>
 					</div>
 				</div>
-				<ul class="features">
-					<li>Animated Countdown Timer</li>
-					<li>Twitter bootstrap Based</li>
-					<li>Fully Responsive Design</li>
-					<li>Ajax Email Signup form with validation</li>
-					<li>Well structured and commented code</li>
-					<li>Easily customizable</li>
-					<li>Well Guided Documentation</li>
-					<li>Google web fonts</li>
-					<li>FontAwesome icons</li>
-				</ul>
 			</div>
 		</div>
 	</div>
@@ -195,26 +193,26 @@
 		<a href="#" class="fa fa-times cls-pop" data-dismiss="modal"></a>
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content pop-up pop-up-cnt">
-				<h3>Contact us</h3>
+				<h3>Liên hệ</h3>
 
 				<div class="clearfix cnt-wrap">
 					<form:form id="contactform" name="contactform"
 						action="${pageContext.request.contextPath }/countdown/send-message"
 						method="post" htmlEscape="true" modelAttribute="message">
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 columns">
-							<form:input path="name" placeholder="Name" />
+							<form:input path="name" placeholder="Họ và tên" />
 							<form:hidden path="id" />
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 columns">
 							<form:input path="email" placeholder="Email" />
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 columns">
-							<form:textarea path="message" placeholder="Message" />
+							<form:textarea path="message" placeholder="Nội dung tin nhắn" />
 						</div>
 						<div
 							class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center columns">
 							<button name="submit" id="submit" class="contact-btn-submit"
-								type="submit">Send</button>
+								type="submit">Gửi</button>
 						</div>
 					</form:form>
 				</div>
@@ -222,10 +220,9 @@
 				<div class="clearfix cnt-wrap">
 					<div class="col-md-4 col-sm-4">
 						<i class="fa fa-phone"></i>
-						<h4>Phone</h4>
+						<h4>Điện thoại</h4>
 						<p>
-							Phone: (000) 555 1212<br />Mobile: (000) 555 0100<br />Fax:
-							(000) 555 0101
+							Di động: 0169 210 3017
 						</p>
 					</div>
 
@@ -233,15 +230,16 @@
 						<i class="fa fa-envelope-o"></i>
 						<h4>Email</h4>
 						<p>
-							info@sitename.com<br />info@sitename.com
+							lienhe.wae@gmail.com
 						</p>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<i class="fa fa-facebook"></i>
-						<h4>Address</h4>
+						<h4>Fanpage</h4>
 						<p>
-							123 Some Street, <br> Sed varius nulla <br> Some City,
-							AA 12345
+							<a
+								href="https://www.facebook.com/We-are-Engineers-207800236329343"
+								target="_blank">We are engineer</a>
 						</p>
 					</div>
 				</div>

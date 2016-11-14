@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mysql.jdbc.StringUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import vn.wae.spring.controller.object.AjaxResponseBody;
 import vn.wae.spring.entity.Blog;
 import vn.wae.spring.entity.Course;
 import vn.wae.spring.entity.EmailUser;
@@ -34,7 +36,7 @@ public class MainsiteHomeController {
 
 	@RequestMapping(value = "/")
 	public String home(Model model) {
-		String startDate = "10:30 - 19.10.2016";
+		String startDate = "10:30 - 19.11.2016";
 		try {
 			long startTime = new SimpleDateFormat("HH:mm - dd.MM.yyyy").parse(startDate).getTime();
 			if (startTime > System.currentTimeMillis()) {
@@ -90,13 +92,24 @@ public class MainsiteHomeController {
 	}
 
 	@PostMapping(value = "/countdown/submit-email")
-	public @ResponseBody int submitEmail(HttpServletRequest request) {
-		String email = request.getParameter("email");
-		if (!StringUtils.isNullOrEmpty(email)) {
-			EmailUser emailUser = new EmailUser(email);
-			return mainsiteService.saveEmail(emailUser);
+	public @ResponseBody String submitEmail(@RequestBody EmailUser emailUser) {
+		ObjectMapper mapper = new ObjectMapper();
+
+		AjaxResponseBody output = new AjaxResponseBody();
+		int result = mainsiteService.saveEmail(emailUser);
+		output.setCode(String.valueOf(result));
+		if (result > 0) {
+			output.setMsg("Successful");
+		} else {
+			output.setMsg("Fail");
 		}
-		return -1;
+
+		try {
+			return mapper.writeValueAsString(output);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 
 	@PostMapping(value = "/countdown/send-message")

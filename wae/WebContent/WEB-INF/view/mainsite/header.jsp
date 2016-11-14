@@ -28,7 +28,7 @@
 					<li><a href="${pageContext.request.contextPath }">Trang chủ</a></li>
 					<li><a href="${pageContext.request.contextPath }/about">Giới thiệu</a></li>
 					<li><a href="${pageContext.request.contextPath }/course">Khoá học</a></li>
-					<li><a href="${pageContext.request.contextPath }/tutorial">Bài giảng</a></li>
+					<li><a href="${pageContext.request.contextPath }/tutorial">Tutorial</a></li>
 					<li><a href="${pageContext.request.contextPath }/news">Tin tức</a></li>
 					<li><a href="${pageContext.request.contextPath }/project">Dự án</a></li>
 					<li><a href="${pageContext.request.contextPath }/service">Kỹ thuật tự động</a></li>
