@@ -91,9 +91,9 @@ $(document).ready(function() {
 			'day' : 19,
 			'month' : 11,
 			'year' : 2016,
-			'hour' : 10,
-			'min' : 30,
-			'sec' : 0
+			'hour' : 20,
+			'min' : 00,
+			'sec' : 00
 		}
 	});
 });

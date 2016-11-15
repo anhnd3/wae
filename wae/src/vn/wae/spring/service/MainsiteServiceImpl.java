@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import vn.wae.spring.dao.BlogDAO;
 import vn.wae.spring.dao.CourseDAO;
 import vn.wae.spring.dao.EmailUserDAO;
+import vn.wae.spring.dao.LogAccessDAO;
 import vn.wae.spring.dao.MessageDAO;
 import vn.wae.spring.dao.PartnerDAO;
 import vn.wae.spring.dao.ProjectDAO;
@@ -44,6 +45,9 @@ public class MainsiteServiceImpl implements MainsiteService {
 
 	@Autowired
 	TeammateDAO teammateDAO;
+
+	@Autowired
+	LogAccessDAO logAccessDAO;
 
 	@Override
 	@Transactional
@@ -85,6 +89,12 @@ public class MainsiteServiceImpl implements MainsiteService {
 	@Transactional
 	public List<Teammate> getTeamAvailable(int pos, int limit) {
 		return teammateDAO.getTeamsAvailable(pos, limit);
+	}
+
+	@Override
+	@Transactional
+	public void increaseAccess(int id) {
+		logAccessDAO.increaseLogAccess(id);
 	}
 
 }

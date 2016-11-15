@@ -20,6 +20,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import vn.wae.spring.controller.object.AjaxResponseBody;
+import vn.wae.spring.dao.LogAccessType;
 import vn.wae.spring.entity.Blog;
 import vn.wae.spring.entity.Course;
 import vn.wae.spring.entity.EmailUser;
@@ -36,7 +37,7 @@ public class MainsiteHomeController {
 
 	@RequestMapping(value = "/")
 	public String home(Model model) {
-		String startDate = "10:30 - 19.11.2016";
+		String startDate = "20:00 - 19.11.2016";
 		try {
 			long startTime = new SimpleDateFormat("HH:mm - dd.MM.yyyy").parse(startDate).getTime();
 			if (startTime > System.currentTimeMillis()) {
@@ -81,6 +82,7 @@ public class MainsiteHomeController {
 		} else {
 			model.addAttribute("showSectionWork", true);
 		}
+
 		return "mainsite/home";
 	}
 
@@ -88,6 +90,11 @@ public class MainsiteHomeController {
 	public String countdown(Model model) {
 		model.addAttribute("emailUser", new EmailUser());
 		model.addAttribute("message", new Message());
+
+		// increase logAccess allpage
+		mainsiteService.increaseAccess(LogAccessType.TOTAL.getValue());
+		// increase logAccess countdown
+		mainsiteService.increaseAccess(LogAccessType.COUNTDOWN.getValue());
 		return "countdown/countdown";
 	}
 

@@ -41,6 +41,8 @@
 				<li><a href="team"><i class="fa fa-users fa-fw"></i> Team</a></li>
 				<li><a href="email"><i class="fa fa-envelope-square fa-fw"></i>
 						Email User</a></li>
+				<li><a href="log-access"><i class="fa fa-sign-in fa-fw"></i>
+						Log Access</a></li>
 				<c:if test="${param.modifyAdmin == 'true'}">
 					<li><a href="user"><i class="fa fa-user fa-fw"></i> Admin</a></li>
 				</c:if>

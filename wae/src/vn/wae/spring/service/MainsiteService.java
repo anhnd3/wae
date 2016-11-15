@@ -23,7 +23,9 @@ public interface MainsiteService {
 	public List<Project> getProjectHighLight(int limit, boolean highlight);
 
 	public List<Blog> getBlogHighlight(int pos, int limit, boolean highlight);
-	
+
 	public List<Teammate> getTeamAvailable(int pos, int limit);
+
+	public void increaseAccess(int id);
 
 }

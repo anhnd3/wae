@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>We Are Engineer - Countdown</title>
+<title>We Are Engineers - Countdown</title>
 <meta name="viewport"
 	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
 <!-- CSS start here -->
@@ -116,26 +116,22 @@
 		</section>
 		<!-- Newsletter end here -->
 		<!-- Social icons start here -->
-		<!-- <ul class="connect-us row fade-down">
-			<li><a href="#" class="fb tool-tip" title="Facebook"><i
-					class="fa fa-facebook"></i></a></li>
-			<li><a href="#" class="twitter tool-tip" title="Twitter"><i
-					class="fa fa-twitter"></i></a></li>
-			<li><a href="#" class="gplus tool-tip" title="Google Plus"><i
-					class="fa fa-google-plus"></i></a></li>
-			<li><a href="#" class="linkedin tool-tip" title="Linkedin"><i
-					class="fa fa-linkedin"></i></a></li>
-			<li><a href="#" class="ytube tool-tip" title="You Tube"><i
-					class="fa fa-youtube-play"></i></a></li>
-			<li><a href="#" class="dribbble tool-tip" title="Dribbble"><i
-					class="fa fa-dribbble"></i></a></li>
-			<li><a href="#" class="pinterest tool-tip" title="Pinterest"><i
-					class="fa fa-pinterest-square"></i></a></li>
-		</ul> -->
+		<ul class="connect-us row fade-down">
+			<li><a href="http://youngmakers.vn/" target="_blank"
+				title="Young Markers"> <img alt="Young markers"
+					src="https://scontent.fhan1-1.fna.fbcdn.net/v/t34.0-12/15049689_979596945483649_897005047_n.png?oh=63317512fc555f2c55ab7b4ecafe8b54&oe=582B0D70"
+					width="150px" height="80px">
+			</a></li>
+			<li><a href="http://fablabsaigon.org/" target="_blank"
+				title="Fablab SaiGon"> <img alt="Fablab SaiGon"
+					src="https://scontent.fhan1-1.fna.fbcdn.net/v/t35.0-12/15034062_979597518816925_1941810535_o.png?oh=4d402b32000cb2082785494305d2c772&oe=582B2B40"
+					width="150px" height="80px">
+			</a></li>
+		</ul>
 		<!-- Social icons end here -->
 		<!-- Footer start here -->
 		<footer class="fade-down">
-			<p class="footer-text">&copy; We are engineer 2016. Developed by
+			<p class="footer-text">&copy; We are engineers 2016. Developed by
 				AnhND</p>
 		</footer>
 		<!-- Footer end here -->
@@ -221,17 +217,13 @@
 					<div class="col-md-4 col-sm-4">
 						<i class="fa fa-phone"></i>
 						<h4>Điện thoại</h4>
-						<p>
-							Di động: 0169 210 3017
-						</p>
+						<p>Di động: 0169 210 3017</p>
 					</div>
 
 					<div class="col-md-4 col-sm-4">
 						<i class="fa fa-envelope-o"></i>
 						<h4>Email</h4>
-						<p>
-							lienhe.wae@gmail.com
-						</p>
+						<p>lienhe.wae@gmail.com</p>
 					</div>
 					<div class="col-md-4 col-sm-4">
 						<i class="fa fa-facebook"></i>
@@ -239,7 +231,7 @@
 						<p>
 							<a
 								href="https://www.facebook.com/We-are-Engineers-207800236329343"
-								target="_blank">We are engineer</a>
+								target="_blank">We are engineers</a>
 						</p>
 					</div>
 				</div>
