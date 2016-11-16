@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import vn.wae.spring.controller.object.AjaxResponseBody;
+import vn.wae.spring.controller.ajax.AjaxResponseBody;
 import vn.wae.spring.dao.LogAccessType;
 import vn.wae.spring.entity.Blog;
 import vn.wae.spring.entity.Course;
@@ -37,7 +37,7 @@ public class MainsiteHomeController {
 
 	@RequestMapping(value = "/")
 	public String home(Model model) {
-		String startDate = "20:00 - 19.11.2016";
+		String startDate = "20:00 - 19.10.2016";
 		try {
 			long startTime = new SimpleDateFormat("HH:mm - dd.MM.yyyy").parse(startDate).getTime();
 			if (startTime > System.currentTimeMillis()) {

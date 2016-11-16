@@ -1,4 +1,4 @@
-package vn.wae.spring.controller.object;
+package vn.wae.spring.controller.ajax;
 
 import com.fasterxml.jackson.annotation.JsonView;
 

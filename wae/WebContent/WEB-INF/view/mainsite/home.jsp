@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="icon" type="image/png"
 	href="${pageContext.request.contextPath }/resources/mainsite/images/favicon.png">
-<title>We are engineer - Trang chủ</title>
+<title>We are engineers - Trang chủ</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">

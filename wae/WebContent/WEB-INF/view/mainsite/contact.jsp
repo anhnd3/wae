@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="icon" type="image/png"
 	href="${pageContext.request.contextPath }/resources/mainsite/images/favicon.png">
-<title>We are engineer - Liên hệ</title>
+<title>We are engineers - Liên hệ</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
