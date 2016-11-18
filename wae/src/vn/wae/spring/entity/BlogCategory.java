@@ -32,18 +32,23 @@ public class BlogCategory implements Serializable {
 	@Column(name = "`status`", columnDefinition = "TINYINT(1)")
 	boolean status;
 
+	@Column(name = "`type`")
+	int type;
+
 	public BlogCategory() {
 	}
 
-	public BlogCategory(int id, String name, boolean status) {
+	public BlogCategory(int id, String name, boolean status, int type) {
 		this.id = id;
 		this.name = name;
 		this.status = status;
+		this.type = type;
 	}
 
-	public BlogCategory(String name, boolean status) {
+	public BlogCategory(String name, boolean status, int type) {
 		this.name = name;
 		this.status = status;
+		this.type = type;
 	}
 
 	public int getId() {
@@ -70,9 +75,16 @@ public class BlogCategory implements Serializable {
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "CategoryBlog [id=" + id + ", name=" + name + ", status=" + status + "]";
+	public int getType() {
+		return type;
 	}
 
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "BlogCategory [id=" + id + ", name=" + name + ", status=" + status + ", type=" + type + "]";
+	}
 }

@@ -54,3 +54,25 @@
 <!-- template main js -->
 <script
 	src="${pageContext.request.contextPath }/resources/mainsite/js/main.js"></script>
+
+<!-- Facebook sdk-->
+<script>
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId : '1784359991819774',
+			xfbml : true,
+			version : 'v2.8'
+		});
+	};
+
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {
+			return;
+		}
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>

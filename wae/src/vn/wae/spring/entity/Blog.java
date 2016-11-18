@@ -62,11 +62,14 @@ public class Blog implements Serializable {
 	@Column(name = "`categoryId`")
 	int categoryId;
 
+	@Column(name = "`type`")
+	int type;
+
 	public Blog() {
 	}
 
 	public Blog(String title, long time, String shortDesc, String fullDesc, String thumbnail, String fullImage,
-			boolean highlight, String author, boolean status, long views, int categoryId) {
+			boolean highlight, String author, boolean status, long views, int categoryId, int type) {
 		this.title = title;
 		this.time = time;
 		this.shortDesc = shortDesc;
@@ -78,10 +81,11 @@ public class Blog implements Serializable {
 		this.status = status;
 		this.views = views;
 		this.categoryId = categoryId;
+		this.type = type;
 	}
 
 	public Blog(int id, String title, long time, String shortDesc, String fullDesc, String thumbnail, String fullImage,
-			boolean highlight, String author, boolean status, long views, int categoryId) {
+			boolean highlight, String author, boolean status, long views, int categoryId, int type) {
 		this.id = id;
 		this.title = title;
 		this.time = time;
@@ -94,6 +98,7 @@ public class Blog implements Serializable {
 		this.status = status;
 		this.views = views;
 		this.categoryId = categoryId;
+		this.type = type;
 	}
 
 	public int getId() {
@@ -192,11 +197,19 @@ public class Blog implements Serializable {
 		this.categoryId = categoryId;
 	}
 
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
 		return "Blog [id=" + id + ", title=" + title + ", time=" + time + ", shortDesc=" + shortDesc + ", fullDesc="
 				+ fullDesc + ", thumbnail=" + thumbnail + ", fullImage=" + fullImage + ", highlight=" + highlight
-				+ ", author=" + author + ", status=" + status + ", views=" + views + ", categoryId=" + categoryId + "]";
+				+ ", author=" + author + ", status=" + status + ", views=" + views + ", categoryId=" + categoryId
+				+ ", type=" + type + "]";
 	}
-
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="convertString" class="vn.wae.spring.utils.StringUtils"></jsp:useBean>
 <!DOCTYPE html>
 <html class="no-js">
 <head>
@@ -132,13 +133,17 @@
 											alt="this is a title">
 										<div class="overlay">
 											<div class="buttons">
-												<a target="_blank" href="#">Chi tiết</a>
+												<a
+													href="${pageContext.request.contextPath }/course/${convertString.getTitleFilterCharVn(tmpCourse.title) }/${tmpCourse.id}">Chi
+													tiết</a>
 											</div>
 										</div>
 									</div>
 									<figcaption>
 										<h4>
-											<a href="#"> ${tmpCourse.title } </a>
+											<a
+												href="${pageContext.request.contextPath }/course/${convertString.getTitleFilterCharVn(tmpCourse.title) }/${tmpCourse.id}">
+												${tmpCourse.title } </a>
 										</h4>
 										<p>${tmpCourse.desc }</p>
 									</figcaption>

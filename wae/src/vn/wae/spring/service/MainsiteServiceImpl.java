@@ -97,4 +97,10 @@ public class MainsiteServiceImpl implements MainsiteService {
 		logAccessDAO.increaseLogAccess(id);
 	}
 
+	@Override
+	@Transactional
+	public Course getCourse(int courseId) {
+		return courseDAO.getCourse(courseId);
+	}
+
 }

@@ -28,4 +28,6 @@ public interface MainsiteService {
 
 	public void increaseAccess(int id);
 
+	public Course getCourse(int courseId);
+
 }

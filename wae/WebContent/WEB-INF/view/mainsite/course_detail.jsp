@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
-<jsp:useBean id="convertString" class="vn.wae.spring.utils.StringUtils"></jsp:useBean>
 <html class="no-js">
 <head>
 <!-- Basic Page Needs
@@ -13,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="icon" type="image/png"
 	href="${pageContext.request.contextPath }/resources/mainsite/images/favicon.png">
-<title>We are engineers - Khoá học</title>
+<title>We are engineers - Khoá học ${course.title }</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
@@ -28,6 +27,23 @@
 <jsp:include page="/WEB-INF/view/mainsite/static.jsp" />
 </head>
 <body>
+	<!-- 
+		==================================================
+		Facebook SDK
+		================================================== 
+	 -->
+	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id))
+				return;
+			js = d.createElement(s);
+			js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1784359991819774";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
 	<!--
         ==================================================
         Header Section Start
@@ -42,79 +58,39 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="block">
-						<h2>Khoá học</h2>
-						<ol class="breadcrumb">
-							<li><a href="${pageContext.request.contextPath }"> <i
-									class="ion-ios-home"></i> Trang chủ
-							</a></li>
-							<li class="active">Khoá học</li>
-						</ol>
+						<h2>${course.title }</h2>
+						<div class="portfolio-meta">
+							<span> Giảng viên: ${course.teacher }</span>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	<!--/#Page header-->
 
 	<!-- 
         ================================================== 
             Course Section Start
         ================================================== -->
-	<section id="blog-full-width">
+	<section class="single-post">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">
-					<div class="sidebar">
-						<div class="author widget">
-							<img class="img-responsive"
-								src="${pageContext.request.contextPath }/resources/mainsite/images/author/author-bg.jpg">
-							<div class="author-body text-center">
-								<div class="author-img">
-									<img
-										src="${pageContext.request.contextPath }/resources/mainsite/images/author/author.jpg">
-								</div>
-								<div class="author-bio">
-									<h3>Jonathon Andrew</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Deserunt magnam asperiores consectetur, corporis ullam
-										impedit.</p>
-								</div>
-							</div>
-						</div>
-						<div class="recent-post widget">
-							<h3>Khoá học mới nhất</h3>
-							<ul>
-								<c:forEach items="${lastestCourses }" var="tmpCourse">
-									<li><a
-										href="${pageContext.request.contextPath }/course/${convertString.getTitleFilterCharVn(tmpCourse.title) }/${tmpCourse.id}">${tmpCourse.title }
-									</a></li>
-								</c:forEach>
-							</ul>
-						</div>
+				<div class="col-md-12">
+					<div class="post-img">
+						<img class="img-responsive" alt="" src="${course.thumbnail }">
 					</div>
-				</div>
-				<div class="col-md-8">
-					<c:forEach items="${courses }" var="tmpCourse">
-						<article class="wow fadeInDown" data-wow-delay=".3s"
-							data-wow-duration="500ms">
-							<div class="blog-post-image">
-								<a
-									href="${pageContext.request.contextPath }/course/${convertString.getTitleFilterCharVn(tmpCourse.title) }/${tmpCourse.id}"><img
-									class="img-responsive" src="${tmpCourse.thumbnail }" alt="" /></a>
+					<div class="post-content">${course.fullDesc }</div>
+					<h4>Chia sẻ bài viết</h4>
+					<ul class="social-share">
+						<li>
+							<div class="fb-share-button" data-href="${shareLink }"
+								data-layout="button" data-size="large" data-mobile-iframe="true">
+								<a class="fb-xfbml-parse-ignore" target="_blank"
+									href="https://www.facebook.com/sharer/sharer.php?u=${encodeShareLink }&amp;src=sdkpreparse">Share</a>
 							</div>
-							<div class="blog-content">
-								<h2 class="blogpost-title">
-									<a href="post-fullwidth.html">${tmpCourse.title }</a>
-								</h2>
-								<div class="blog-meta">
-									<span>${tmpCourse.teacher }</span>
-								</div>
-								<p>${tmp.desc }</p>
-								<a
-									href="${pageContext.request.contextPath }/course/${convertString.getTitleFilterCharVn(tmpCourse.title) }/${tmpCourse.id}"
-									class="btn btn-dafault btn-details">Xem chi tiết</a>
-							</div>
-						</article>
-					</c:forEach>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
