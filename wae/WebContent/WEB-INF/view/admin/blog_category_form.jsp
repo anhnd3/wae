@@ -81,6 +81,14 @@
 											<form:hidden path="id" />
 										</div>
 										<div class="form-group col-lg-6">
+											<label>Privilege</label>
+											<form:select path="type" cssClass="form-control">
+												<form:options items="${blogTypes }" itemValue="value"
+													itemLabel="desc" />
+											</form:select>
+											<p class="help-block alert-danger"></p>
+										</div>
+										<div class="form-group col-lg-12">
 											<label>Status</label>
 											<div class="checkbox">
 												<label> <form:checkbox path="status" />Enable

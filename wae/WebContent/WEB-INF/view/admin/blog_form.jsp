@@ -104,7 +104,7 @@
 											</div>
 											<p class="help-block alert-danger"></p>
 										</div>
-										<div class="form-group col-lg-12">
+										<div class="form-group col-lg-5">
 											<label>Thumbnail</label>
 											<form:input rows="3" path="thumbnail" cssClass="form-control"
 												placeholder="Thumbnail" />
@@ -112,13 +112,21 @@
 												<form:errors path="thumbnail" />
 											</p>
 										</div>
-										<div class="form-group col-lg-12">
+										<div class="form-group col-lg-5">
 											<label>Full Image</label>
 											<form:input rows="3" path="fullImage" cssClass="form-control"
 												placeholder="Full Image" />
 											<p class="help-block alert-danger">
 												<form:errors path="fullImage" />
 											</p>
+										</div>
+										<div class="form-group col-lg-2">
+											<label>Privilege</label>
+											<form:select path="type" cssClass="form-control">
+												<form:options items="${blogTypes }" itemValue="value"
+													itemLabel="desc" />
+											</form:select>
+											<p class="help-block alert-danger"></p>
 										</div>
 										<div class="form-group col-lg-12">
 											<label>Description</label>

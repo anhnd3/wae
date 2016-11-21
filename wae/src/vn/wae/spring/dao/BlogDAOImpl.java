@@ -104,4 +104,36 @@ public class BlogDAOImpl implements BlogDAO {
 		return new ArrayList<>();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Blog> getBlogsByType(int pos, int limit, BlogType type) {
+		try {
+			Session currentSession = getCurrentSession();
+			Query<?> query = currentSession.createQuery("FROM Blog b WHERE b.type=:type");
+			query.setFirstResult(pos);
+			query.setMaxResults(limit);
+			query.setParameter("type", type.getValue());
+			return (ArrayList<Blog>) query.getResultList();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return new ArrayList<>();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public int countBlogByCategory(int categoryId) {
+		try {
+			Session currentSession = getCurrentSession();
+			Query<?> countQuery = currentSession
+					.createQuery("select count(*) from Blog b WHERE b.categoryId = :categoryId AND b.status = true");
+			countQuery.setParameter("categoryId", categoryId);
+			List<Integer> listResult = (List<Integer>) countQuery.getResultList();
+			return listResult.get(0);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return 0;
+	}
+
 }

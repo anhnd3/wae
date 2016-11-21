@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,12 +120,12 @@
 		<ul class="connect-us row fade-down">
 			<li><a href="http://youngmakers.vn/" target="_blank"
 				title="Young Markers"> <img alt="Young markers"
-					src="https://scontent.fhan1-1.fna.fbcdn.net/v/t34.0-12/15049689_979596945483649_897005047_n.png?oh=63317512fc555f2c55ab7b4ecafe8b54&oe=582B0D70"
+					src="${pageContext.request.contextPath }/resources/countdown/img/15049689_979596945483649_897005047_n.png.jpeg"
 					width="150px" height="80px">
 			</a></li>
 			<li><a href="http://fablabsaigon.org/" target="_blank"
 				title="Fablab SaiGon"> <img alt="Fablab SaiGon"
-					src="https://scontent.fhan1-1.fna.fbcdn.net/v/t35.0-12/15034062_979597518816925_1941810535_o.png?oh=4d402b32000cb2082785494305d2c772&oe=582B2B40"
+					src="${pageContext.request.contextPath }/resources/countdown/img/15034062_979597518816925_1941810535_o.png.jpeg"
 					width="150px" height="80px">
 			</a></li>
 		</ul>
@@ -268,8 +269,9 @@
 	</script>
 	<script
 		src="${pageContext.request.contextPath }/resources/countdown/js/init.js"></script>
+	<c:set var="rand"><%=java.lang.Math.round(java.lang.Math.random() * 2)%></c:set>
 	<script
-		src="${pageContext.request.contextPath }/resources/countdown/js/general.js"></script>
+		src="${pageContext.request.contextPath }/resources/countdown/js/general.js?random=${rand }"></script>
 	<!-- Javascript framework and plugins end here -->
 </body>
 </html>

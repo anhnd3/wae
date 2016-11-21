@@ -73,9 +73,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
-						<div class="panel-heading">
-							Log Access listing
-						</div>
+						<div class="panel-heading">Log Access listing</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
 							<table style="width: 100%"
@@ -83,7 +81,6 @@
 								id="course-table">
 								<thead>
 									<tr>
-										<th>Id</th>
 										<th>URL</th>
 										<th>Access</th>
 									</tr>
@@ -91,7 +88,6 @@
 								<tbody>
 									<c:forEach items="${logAccesses }" var="tmpLogAccess">
 										<tr>
-											<td>${tmpLogAccess.id }</td>
 											<td>${tmpLogAccess.url }</td>
 											<td>${tmpLogAccess.access }</td>
 										</tr>

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mysql.jdbc.StringUtils;
 
+import vn.wae.spring.dao.BlogType;
 import vn.wae.spring.dao.UserPrivilege;
 import vn.wae.spring.entity.Blog;
 import vn.wae.spring.entity.BlogCategory;
@@ -64,6 +65,7 @@ public class AdminBlogController {
 			blogCategory = (BlogCategory) model.asMap().get("blogCategory");
 		}
 		model.addAttribute("blogCategory", blogCategory);
+		model.addAttribute("blogTypes", BlogType.values());
 		return "admin/blog_category_form";
 	}
 
@@ -152,6 +154,7 @@ public class AdminBlogController {
 			blog = (Blog) model.asMap().get("blog");
 		}
 		model.addAttribute("blog", blog);
+		model.addAttribute("blogTypes", BlogType.values());
 		return "admin/blog_form";
 	}
 

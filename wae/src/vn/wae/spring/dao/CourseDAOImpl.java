@@ -89,4 +89,18 @@ public class CourseDAOImpl implements CourseDAO {
 		return new ArrayList<>();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public int countCourseAvaiable() {
+		try {
+			Session currentSession = getCurrentSession();
+			Query<?> countQuery = currentSession.createQuery("select count(*) from Course c WHERE c.status = true");
+			List<Integer> listResult = (List<Integer>) countQuery.getResultList();
+			return listResult.get(0);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return 0;
+	}
+
 }

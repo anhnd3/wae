@@ -1,3 +1,4 @@
+
 // General window load function
 
 $(window).load(function() {
@@ -67,7 +68,6 @@ $(document).ready(function() {
 	    $.ajax({
 	      url : $(this).attr('action'),
 	      type : $(this).attr('method'),
-//	      data : $(this).serialize(),
 	      data: JSON.stringify(data),
 	      dataType: 'json',
 	      contentType : "application/json",
@@ -88,7 +88,7 @@ $(document).ready(function() {
 
 	$('#countdown_dashboard').countDown({
 		targetDate : {
-			'day' : 19,
+			'day' : 21,
 			'month' : 11,
 			'year' : 2016,
 			'hour' : 20,

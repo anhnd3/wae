@@ -81,7 +81,6 @@
 								id="email-table">
 								<thead>
 									<tr>
-										<th>Id</th>
 										<th>Email</th>
 										<th></th>
 									</tr>
@@ -89,11 +88,8 @@
 								<tbody>
 									<c:forEach items="${emailUses }" var="tmpEmailUser">
 										<tr>
-											<td>${tmpEmailUser.id }</td>
 											<td>${tmpEmailUser.email }</td>
-											<td><a
-												onclick="return confirm('Do you want to delete email: ${tmpEmailUser.email}?')"
-												href="email-delete?id=${tmpEmailUser.id }"><i
+											<td><a href="email-delete?id=${tmpEmailUser.id }"><i
 													class="fa fa-trash-o"></i></a></td>
 										</tr>
 									</c:forEach>

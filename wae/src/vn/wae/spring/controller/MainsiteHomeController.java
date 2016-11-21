@@ -37,7 +37,7 @@ public class MainsiteHomeController {
 
 	@RequestMapping(value = "/")
 	public String home(Model model) {
-		String startDate = "20:00 - 19.10.2016";
+		String startDate = "20:00 - 21.11.2016";
 		try {
 			long startTime = new SimpleDateFormat("HH:mm - dd.MM.yyyy").parse(startDate).getTime();
 			if (startTime > System.currentTimeMillis()) {
@@ -88,11 +88,18 @@ public class MainsiteHomeController {
 
 	@RequestMapping(value = "/countdown")
 	public String countdown(Model model) {
+		String startDate = "20:00 - 21.11.2016";
+		try {
+			long startTime = new SimpleDateFormat("HH:mm - dd.MM.yyyy").parse(startDate).getTime();
+			if (startTime < System.currentTimeMillis()) {
+				return "redirect:/";
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("emailUser", new EmailUser());
 		model.addAttribute("message", new Message());
 
-		// increase logAccess allpage
-		mainsiteService.increaseAccess(LogAccessType.TOTAL.getValue());
 		// increase logAccess countdown
 		mainsiteService.increaseAccess(LogAccessType.COUNTDOWN.getValue());
 		return "countdown/countdown";

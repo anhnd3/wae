@@ -14,4 +14,6 @@ public interface BlogCategoryDAO {
 
 	public List<BlogCategory> getBlogCategories(int pos, int limit);
 
+	public List<BlogCategory> getBlogCategoriesByType(BlogType type, int pos, int limit);
+
 }

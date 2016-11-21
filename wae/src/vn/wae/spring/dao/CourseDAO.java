@@ -15,5 +15,7 @@ public interface CourseDAO {
 	public List<Course> getCourses(int pos, int limit);
 	
 	public List<Course> getCoursesAvailable(int pos, int limit);
+	
+	public int countCourseAvaiable();
 
 }

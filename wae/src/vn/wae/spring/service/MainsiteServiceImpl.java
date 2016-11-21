@@ -10,6 +10,7 @@ import vn.wae.spring.dao.BlogDAO;
 import vn.wae.spring.dao.CourseDAO;
 import vn.wae.spring.dao.EmailUserDAO;
 import vn.wae.spring.dao.LogAccessDAO;
+import vn.wae.spring.dao.LogAccessType;
 import vn.wae.spring.dao.MessageDAO;
 import vn.wae.spring.dao.PartnerDAO;
 import vn.wae.spring.dao.ProjectDAO;
@@ -94,6 +95,7 @@ public class MainsiteServiceImpl implements MainsiteService {
 	@Override
 	@Transactional
 	public void increaseAccess(int id) {
+		logAccessDAO.increaseLogAccess(LogAccessType.TOTAL.getValue());
 		logAccessDAO.increaseLogAccess(id);
 	}
 

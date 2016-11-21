@@ -72,4 +72,20 @@ public class BlogCategoryDAOImpl implements BlogCategoryDAO {
 		return new ArrayList<>();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<BlogCategory> getBlogCategoriesByType(BlogType type, int pos, int limit) {
+		try {
+			Session currentSession = getCurrentSession();
+			Query<?> query = currentSession.createQuery("FROM BlogCategory bc WHERE bc.type = :type");
+			query.setParameter("type", type.getValue());
+			query.setFirstResult(pos);
+			query.setMaxResults(limit);
+			return (ArrayList<BlogCategory>) query.getResultList();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return new ArrayList<>();
+	}
+
 }
