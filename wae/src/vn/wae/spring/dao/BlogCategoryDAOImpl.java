@@ -77,7 +77,7 @@ public class BlogCategoryDAOImpl implements BlogCategoryDAO {
 	public List<BlogCategory> getBlogCategoriesByType(BlogType type, int pos, int limit) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("FROM BlogCategory bc WHERE bc.type = :type");
+			Query<?> query = currentSession.createQuery("FROM BlogCategory bc WHERE bc.type = :type AND bc.status = true");
 			query.setParameter("type", type.getValue());
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);

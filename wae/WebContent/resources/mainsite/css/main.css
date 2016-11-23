@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&subset=latin-ext,vietnamese');
 
 body {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 p {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	line-height: 22px;
 	font-size: 16px;
 	font-weight: 300;
@@ -204,7 +204,7 @@ a:hover {
 	line-height: 27px;
 	text-transform: uppercase;
 	color: #666;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	margin-top: 25px;
 }
 
@@ -246,7 +246,7 @@ a:hover {
 #call-to-action .block p {
 	font-size: 15px;
 	font-weight: 300;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	margin-top: 20px;
 }
 
@@ -1053,7 +1053,8 @@ ul.social-icons li {
 
 .about-feature .block {
 	color: #fff;
-	width: 33.33%;
+	width: 50%;
+	min-height: 350px;
 	padding: 5%;
 	float: left;
 }
@@ -1083,7 +1084,7 @@ article {
 }
 
 .blog-content h2 {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .blog-content h2 a {

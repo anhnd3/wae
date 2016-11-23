@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rand"><%=java.lang.Math.round(java.lang.Math.random() * 2)%></c:set>
 <!-- Template CSS Files
         ================================================== -->
 <!-- Twitter Bootstrs CSS -->
@@ -23,7 +25,7 @@
 	href="${pageContext.request.contextPath }/resources/mainsite/css/jquery.fancybox.css">
 <!-- template main css file -->
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/mainsite/css/main.css">
+	href="${pageContext.request.contextPath }/resources/mainsite/css/main.css?rand=${rand}">
 <!-- responsive css -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/resources/mainsite/css/responsive.css">
@@ -40,7 +42,6 @@
 <script
 	src="${pageContext.request.contextPath }/resources/mainsite/js/owl.carousel.min.js"></script>
 <!-- bootstrap js -->
-
 <script
 	src="${pageContext.request.contextPath }/resources/mainsite/js/bootstrap.min.js"></script>
 <!-- wow js -->

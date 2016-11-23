@@ -48,10 +48,6 @@ public class MainsiteCourseController {
 
 	@RequestMapping(value = "/course/*/{id}")
 	public String courseDetail(Model model, @PathVariable(value = "id") String id) throws UnsupportedEncodingException {
-		// Render Section Partner
-		List<Partner> partners = mainsiteService.getPartners(0, 6);
-		model.addAttribute("partners", partners);
-
 		// get id in url
 		if (!id.matches("\\d+")) {
 			return "mainsite/404";

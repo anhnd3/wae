@@ -42,7 +42,7 @@
 					<div class="block">
 						<h2>Liên hệ</h2>
 						<ol class="breadcrumb">
-							<li><a href="${pageContext.request.contextPath }"> <i
+							<li><a href="${pageContext.request.contextPath }/"> <i
 									class="ion-ios-home"></i> Trang chủ
 							</a></li>
 							<li class="active">Liên hệ</li>
@@ -60,14 +60,13 @@
 	<section id="contact-section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<div class="block">
 						<h2 class="subtitle wow fadeInDown" data-wow-duration="500ms"
-							data-wow-delay=".3s">Contact With Me</h2>
+							data-wow-delay=".3s">Liên hệ với chúng tôi</h2>
 						<p class="subtitle-des wow fadeInDown" data-wow-duration="500ms"
-							data-wow-delay=".5s">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Dolore, ea! consectetur adipisicing elit.
-							Dolore, ea!</p>
+							data-wow-delay=".5s">Gửi tin nhắn cho chúng tôi khi bạn cần
+							tư vấn hoặc giải đáp thắc mắc, chúng tôi sẽ sớm trả lời cho bạn</p>
 						<div class="contact-form">
 							<form:form id="contact-form" method="POST" role="form"
 								htmlEscape="true" modelAttribute="message"
@@ -101,58 +100,30 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="map-area">
-						<h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms"
-							data-wow-delay=".3s">Find Us</h2>
-						<p class="subtitle-des wow fadeInDown" data-wow-duration="500ms"
-							data-wow-delay=".5s">Si aute quis eu proident o cupidatat ne
-							anim nescius, et est praesentibus, o quorum vidisse expetendis,
-							nostrud eram quibusdam ad nam nostrud ubi.</p>
-						<div class="map">
-							<iframe
-								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.277552998015!2d90.3678744!3d23.773128800000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c0ae4adf3cb9%3A0x7f2cf443b764e4a4!2sShishu+Mela!5e0!3m2!1sen!2s!4v1435516022247"
-								width="100%" height="400" style="border: 0"></iframe>
-
-						</div>
-					</div>
-				</div>
 			</div>
 			<div class="row address-details">
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="address wow fadeInLeft" data-wow-duration="500ms"
 						data-wow-delay=".3s">
-						<i class="ion-ios-location-outline"></i>
+						<i class="ion-social-facebook"></i>
 						<h5>
-							125 , Kings Street,Melbourne <br>United Kingdom,600562
+							<a href="https://www.facebook.com/waeVN" target="_blank">Wae
+								Fanpage</a>
 						</h5>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="address wow fadeInLeft" data-wow-duration="500ms"
-						data-wow-delay=".5s">
-						<i class="ion-ios-location-outline"></i>
-						<h5>
-							125 , Kings Street,Melbourne <br>United Kingdom,600562
-						</h5>
-					</div>
-				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="email wow fadeInLeft" data-wow-duration="500ms"
 						data-wow-delay=".7s">
 						<i class="ion-ios-email-outline"></i>
-						<p>
-							support@themefisher.com<br>support@themefisher.com
-						</p>
+						<p>lienhe.wae@gmail.com</p>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="phone wow fadeInLeft" data-wow-duration="500ms"
 						data-wow-delay=".9s">
 						<i class="ion-ios-telephone-outline"></i>
-						<p>
-							+07 052 245 022<br>+07 999 999 999
-						</p>
+						<p>0169 210 3017</p>
 					</div>
 				</div>
 			</div>

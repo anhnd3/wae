@@ -12,7 +12,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="icon" type="image/png"
 	href="${pageContext.request.contextPath }/resources/mainsite/images/favicon.png">
-<title>We are engineers - Khoá học ${course.title }</title>
+<title>We are engineers - Tin tức - ${news.title }</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
@@ -25,6 +25,15 @@
         Import static file (css/js)
         ================================================== -->
 <jsp:include page="/WEB-INF/view/mainsite/static.jsp" />
+
+<meta property="og:image" content="${news.thumbnail }" />
+
+<meta property="og:description" content="${news.shortDesc }" />
+
+<meta property="og:url" content="${shareLink }" />
+
+<meta property="og:title" content="${news.title }" />
+
 </head>
 <body>
 	<!-- 
@@ -58,9 +67,9 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="block">
-						<h2>${course.title }</h2>
+						<h2>${news.title }</h2>
 						<div class="portfolio-meta">
-							<span> Giảng viên: ${course.teacher }</span>
+							<span> Tác giả: ${news.author }</span>
 						</div>
 					</div>
 				</div>
@@ -71,16 +80,16 @@
 
 	<!-- 
         ================================================== 
-            Course Section Start
+            news Section Start
         ================================================== -->
 	<section class="single-post">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="post-img">
-						<img class="img-responsive" alt="" src="${course.thumbnail }">
+						<img class="img-responsive" alt="" src="${news.fullImage }">
 					</div>
-					<div class="post-content">${course.fullDesc }</div>
+					<div class="post-content">${news.fullDesc }</div>
 					<h4>Chia sẻ bài viết</h4>
 					<ul class="social-share">
 						<li>

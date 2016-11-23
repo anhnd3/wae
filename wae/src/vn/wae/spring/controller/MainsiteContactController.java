@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import vn.wae.spring.dao.LogAccessType;
 import vn.wae.spring.entity.Message;
 import vn.wae.spring.entity.Partner;
 import vn.wae.spring.service.MainsiteService;
@@ -28,6 +29,9 @@ public class MainsiteContactController {
 		List<Partner> partners = mainsiteService.getPartners(0, 6);
 		model.addAttribute("partners", partners);
 		model.addAttribute("message", new Message());
+
+		// increase logAccess
+		mainsiteService.increaseAccess(LogAccessType.CONTACT.getValue());
 		return "mainsite/contact";
 	}
 

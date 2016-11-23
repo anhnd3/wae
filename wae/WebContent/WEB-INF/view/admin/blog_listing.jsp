@@ -66,7 +66,7 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">${blogCategory.name }'s Blog</h1>
+					<h1 class="page-header">${blogCategory.name }'sBlog</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -92,6 +92,7 @@
 										<th>Time</th>
 										<th>Author</th>
 										<th>Highlight</th>
+										<th>Type</th>
 										<th>Status</th>
 										<th></th>
 									</tr>
@@ -112,6 +113,17 @@
 												</c:when>
 												<c:otherwise>
 													<td><i class="fa fa-ban"></i></td>
+												</c:otherwise>
+											</c:choose>
+											<c:choose>
+												<c:when test="${tmpBlog.type == 0 }">
+													<td>Tutorial</td>
+												</c:when>
+												<c:when test="${tmpBlog.type == 1 }">
+													<td>News</td>
+												</c:when>
+												<c:otherwise>
+													<td>User</td>
 												</c:otherwise>
 											</c:choose>
 											<c:choose>

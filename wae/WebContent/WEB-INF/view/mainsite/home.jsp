@@ -45,19 +45,15 @@
 						<section class="cd-intro">
 							<h1 class="wow fadeInUp animated cd-headline slide"
 								data-wow-delay=".4s">
-								<span>HI, MY NAME IS JONATHON &amp; I AM A</span><br> <span
-									class="cd-words-wrapper"> <b class="is-visible">DESIGNER</b>
-									<b>DEVELOPER</b> <b>FATHER</b>
-								</span>
+								<span>Chào bạn đến với We are Engineers</span>
 							</h1>
 						</section>
 						<!-- cd-intro -->
 						<!-- /.slider -->
-						<h2 class="wow fadeInUp animated" data-wow-delay=".6s">
-							With 10 years experience, I've occupied many roles including
-							digital design director,<br> web designer and developer.
-							This site showcases some of my work.
-						</h2>
+						<h2 class="wow fadeInUp animated" data-wow-delay=".6s">Với
+							một thời gian dài trong việc đào tạo về kỹ thuật điện tử, chúng
+							tôi tự hào có thể giúp bạn nhanh chóng nắm bắt và trở thành một
+							kỹ thuật viên hoặc một nhà sáng tạo trẻ trong lĩnh vực điện tử.</h2>
 						<c:if test="${showSectionWork}">
 							<a
 								class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green"
@@ -74,7 +70,7 @@
             ==================================================
             Slider Section Start
             ================================================== -->
-	<section id="about">
+	<!-- <section id="about">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-sm-6">
@@ -102,7 +98,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- /#about -->
 	<!--
             ==================================================
@@ -116,12 +112,6 @@
 					<div class="section-heading">
 						<h1 class="title wow fadeInDown" data-wow-delay=".3s">Khoá
 							học</h1>
-						<p class="wow fadeInDown" data-wow-delay=".5s">
-							Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque
-							auctor neque nec urna. Nulla sit amet est. Aenean posuere <br>
-							tortor sed cursus feugiat, nunc augue blandit nunc, eu
-							sollicitudin urna dolor sagittis lacus.
-						</p>
 					</div>
 					<div class="row">
 						<c:forEach items="${courses}" var="tmpCourse">
@@ -160,12 +150,6 @@
 					<div class="section-heading">
 						<h1 class="title wow fadeInDown" data-wow-delay=".3s">Hoạt
 							động</h1>
-						<p class="wow fadeInDown" data-wow-delay=".5s">
-							Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque
-							auctor neque nec urna. Nulla sit amet est. Aenean posuere <br>
-							tortor sed cursus feugiat, nunc augue blandit nunc, eu
-							sollicitudin urna dolor sagittis lacus.
-						</p>
 					</div>
 					<div class="row">
 						<c:forEach items="${blogs}" var="tmpBlog">
@@ -177,13 +161,13 @@
 											alt="this is a title">
 										<div class="overlay">
 											<div class="buttons">
-												<a target="_blank" href="#">Chi tiết</a>
+												<a target="_blank" href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}">Chi tiết</a>
 											</div>
 										</div>
 									</div>
 									<figcaption>
 										<h4>
-											<a href="#"> ${tmpBlog.title } </a>
+											<a href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}"> ${tmpBlog.title } </a>
 										</h4>
 										<p>${tmpBlog.shortDesc }</p>
 									</figcaption>
@@ -200,12 +184,6 @@
 					<div class="section-heading">
 						<h1 class="title wow fadeInDown" data-wow-delay=".3s">Dự án
 							đã hoàn thiện</h1>
-						<p class="wow fadeInDown" data-wow-delay=".5s">
-							Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque
-							auctor neque nec urna. Nulla sit amet est. Aenean posuere <br>
-							tortor sed cursus feugiat, nunc augue blandit nunc, eu
-							sollicitudin urna dolor sagittis lacus.
-						</p>
 					</div>
 					<div class="row">
 						<c:forEach items="${projects}" var="tmpProject">

@@ -21,4 +21,6 @@ public interface BlogDAO {
 	public List<Blog> getBlogsByType(int pos, int limit, BlogType type);
 
 	public int countBlogByCategory(int categoryId);
+	
+	public int countBlogByType(BlogType type);
 }

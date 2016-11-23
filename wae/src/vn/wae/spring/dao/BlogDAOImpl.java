@@ -93,7 +93,8 @@ public class BlogDAOImpl implements BlogDAO {
 	public List<Blog> getBlogsByCategory(int pos, int limit, int categoryId) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("FROM Blog b WHERE b.categoryId=:categoryId");
+			Query<?> query = currentSession
+					.createQuery("FROM Blog b WHERE b.categoryId=:categoryId ORDER BY b.id DESC");
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);
 			query.setParameter("categoryId", categoryId);
@@ -109,7 +110,8 @@ public class BlogDAOImpl implements BlogDAO {
 	public List<Blog> getBlogsByType(int pos, int limit, BlogType type) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("FROM Blog b WHERE b.type=:type");
+			Query<?> query = currentSession
+					.createQuery("FROM Blog b WHERE b.type=:type AND b.status = true ORDER BY b.id DESC");
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);
 			query.setParameter("type", type.getValue());
@@ -126,10 +128,26 @@ public class BlogDAOImpl implements BlogDAO {
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> countQuery = currentSession
-					.createQuery("select count(*) from Blog b WHERE b.categoryId = :categoryId AND b.status = true");
+					.createQuery("SELECT count(*) from Blog b WHERE b.categoryId = :categoryId AND b.status = true");
 			countQuery.setParameter("categoryId", categoryId);
-			List<Integer> listResult = (List<Integer>) countQuery.getResultList();
-			return listResult.get(0);
+			List<Long> listResult = (List<Long>) countQuery.getResultList();
+			return listResult.get(0).intValue();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public int countBlogByType(BlogType type) {
+		try {
+			Session currentSession = getCurrentSession();
+			Query<?> countQuery = currentSession
+					.createQuery("SELECT count(*) from Blog b WHERE b.type = :type AND b.status = true");
+			countQuery.setParameter("type", type.getValue());
+			List<Long> listResult = (List<Long>) countQuery.getResultList();
+			return listResult.get(0).intValue();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

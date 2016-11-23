@@ -14,7 +14,7 @@
 
 			<!-- logo -->
 			<div class="navbar-brand">
-				<a href="index.html"> <img
+				<a href="${pageContext.request.contextPath }/"> <img
 					src="${pageContext.request.contextPath }/resources/mainsite/images/logo.png"
 					alt="">
 				</a>
@@ -25,14 +25,21 @@
 		<nav class="collapse navbar-collapse navbar-right" role="navigation">
 			<div class="main-menu">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="${pageContext.request.contextPath }">Trang chủ</a></li>
-					<li><a href="${pageContext.request.contextPath }/about">Giới thiệu</a></li>
-					<%-- <li><a href="${pageContext.request.contextPath }/course/1">Khoá học</a></li>
-					<li><a href="${pageContext.request.contextPath }/tutorial">Tutorial</a></li>
-					<li><a href="${pageContext.request.contextPath }/news">Tin tức</a></li>
-					<li><a href="${pageContext.request.contextPath }/project">Dự án</a></li>
-					<li><a href="${pageContext.request.contextPath }/service">Kỹ thuật tự động</a></li> --%>
-					<li><a href="${pageContext.request.contextPath }/contact">Liên hệ</a></li>
+					<li><a href="${pageContext.request.contextPath }/">Trang
+							chủ</a></li>
+					<li><a href="${pageContext.request.contextPath }/about">Giới
+							thiệu</a></li>
+					<%-- <li><a href="${pageContext.request.contextPath }/course/1">Khoá
+							học</a></li> --%>
+					<%-- <li><a href="${pageContext.request.contextPath }/tutorial/1">Tutorial</a></li> --%>
+					<li><a href="${pageContext.request.contextPath }/news/1">Tin
+							tức</a></li>
+					<%-- <li><a href="${pageContext.request.contextPath }/project">Dự
+							án</a></li> --%>
+					<%-- <li><a href="${pageContext.request.contextPath }/service">Kỹ
+							thuật tự động</a></li> --%>
+					<li><a href="${pageContext.request.contextPath }/contact">Liên
+							hệ</a></li>
 				</ul>
 			</div>
 		</nav>

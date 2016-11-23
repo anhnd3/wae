@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import vn.wae.spring.dao.BlogCategoryDAO;
 import vn.wae.spring.dao.BlogDAO;
+import vn.wae.spring.dao.BlogType;
 import vn.wae.spring.dao.CourseDAO;
 import vn.wae.spring.dao.EmailUserDAO;
 import vn.wae.spring.dao.LogAccessDAO;
@@ -16,6 +18,7 @@ import vn.wae.spring.dao.PartnerDAO;
 import vn.wae.spring.dao.ProjectDAO;
 import vn.wae.spring.dao.TeammateDAO;
 import vn.wae.spring.entity.Blog;
+import vn.wae.spring.entity.BlogCategory;
 import vn.wae.spring.entity.Course;
 import vn.wae.spring.entity.EmailUser;
 import vn.wae.spring.entity.Message;
@@ -40,6 +43,9 @@ public class MainsiteServiceImpl implements MainsiteService {
 
 	@Autowired
 	ProjectDAO projectDAO;
+
+	@Autowired
+	BlogCategoryDAO blogCategoryDAO;
 
 	@Autowired
 	BlogDAO blogDAO;
@@ -103,6 +109,42 @@ public class MainsiteServiceImpl implements MainsiteService {
 	@Transactional
 	public Course getCourse(int courseId) {
 		return courseDAO.getCourse(courseId);
+	}
+
+	@Override
+	@Transactional
+	public Blog getBlog(int blogId) {
+		return blogDAO.getBlog(blogId);
+	}
+
+	@Override
+	@Transactional
+	public List<Blog> getBlogsByType(BlogType type, int pos, int limit) {
+		return blogDAO.getBlogsByType(pos, limit, type);
+	}
+
+	@Override
+	@Transactional
+	public List<BlogCategory> getBlogCategoriesByType(BlogType type, int pos, int limit) {
+		return blogCategoryDAO.getBlogCategoriesByType(type, pos, limit);
+	}
+
+	@Override
+	@Transactional
+	public int countTotalBlogByCategory(int categoryId) {
+		return blogDAO.countBlogByCategory(categoryId);
+	}
+
+	@Override
+	@Transactional
+	public List<Blog> getBlogs(int pos, int limit) {
+		return blogDAO.getBlogs(pos, limit);
+	}
+
+	@Override
+	@Transactional
+	public int countTotalBlogByType(BlogType type) {
+		return blogDAO.countBlogByType(type);
 	}
 
 }

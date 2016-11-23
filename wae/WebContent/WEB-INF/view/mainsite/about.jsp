@@ -41,8 +41,8 @@
 					<div class="block">
 						<h2>Giới thiệu</h2>
 						<ol class="breadcrumb">
-							<li><a href="${pageContext.request.contextPath }"> <i class="ion-ios-home"></i>
-									Trang chủ
+							<li><a href="${pageContext.request.contextPath }/"> <i
+									class="ion-ios-home"></i> Trang chủ
 							</a></li>
 							<li class="active">Giới thiệu</li>
 						</ol>
@@ -60,27 +60,21 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 wow fadeInLeft" data-wow-delay=".1s">
-					<img src="${pageContext.request.contextPath }/resources/mainsite/images/about/about-company.jpg" alt=""
-						class="img-responsive">
+					<img
+						src="${pageContext.request.contextPath }/resources/mainsite/images/about/about-company.jpg"
+						alt="" class="img-responsive">
 				</div>
 				<div class="col-md-6">
 					<div class="block">
 						<h3 class="subtitle wow fadeInUp" data-wow-delay=".1s"
-							data-wow-duration="500ms">Why We are Different</h3>
+							data-wow-duration="500ms">Chúng tôi là ai?</h3>
 						<p class="wow fadeInUp" data-wow-delay=".2s"
-							data-wow-duration="500ms">Sed ut perspiciatis unde omnis iste
-							natus error sit voluptatem accusantium doloremque laudantium,
-							totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-							quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-							ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-							sed quia consequun. Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-							dolore magna aliqua.</p>
-						<p class="wow fadeInUp" data-wow-delay=".3s"
-							data-wow-duration="500ms">Temporibus autem quibusdam et aut
-							officiis debitis aut rerum necessitatibus saepe eveniet ut et
-							voluptates repudiandae sint et molestiae non recusandae.</p>
-
+							data-wow-duration="500ms">WAE (We Are Engineers) là trung tâm
+							đào tạo và cung cấp giải pháp ở 2 lĩnh vực Giáo dục và Giải pháp
+							kĩ thuật. WAE hoạt động dựa trên nền tảng kiến thức (Knowledge)
+							và thực hành (Practical) với phương châm “Thực hành là trên hết”.
+							Chúng tôi không dạy lí thuyết “suông”, luôn luôn có đầy đủ thiết
+							bị cho bạn thực hành và “nghịch” ngay tại lớp.</p>
 					</div>
 				</div>
 			</div>
@@ -96,30 +90,22 @@
 			<div class="row">
 				<div class="block about-feature-1 wow fadeInDown"
 					data-wow-duration="500ms" data-wow-delay=".1s">
-					<h2>Why Choose Us</h2>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit
-						voluptatem accusantium doloremque laudantium, totam rem aperiam,
-						eaque ipsa quae ab illo inventore veritatis et quasi architecto
-						beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-						voluptas.</p>
+					<h2>Tại sao lựa chọn chúng tôi</h2>
+					<p>Phương pháp tiếp cận từ thực tế: Không bị bó buộc bởi giáo
+						trình, không “bó tay” trước các đề tài mở, WAE giúp “hiện thực
+						hóa” ý tưởng của các bạn học viên theo 3 bước: Có ý tưởng -&gt;
+						Hình thành đề tài -&gt; Thực hành tại lớp học</p>
+					<p>Tư vấn, giải quyết ngay tại chỗ mọi thắc mắc, dưới sự hướng
+						dẫn của chúng tôi, những người có kinh nghiệm giảng dạy và thích
+						“bị hỏi”.</p>
 				</div>
 				<div class="block about-feature-2 wow fadeInDown"
 					data-wow-duration="500ms" data-wow-delay=".2s">
-					<h2 class="item_title">What You Get</h2>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit
-						voluptatem accusantium doloremque laudantium, totam rem aperiam,
-						eaque ipsa quae ab illo inventore veritatis et quasi architecto
-						beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-						voluptas.</p>
-				</div>
-				<div class="block about-feature-3 wow fadeInDown"
-					data-wow-duration="500ms" data-wow-delay=".3s">
-					<h2 class="item_title">Meet The Energy</h2>
-					<p>Sed ut perspiciatis unde omnis iste natus error sit
-						voluptatem accusantium doloremque laudantium, totam rem aperiam,
-						eaque ipsa quae ab illo inventore veritatis et quasi architecto
-						beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-						voluptas.</p>
+					<h2 class="item_title">Bạn sẽ đạt được gì</h2>
+					<p>Tiếp cận mô hình học tập đề cao thực hành, cung cấp mô hình
+						và thiết bị thực tập ngay tại lớp.</p>
+					<p>Kiến thức và kỹ năng cần thiết giúp bạn tự xây dựng hệ thống
+						tự động của mình</p>
 				</div>
 			</div>
 		</div>
@@ -129,7 +115,7 @@
         ================================================== 
             Team Section Start
         ================================================== -->
-	<section id="team">
+	<!-- <section id="team">
 		<div class="container">
 			<div class="row">
 				<h2 class="subtitle text-center">Thành viên</h2>
@@ -159,14 +145,14 @@
 				</c:forEach>
 			</div>
 		</div>
-	</section>
+	</section>-->
 
 	<!--
             ==================================================
             Partner Section Start
             ================================================== -->
 	<jsp:include page="/WEB-INF/view/mainsite/partner.jsp">
-		<jsp:param value="${partners }" name="partners"/>
+		<jsp:param value="${partners }" name="partners" />
 	</jsp:include>
 	<!--
             ==================================================

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -34,6 +35,9 @@ public class BlogCategory implements Serializable {
 
 	@Column(name = "`type`")
 	int type;
+
+	@Transient
+	int totalBlog;
 
 	public BlogCategory() {
 	}
@@ -83,8 +87,17 @@ public class BlogCategory implements Serializable {
 		this.type = type;
 	}
 
+	public int getTotalBlog() {
+		return totalBlog;
+	}
+
+	public void setTotalBlog(int totalBlog) {
+		this.totalBlog = totalBlog;
+	}
+
 	@Override
 	public String toString() {
-		return "BlogCategory [id=" + id + ", name=" + name + ", status=" + status + ", type=" + type + "]";
+		return "BlogCategory [id=" + id + ", name=" + name + ", status=" + status + ", type=" + type + ", totalBlog="
+				+ totalBlog + "]";
 	}
 }

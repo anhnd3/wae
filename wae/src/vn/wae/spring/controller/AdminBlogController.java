@@ -167,9 +167,9 @@ public class AdminBlogController {
 			redirectAttrs.addFlashAttribute("blog", blog);
 			return "redirect:/waetools/blog-form";
 		}
-		if (blog.getId() == 0) {
-			blog.setTime(System.currentTimeMillis());
-		}
+
+		blog.setTime(System.currentTimeMillis());
+
 		adminService.saveBlog(blog);
 		return "redirect:/waetools/blog?blogCategoryId=" + blog.getCategoryId();
 	}

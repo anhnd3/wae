@@ -6,16 +6,13 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2 class="subtitle text-center wow fadeInUp animated"
-					data-wow-duration="500ms" data-wow-delay=".3s">Our Happy
-					Clinets</h2>
-				<p class="subtitle-des text-center wow fadeInUp animated"
-					data-wow-duration="500ms" data-wow-delay=".5s">Lorem ipsum
-					dolor sit amet, consectetur adipisicing elit. Labore, error.</p>
+					data-wow-duration="500ms" data-wow-delay=".3s">Đối tác hoạt động</h2>
 				<div id="clients-logo" class="owl-carousel">
 					<c:forEach items="${partners }" var="tmpPartner">
 						<div>
 							<a href="${tmpPartner.targetLink }" target="_blank"> <img
-								src="${tmpPartner.thumbnail }" alt="${tmpPartner.name }">
+								width="228px" height="114px" src="${tmpPartner.thumbnail }"
+								alt="${tmpPartner.name }">
 							</a>
 						</div>
 					</c:forEach>

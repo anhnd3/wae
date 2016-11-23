@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import vn.wae.spring.dao.LogAccessType;
 import vn.wae.spring.entity.Partner;
 import vn.wae.spring.entity.Teammate;
 import vn.wae.spring.service.MainsiteService;
@@ -26,6 +27,9 @@ public class MainsiteAboutController {
 		// Render Section Teammate
 		List<Teammate> teams = mainsiteService.getTeamAvailable(0, 10);
 		model.addAttribute("teams", teams);
+
+		// increase logAccess 
+		mainsiteService.increaseAccess(LogAccessType.ABOUT.getValue());
 		return "mainsite/about";
 	}
 

@@ -2,7 +2,9 @@ package vn.wae.spring.service;
 
 import java.util.List;
 
+import vn.wae.spring.dao.BlogType;
 import vn.wae.spring.entity.Blog;
+import vn.wae.spring.entity.BlogCategory;
 import vn.wae.spring.entity.Course;
 import vn.wae.spring.entity.EmailUser;
 import vn.wae.spring.entity.Message;
@@ -29,5 +31,17 @@ public interface MainsiteService {
 	public void increaseAccess(int id);
 
 	public Course getCourse(int courseId);
+
+	public Blog getBlog(int blogId);
+
+	public List<Blog> getBlogsByType(BlogType type, int pos, int limit);
+
+	public List<BlogCategory> getBlogCategoriesByType(BlogType type, int pos, int limit);
+
+	public int countTotalBlogByCategory(int categoryId);
+
+	public List<Blog> getBlogs(int pos, int limit);
+	
+	public int countTotalBlogByType(BlogType type);
 
 }

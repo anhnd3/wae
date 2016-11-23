@@ -87,6 +87,7 @@
 									<tr>
 										<th>Id</th>
 										<th>Category</th>
+										<th>Type</th>
 										<th>Status</th>
 										<th></th>
 									</tr>
@@ -96,12 +97,28 @@
 										<tr>
 											<td>${tmpCategory.id }</td>
 											<td><a href="blog?blogCategoryId=${tmpCategory.id }">${tmpCategory.name }</a></td>
-											<c:if test="${tmpCategory.status == true }">
-												<td><i class="fa fa-check"></i></td>
-											</c:if>
-											<c:if test="${tmpCategory.status == false }">
-												<td><i class="fa fa-ban"></i></td>
-											</c:if>
+											<c:choose>
+												<c:when test="${tmpCategory.type == 0 }">
+													<td>Tutorial</td>
+												</c:when>
+												<c:when test="${tmpCategory.type == 1 }">
+													<td>News</td>
+												</c:when>
+												<c:otherwise>
+													<td>User</td>
+												</c:otherwise>
+											</c:choose>
+											<c:choose>
+												<c:when test="${tmpCategory.status == true }">
+													<td><i class="fa fa-check"></i></td>
+												</c:when>
+												<c:when test="${tmpCategory.status == false }">
+													<td><i class="fa fa-ban"></i></td>
+												</c:when>
+												<c:otherwise>
+													<td>User</td>
+												</c:otherwise>
+											</c:choose>
 											<td><a href="blog-category-detail?id=${tmpCategory.id }"><i
 													class="fa fa-edit"></i> </a>| <a
 												onclick="return confirm('Do you want to delete blog category: ${tmpCategory.name}?')"
