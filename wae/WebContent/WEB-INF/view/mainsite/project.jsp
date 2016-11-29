@@ -24,33 +24,8 @@
         Import static file (css/js)
         ================================================== -->
 <jsp:include page="/WEB-INF/view/mainsite/static.jsp" />
-<!-- Facebook config sharing  -->
-<meta property="fb:app_id" content="1784359991819774" />
-<meta property="og:image" content="${news.thumbnail }" />
-<meta property="og:description" content="${news.shortDesc }" />
-<meta property="og:url" content="${shareLink }" />
-<meta property="og:title" content="${news.title }" />
-<!-- #End facebook config sharing -->
-
 </head>
 <body>
-	<!-- 
-		==================================================
-		Facebook SDK
-		================================================== 
-	 -->
-	<div id="fb-root"></div>
-	<script>
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id))
-				return;
-			js = d.createElement(s);
-			js.id = id;
-			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1784359991819774";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-	</script>
 	<!--
         ==================================================
         Header Section Start
@@ -65,10 +40,13 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="block">
-						<h2>${news.title }</h2>
-						<div class="portfolio-meta">
-							<span> Tác giả: ${news.author }</span>
-						</div>
+						<h2>Dự án</h2>
+						<ol class="breadcrumb">
+							<li><a href="${pageContext.request.contextPath }/"> <i
+									class="ion-ios-home"></i> Trang chủ
+							</a></li>
+							<li class="active">Dự án</li>
+						</ol>
 					</div>
 				</div>
 			</div>
@@ -78,25 +56,29 @@
 
 	<!-- 
         ================================================== 
-            news Section Start
+            Gallery Section Start
         ================================================== -->
-	<section class="single-post">
+	<section id="gallery" class="gallery">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="social-share">
-						<div class="fb-like"
-							data-href="${shareLink }"
-							data-layout="standard" data-action="like" data-size="small"
-							data-show-faces="true" data-share="true"></div>
+				<c:forEach items="${projects}" var="tmpProject">
+					<div class="col-sm-4 col-xs-12">
+						<figure class="wow fadeInLeft animated portfolio-item animated"
+							data-wow-duration="300ms" data-wow-delay="0ms"
+							style="visibility: visible; animation-duration: 300ms; -webkit-animation-duration: 300ms; animation-delay: 0ms; -webkit-animation-delay: 0ms; animation-name: fadeInLeft; -webkit-animation-name: fadeInLeft;">
+							<div class="img-wrapper">
+								<img src="${tmpProject.thumbnail }" class="img-responsive"
+									alt="${tmpProject.name }">
+								<div class="overlay">
+									<div class="buttons">
+										<a rel="gallery" class="fancybox"
+											href="${tmpProject.thumbnail }">Demo</a>
+									</div>
+								</div>
+							</div>
+						</figure>
 					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="post-img">
-						<img class="img-responsive" alt="" src="${news.fullImage }">
-					</div>
-					<div class="post-content">${news.fullDesc }</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</section>

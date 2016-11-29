@@ -41,7 +41,11 @@ public interface MainsiteService {
 	public int countTotalBlogByCategory(int categoryId);
 
 	public List<Blog> getBlogs(int pos, int limit);
-	
+
 	public int countTotalBlogByType(BlogType type);
+
+	public int countCourseAvailable();
+
+	public List<Project> getProjectsAvailable(int pos, int limit);
 
 }

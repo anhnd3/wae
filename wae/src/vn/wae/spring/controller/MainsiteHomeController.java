@@ -62,4 +62,11 @@ public class MainsiteHomeController {
 		mainsiteService.increaseAccess(LogAccessType.HOME.getValue());
 		return "mainsite/home";
 	}
+
+	@RequestMapping(value = "/countdown")
+	public String countdown(Model model) {
+		// increase logAccess
+		mainsiteService.increaseAccess(LogAccessType.COUNTDOWN.getValue());
+		return "redirect:/";
+	}
 }

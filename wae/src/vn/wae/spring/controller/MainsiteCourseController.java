@@ -2,6 +2,7 @@ package vn.wae.spring.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.UriUtils;
 
+import vn.wae.spring.dao.LogAccessType;
 import vn.wae.spring.entity.Course;
-import vn.wae.spring.entity.Partner;
 import vn.wae.spring.service.MainsiteService;
 import vn.wae.spring.utils.StringUtils;
 
@@ -24,10 +25,6 @@ public class MainsiteCourseController {
 
 	@RequestMapping(value = "/course/{page}")
 	public String course(Model model, @PathVariable(value = "page") String page) {
-		// Render Section Partner
-		List<Partner> partners = mainsiteService.getPartners(0, 6);
-		model.addAttribute("partners", partners);
-
 		// get page in url
 		if (!page.matches("\\d+")) {
 			return "mainsite/404";
@@ -43,6 +40,25 @@ public class MainsiteCourseController {
 		int startIdx = (p - 1) * coursePerPage;
 		List<Course> courses = mainsiteService.getCourseHighLight(startIdx, coursePerPage);
 		model.addAttribute("courses", courses);
+
+		// Render pagination
+		int totalCourse = mainsiteService.countCourseAvailable();
+		if (totalCourse > coursePerPage) {
+			model.addAttribute("showPagination", true);
+			model.addAttribute("currentPage", p);
+			int totalPage = totalCourse / coursePerPage;
+			if (totalCourse % coursePerPage > 0) {
+				totalPage += 1;
+			}
+			List<Integer> pages = new ArrayList<>();
+			for (int i = 1; i <= totalPage; i++) {
+				pages.add(i);
+			}
+			model.addAttribute("paginations", pages);
+		}
+
+		// increase logAccess
+		mainsiteService.increaseAccess(LogAccessType.COURSE.getValue());
 		return "mainsite/course";
 	}
 
@@ -61,6 +77,9 @@ public class MainsiteCourseController {
 		String encodeShareLink = UriUtils.encode(shareLink, Charset.forName("UTF-8").toString());
 		model.addAttribute("shareLink", shareLink);
 		model.addAttribute("encodeShareLink", encodeShareLink);
+
+		// increase logAccess
+		mainsiteService.increaseAccess(LogAccessType.COURSE_DETAIL.getValue());
 		return "mainsite/course_detail";
 	}
 

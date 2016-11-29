@@ -23,11 +23,9 @@ public class CourseDAOImpl implements CourseDAO {
 
 	@Override
 	public int saveCourse(Course course) {
-		System.out.println(course);
 		try {
 			Session currentSession = getCurrentSession();
 			currentSession.saveOrUpdate(course);
-			System.out.println(course);
 			return course.getId();
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -95,8 +93,8 @@ public class CourseDAOImpl implements CourseDAO {
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> countQuery = currentSession.createQuery("select count(*) from Course c WHERE c.status = true");
-			List<Integer> listResult = (List<Integer>) countQuery.getResultList();
-			return listResult.get(0);
+			List<Long> listResult = (List<Long>) countQuery.getResultList();
+			return listResult.get(0).intValue();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

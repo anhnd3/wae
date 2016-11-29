@@ -95,10 +95,9 @@ public class AdminCourseController {
 
 	@RequestMapping("/waetools/course-delete")
 	public String courseDelete(HttpServletRequest request) {
-
 		String courseId = request.getParameter("id");
 		if (!StringUtils.isNullOrEmpty(courseId) && courseId.matches("\\d+")) {
-			adminService.deleteBlogCategory(Integer.parseInt(courseId));
+			adminService.deleteCourse(Integer.parseInt(courseId));
 		}
 		return "redirect:/waetools/course";
 	}

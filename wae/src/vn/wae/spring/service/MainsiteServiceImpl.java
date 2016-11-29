@@ -147,4 +147,16 @@ public class MainsiteServiceImpl implements MainsiteService {
 		return blogDAO.countBlogByType(type);
 	}
 
+	@Override
+	@Transactional
+	public int countCourseAvailable() {
+		return courseDAO.countCourseAvaiable();
+	}
+
+	@Override
+	@Transactional
+	public List<Project> getProjectsAvailable(int pos, int limit) {
+		return projectDAO.getProjectsAvailable(pos, limit);
+	}
+
 }

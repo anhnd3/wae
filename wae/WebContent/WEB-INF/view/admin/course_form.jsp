@@ -90,7 +90,9 @@
 											<label>Thumbnail</label>
 											<form:input path="thumbnail" cssClass="form-control"
 												placeholder="Thumbnail" />
-											<p class="help-block alert-danger"></p>
+											<p class="help-block alert-danger">
+												<form:errors path="thumbnail" />
+											</p>
 										</div>
 										<div class="form-group col-lg-12">
 											<label>Description</label>

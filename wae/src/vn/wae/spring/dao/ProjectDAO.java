@@ -16,4 +16,8 @@ public interface ProjectDAO {
 
 	public List<Project> getProjectsHighlight(int limit, boolean highlight);
 
+	public int countProject();
+
+	public List<Project> getProjectsAvailable(int pos, int limit);
+
 }

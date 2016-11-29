@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <jsp:useBean id="convertString" class="vn.wae.spring.utils.StringUtils"></jsp:useBean>
 <html class="no-js">
@@ -64,7 +63,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<div class="sidebar">
-						<div class="author widget">
+						<%-- <div class="author widget">
 							<img class="img-responsive"
 								src="${pageContext.request.contextPath }/resources/mainsite/images/author/author-bg.jpg">
 							<div class="author-body text-center">
@@ -79,7 +78,7 @@
 										impedit.</p>
 								</div>
 							</div>
-						</div>
+						</div> --%>
 						<div class="recent-post widget">
 							<h3>Khoá học mới nhất</h3>
 							<ul>
@@ -103,18 +102,40 @@
 							</div>
 							<div class="blog-content">
 								<h2 class="blogpost-title">
-									<a href="post-fullwidth.html">${tmpCourse.title }</a>
+									<a
+										href="${pageContext.request.contextPath }/course/${convertString.getTitleFilterCharVn(tmpCourse.title) }/${tmpCourse.id}">${tmpCourse.title }</a>
 								</h2>
 								<div class="blog-meta">
 									<span>${tmpCourse.teacher }</span>
 								</div>
-								<p>${tmp.desc }</p>
+								<p>${tmpCourse.desc }</p>
 								<a
 									href="${pageContext.request.contextPath }/course/${convertString.getTitleFilterCharVn(tmpCourse.title) }/${tmpCourse.id}"
 									class="btn btn-dafault btn-details">Xem chi tiết</a>
 							</div>
 						</article>
 					</c:forEach>
+					<c:if test="${showPagination }">
+						<nav style="text-align: center;" aria-label="Page navigation">
+							<ul class="pagination">
+								<li><a href="#" aria-label="Previous"> <span
+										aria-hidden="true">«</span>
+								</a></li>
+								<c:forEach items="${paginations }" var="page">
+									<c:if test="${page == currentPage }">
+										<li class="active"><a class="active">${page }</a></li>
+									</c:if>
+									<c:if test="${page != currentPage }">
+										<li class="active"><a
+											href="${pageContext.request.contextPath }/news/${page}">${page }</a></li>
+									</c:if>
+								</c:forEach>
+								<li><a href="#" aria-label="Next"> <span
+										aria-hidden="true">»</span>
+								</a></li>
+							</ul>
+						</nav>
+					</c:if>
 				</div>
 			</div>
 		</div>

@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html class="no-js">
 <head>
@@ -25,6 +24,13 @@
         Import static file (css/js)
         ================================================== -->
 <jsp:include page="/WEB-INF/view/mainsite/static.jsp" />
+<!-- Facebook config sharing  -->
+<meta property="fb:app_id" content="1784359991819774" />
+<meta property="og:image" content="${course.thumbnail }" />
+<meta property="og:description" content="${course.desc }" />
+<meta property="og:url" content="${shareLink }" />
+<meta property="og:title" content="${course.title }" />
+<!-- #End facebook config sharing -->
 </head>
 <body>
 	<!-- 
@@ -77,20 +83,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="post-img">
-						<img class="img-responsive" alt="" src="${course.thumbnail }">
+					<div class="social-share">
+						<div class="fb-like" data-href="${shareLink }"
+							data-layout="standard" data-action="like" data-size="small"
+							data-show-faces="true" data-share="true"></div>
 					</div>
+				</div>
+				<div class="col-md-12">
 					<div class="post-content">${course.fullDesc }</div>
-					<h4>Chia sẻ bài viết</h4>
-					<ul class="social-share">
-						<li>
-							<div class="fb-share-button" data-href="${shareLink }"
-								data-layout="button" data-size="large" data-mobile-iframe="true">
-								<a class="fb-xfbml-parse-ignore" target="_blank"
-									href="https://www.facebook.com/sharer/sharer.php?u=${encodeShareLink }&amp;src=sdkpreparse">Share</a>
-							</div>
-						</li>
-					</ul>
 				</div>
 			</div>
 		</div>

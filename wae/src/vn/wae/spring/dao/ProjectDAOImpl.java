@@ -87,4 +87,33 @@ public class ProjectDAOImpl implements ProjectDAO {
 		return new ArrayList<>();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public int countProject() {
+		try {
+			Session currentSession = getCurrentSession();
+			Query<?> countQuery = currentSession.createQuery("SELECT count(*) from Project p WHERE p.status = true");
+			List<Long> listResult = (List<Long>) countQuery.getResultList();
+			return listResult.get(0).intValue();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Project> getProjectsAvailable(int pos, int limit) {
+		try {
+			Session currentSession = getCurrentSession();
+			Query<?> query = currentSession.createQuery("FROM Project p WHERE p.status=true ORDER BY p.id DESC");
+			query.setFirstResult(pos);
+			query.setMaxResults(limit);
+			return (ArrayList<Project>) query.getResultList();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return new ArrayList<>();
+	}
+
 }

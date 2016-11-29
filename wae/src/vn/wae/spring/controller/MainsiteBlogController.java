@@ -49,7 +49,7 @@ public class MainsiteBlogController {
 		model.addAttribute("lastestBlog", lastestBlogByType);
 
 		// Render main blog
-		int blogPerPage = 5;
+		int blogPerPage = 3;
 		int p = Integer.parseInt(page);
 		int startIdx = (p - 1) * blogPerPage;
 		List<Blog> blogs = mainsiteService.getBlogsByType(BlogType.NEWS, startIdx, blogPerPage);

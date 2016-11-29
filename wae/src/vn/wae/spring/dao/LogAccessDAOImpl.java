@@ -39,7 +39,7 @@ public class LogAccessDAOImpl implements LogAccessDAO {
 	public List<LogAccess> getLogAccesses(int pos, int limit) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("FROM LogAccess");
+			Query<?> query = currentSession.createQuery("FROM LogAccess lg ORDER BY lg.url ASC");
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);
 			return (ArrayList<LogAccess>) query.getResultList();

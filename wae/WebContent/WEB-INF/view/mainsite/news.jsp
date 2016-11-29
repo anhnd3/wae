@@ -2,9 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<!DOCTYPE html>
 <jsp:useBean id="convertString" class="vn.wae.spring.utils.StringUtils"></jsp:useBean>
+<jsp:useBean id="convertTimestamp" class="vn.wae.spring.utils.TimeUtils"></jsp:useBean>
+<!DOCTYPE html>
 <html class="no-js">
 <head>
 <!-- Basic Page Needs
@@ -73,12 +73,14 @@
 							</div>
 							<div class="blog-content">
 								<h2 class="blogpost-title">
-									<a href="post-fullwidth.html">${tmpBlog.title }</a>
+									<a
+										href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}">${tmpBlog.title }</a>
 								</h2>
 								<div class="blog-meta">
+									<span>${convertTimestamp.timestampToString(tmpBlog.time,"dd-MM-yyyy HH:mm") }</span>
 									<span>${tmpBlog.author }</span>
 								</div>
-								<p>${tmp.desc }</p>
+								<p>${tmpBlog.shortDesc }</p>
 								<a
 									href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}"
 									class="btn btn-dafault btn-details">Xem chi tiết</a>
