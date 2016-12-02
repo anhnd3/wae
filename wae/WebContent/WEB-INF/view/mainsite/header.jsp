@@ -31,7 +31,7 @@
 							thiệu</a></li>
 					<li><a href="${pageContext.request.contextPath }/course/1">Khoá
 							học</a></li>
-					<%-- <li><a href="${pageContext.request.contextPath }/tutorial/1">Tutorial</a></li> --%>
+					<li><a href="${pageContext.request.contextPath }/tutorial/1">Tutorial</a></li>
 					<li><a href="${pageContext.request.contextPath }/news/1">Tin
 							tức</a></li>
 					<li><a href="${pageContext.request.contextPath }/project">Dự
