@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:useBean id="convertString" class="vn.wae.spring.utils.StringUtils"></jsp:useBean>
 <jsp:useBean id="convertTimestamp" class="vn.wae.spring.utils.TimeUtils"></jsp:useBean>
 <!DOCTYPE html>
@@ -68,13 +69,13 @@
 							data-wow-duration="500ms">
 							<div class="blog-post-image">
 								<a
-									href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}"><img
+									href="${pageContext.request.contextPath }/tutorial/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}"><img
 									class="img-responsive" src="${tmpBlog.thumbnail }" alt="" /></a>
 							</div>
 							<div class="blog-content">
 								<h2 class="blogpost-title">
 									<a
-										href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}">${tmpBlog.title }</a>
+										href="${pageContext.request.contextPath }/tutorial/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}">${tmpBlog.title }</a>
 								</h2>
 								<div class="blog-meta">
 									<span>${convertTimestamp.timestampToString(tmpBlog.time,"dd-MM-yyyy HH:mm") }</span>
@@ -82,7 +83,7 @@
 								</div>
 								<p>${tmpBlog.shortDesc }</p>
 								<a
-									href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}"
+									href="${pageContext.request.contextPath }/tutorial/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}"
 									class="btn btn-dafault btn-details">Xem chi tiết</a>
 							</div>
 						</article>
@@ -90,20 +91,22 @@
 					<c:if test="${showPagination }">
 						<nav style="text-align: center;" aria-label="Page navigation">
 							<ul class="pagination">
-								<li><a href="#" aria-label="Previous"> <span
-										aria-hidden="true">«</span>
+								<li><a
+									href="${pageContext.request.contextPath }/tutorial/1"
+									aria-label="Previous"> <span aria-hidden="true">«</span>
 								</a></li>
 								<c:forEach items="${paginations }" var="page">
 									<c:if test="${page == currentPage }">
-										<li class="active"><a class="active">${page }</a></li>
+										<li class="active"><a>${page }</a></li>
 									</c:if>
 									<c:if test="${page != currentPage }">
-										<li class="active"><a
-											href="${pageContext.request.contextPath }/news/${page}">${page }</a></li>
+										<li><a
+											href="${pageContext.request.contextPath }/tutorial/${page}">${page }</a></li>
 									</c:if>
 								</c:forEach>
-								<li><a href="#" aria-label="Next"> <span
-										aria-hidden="true">»</span>
+								<li><a
+									href="${pageContext.request.contextPath }/tutorial/${fn:length(paginations)}"
+									aria-label="Next"> <span aria-hidden="true">»</span>
 								</a></li>
 							</ul>
 						</nav>
@@ -141,7 +144,7 @@
 							<ul>
 								<c:forEach items="${lastestBlog }" var="tmpBlog">
 									<li><a
-										href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}">${tmpBlog.title }
+										href="${pageContext.request.contextPath }/tutorial/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}">${tmpBlog.title }
 									</a></li>
 								</c:forEach>
 							</ul>

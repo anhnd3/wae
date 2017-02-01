@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <jsp:useBean id="convertString" class="vn.wae.spring.utils.StringUtils"></jsp:useBean>
 <html class="no-js">
@@ -118,19 +119,19 @@
 					<c:if test="${showPagination }">
 						<nav style="text-align: center;" aria-label="Page navigation">
 							<ul class="pagination">
-								<li><a href="#" aria-label="Previous"> <span
+								<li><a href="${pageContext.request.contextPath }/course/1" aria-label="Previous"> <span
 										aria-hidden="true">«</span>
 								</a></li>
 								<c:forEach items="${paginations }" var="page">
 									<c:if test="${page == currentPage }">
-										<li class="active"><a class="active">${page }</a></li>
+										<li class="active"><a>${page }</a></li>
 									</c:if>
 									<c:if test="${page != currentPage }">
-										<li class="active"><a
-											href="${pageContext.request.contextPath }/news/${page}">${page }</a></li>
+										<li><a
+											href="${pageContext.request.contextPath }/course/${page}">${page }</a></li>
 									</c:if>
 								</c:forEach>
-								<li><a href="#" aria-label="Next"> <span
+								<li><a href="${pageContext.request.contextPath }/course/${fn:length(paginations)}" aria-label="Next"> <span
 										aria-hidden="true">»</span>
 								</a></li>
 							</ul>
