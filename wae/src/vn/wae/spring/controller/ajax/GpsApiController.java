@@ -3,7 +3,7 @@ package vn.wae.spring.controller.ajax;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ import vn.wae.spring.entity.GpsTrackingLocation;
 import vn.wae.spring.service.GpsTrackingLocationService;
 
 @RestController
-@RequestMapping("/api/gps")
+@RequestMapping("/apps/gps-tracking/api")
 public class GpsApiController {
 
 	private final int ERROR_CODE_SUCCESSFUL = 0;
@@ -24,7 +24,7 @@ public class GpsApiController {
 	private final int ERROR_CODE_PARAM_ERROR = -2;
 	private final int ERROR_CODE_DATABASE_ERROR = -3;
 
-	// private final String SECRET_KEY = "f160ffc8ff677e2a10495d23e8f9e088";
+	private final String SECRET_KEY = "f160ffc8ff677e2a10495d23e8f9e088";
 
 	@Autowired
 	private GpsTrackingLocationService gpsTrackingLocationService;
@@ -33,7 +33,7 @@ public class GpsApiController {
 	public String project(@RequestParam(value = "x", defaultValue = "0") String x,
 			@RequestParam(value = "y", defaultValue = "0") String y,
 			@RequestParam(value = "device", defaultValue = "") String device,
-			@RequestParam(value = "time", defaultValue = "1970-01-01 00:00:01") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date time,
+			@RequestParam(value = "time", defaultValue = "0") String time,
 			@RequestParam(value = "cs", defaultValue = "") String checksum) {
 
 		try {
@@ -44,48 +44,46 @@ public class GpsApiController {
 				ObjectNode result = mapper.createObjectNode();
 				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
 				result.put("msg", "Location doesn't mismatch");
-				return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result);
+				return mapper.writeValueAsString(result);
 			}
 
 			if (device.equals("") || !device.matches("\\d+")) {
 				ObjectNode result = mapper.createObjectNode();
 				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
 				result.put("msg", "Device doesn't mismatch");
-				return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result);
+				return mapper.writeValueAsString(result);
 			}
 
-			if (time.getTime() <= 0) {
+			if (time.equals("0")) {
 				ObjectNode result = mapper.createObjectNode();
 				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
 				result.put("msg", "Time doesn't mismatch");
-				return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result);
+				return mapper.writeValueAsString(result);
 			}
 
-			/*
-			 * if (checksum.equals("")) { ObjectNode result =
-			 * mapper.createObjectNode(); result.put("errorCode",
-			 * ERROR_CODE_PARAM_ERROR); result.put("msg",
-			 * "Checksum doesn't mismatch"); return
-			 * mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result
-			 * ); }
-			 * 
-			 * String cs = DigestUtils.md5DigestAsHex((SECRET_KEY +
-			 * device).getBytes()); if (!cs.equals(checksum)) { ObjectNode
-			 * result = mapper.createObjectNode(); result.put("errorCode",
-			 * ERROR_CODE_PARAM_ERROR); result.put("msg",
-			 * "Checksum doesn't match"); return
-			 * mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result
-			 * ); }
-			 */
+			if (checksum.equals("")) {
+				ObjectNode result = mapper.createObjectNode();
+				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
+				result.put("msg", "Checksum doesn't mismatch");
+				return mapper.writeValueAsString(result);
+			}
+
+			String cs = DigestUtils.md5DigestAsHex((SECRET_KEY + device + time).getBytes());
+			if (!cs.equals(checksum)) {
+				ObjectNode result = mapper.createObjectNode();
+				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
+				result.put("msg", "Checksum doesn't match");
+				return mapper.writeValueAsString(result);
+			}
 
 			ObjectNode objectLocation = mapper.createObjectNode();
 			objectLocation.put("x", x);
 			objectLocation.put("y", y);
 
-			String location = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(objectLocation);
+			String location = mapper.writeValueAsString(objectLocation);
 			int deviceId = Integer.parseInt(device);
-			GpsTrackingLocation gpsTrackingLocation = new GpsTrackingLocation(deviceId, time, location);
-			System.out.println(gpsTrackingLocation);
+			GpsTrackingLocation gpsTrackingLocation = new GpsTrackingLocation(deviceId, new Date(Long.parseLong(time)),
+					location);
 
 			long id = gpsTrackingLocationService.saveLocation(gpsTrackingLocation);
 
@@ -99,11 +97,10 @@ public class GpsApiController {
 				result.put("errorCode", ERROR_CODE_DATABASE_ERROR);
 				result.put("msg", "Database error");
 			}
-
-			return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(result);
+			return mapper.writeValueAsString(result);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
-			return "{\"errorCode\": " + ERROR_CODE_EXCEPTION + ", \"msg\": \"JsonProcessingException\"}";
+			return "{\"errorCode\": " + ERROR_CODE_EXCEPTION + ", \"msg\": \"Exception\"}";
 		}
 	}
 }
