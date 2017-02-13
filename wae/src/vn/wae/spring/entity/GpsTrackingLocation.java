@@ -35,6 +35,7 @@ public class GpsTrackingLocation implements Serializable {
 
 	@Column(name = "`location`")
 	String location;
+	
 
 	public GpsTrackingLocation() {
 	}
@@ -86,7 +87,7 @@ public class GpsTrackingLocation implements Serializable {
 
 	@Override
 	public String toString() {
-		return "GpsTrackingLocationMsg [id=" + id + ", deviceId=" + deviceId + ", time=" + time + ", location="
+		return "GpsTrackingLocation [id=" + id + ", deviceId=" + deviceId + ", time=" + time + ", location="
 				+ location + "]";
 	}
 }

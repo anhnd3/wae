@@ -1,5 +1,7 @@
 package vn.wae.spring.controller.ajax;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,7 @@ public class GpsApiController {
 	public String project(@RequestParam(value = "x", defaultValue = "0") String x,
 			@RequestParam(value = "y", defaultValue = "0") String y,
 			@RequestParam(value = "device", defaultValue = "") String device,
-			@RequestParam(value = "time", defaultValue = "0") String time,
+			@RequestParam(value = "time", defaultValue = "1970-01-01 00:00:01") String time,
 			@RequestParam(value = "cs", defaultValue = "") String checksum) {
 
 		try {
@@ -54,7 +56,7 @@ public class GpsApiController {
 				return mapper.writeValueAsString(result);
 			}
 
-			if (time.equals("0")) {
+			if (time.equals("1970-01-01 00:00:01")) {
 				ObjectNode result = mapper.createObjectNode();
 				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
 				result.put("msg", "Time doesn't mismatch");
@@ -82,8 +84,8 @@ public class GpsApiController {
 
 			String location = mapper.writeValueAsString(objectLocation);
 			int deviceId = Integer.parseInt(device);
-			GpsTrackingLocation gpsTrackingLocation = new GpsTrackingLocation(deviceId, new Date(Long.parseLong(time)),
-					location);
+			Date receiveDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time);
+			GpsTrackingLocation gpsTrackingLocation = new GpsTrackingLocation(deviceId, receiveDate, location);
 
 			long id = gpsTrackingLocationService.saveLocation(gpsTrackingLocation);
 
@@ -100,7 +102,10 @@ public class GpsApiController {
 			return mapper.writeValueAsString(result);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
-			return "{\"errorCode\": " + ERROR_CODE_EXCEPTION + ", \"msg\": \"Exception\"}";
+			return "{\"errorCode\": " + ERROR_CODE_EXCEPTION + ", \"msg\": \"JsonException\"}";
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return "{\"errorCode\": " + ERROR_CODE_EXCEPTION + ", \"msg\": \"TimeFormatException\"}";
 		}
 	}
 }

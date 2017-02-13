@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Insert title here...</title>
+<title>Hệ thống hỗ trợ tham gia giao thông an toàn</title>
 
 <!-- Bootstrap Core CSS -->
 <link
@@ -32,6 +32,11 @@
 <!-- DataTables Responsive CSS -->
 <link
 	href="${pageContext.request.contextPath }/resources/admin/vendor/datatables-responsive/dataTables.responsive.css"
+	rel="stylesheet">
+
+<!-- Datetime picker CSS -->
+<link
+	href="${pageContext.request.contextPath }/resources/admin/vendor/datetime-picker/jquery.datetimepicker.css"
 	rel="stylesheet">
 
 <!-- Custom CSS -->
@@ -58,7 +63,7 @@
 	<div id="wrapper">
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-static-top" role="navigation"
-			style="margin-bottom: 0">
+			style="margin-bottom: 0;">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-collapse">
@@ -66,13 +71,19 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">Insert logo here</a>
+				<a class="navbar-brand"
+					href="${pageContext.request.contextPath }/apps/gps-tracking"
+					style="padding: 0px;"> <img alt="logo-quangtrung"
+					src="${pageContext.request.contextPath }/resources/admin/apps/images/logocqt.png"
+					style="width: 250px; height: 50px;">
+				</a>
 			</div>
 			<!-- /.navbar-header -->
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
-						<li><a href="/apps/gps-tracking"><i
+						<li><a
+							href="${pageContext.request.contextPath }/apps/gps-tracking"><i
 								class="fa fa-location-arrow fa-fw"></i> Thống kê vị trí</a></li>
 					</ul>
 				</div>
@@ -85,7 +96,8 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Insert title here</h1>
+					<h1 class="page-header">Hệ thống hỗ trợ tham gia giao thông an
+						toàn</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -101,13 +113,14 @@
 								</select>
 							</div>
 							<div class="form-group col-lg-4">
-								<label>Kiểu thống kê</label> <select class="form-control">
+								<label>Kiểu thống kê</label> <select class="form-control"
+									id="type-report">
 									<option value="0">Tất cả</option>
 									<option value="1">Theo ngày</option>
 								</select>
 							</div>
-							<div class="form-group col-lg-4">
-								<label>Ngày</label> <input class="form-control">
+							<div class="form-group col-lg-4" style="display: none;">
+								<label>Ngày</label> <input class="form-control" id="report-date">
 							</div>
 						</div>
 						<!-- /.panel-heading -->
@@ -125,14 +138,17 @@
 										<c:forEach items="${locations }" var="tmpLocation">
 											<tr>
 												<td>${tmpLocation.time }</td>
-												<td>${tmpLocation.location }</td>
+												<td><a href="javascript:void(0)"
+													onclick="viewMap('${tmpLocation.location }')"></a></td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
 							</div>
 							<!-- /.table-responsive -->
-							<div class="col-lg-6">Insert google map here</div>
+							<div class="col-lg-6" style="height: 550px;">
+								<div id="google-maps" style="height: 100%;"></div>
+							</div>
 							<!-- /.google-map -->
 						</div>
 						<!-- /.panel-body -->
@@ -168,18 +184,22 @@
 	<script
 		src="${pageContext.request.contextPath }/resources/admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
+	<!-- Datetime picker JavaScript -->
+	<script
+		src="${pageContext.request.contextPath }/resources/admin/vendor/datetime-picker/jquery.datetimepicker.js"></script>
+
 	<!-- Custom Theme JavaScript -->
 	<script
 		src="${pageContext.request.contextPath }/resources/admin/dist/js/sb-admin-2.js"></script>
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-	<script>
+	<script type="text/javascript">
 		$(document).ready(
 				function() {
 					$('#blog-category-table').DataTable(
 							{
 								responsive : true,
-								"iDisplayLength" : 25,
+								"iDisplayLength" : 15,
 								"aLengthMenu" : [
 										[ 10, 15, 25, 35, 50, 100, -1 ],
 										[ 10, 15, 25, 35, 50, 100, "All" ] ],
@@ -187,9 +207,42 @@
 									"sSearch" : ""
 								}
 							});
+					$('#type-report').change(function() {
+						var type = $(this).val();
+						switch (parseInt(type)) {
+						case 1:
+							$('#report-date').parent().show();
+							break;
+						default:
+							$('#report-date').parent().hide();
+							break;
+						}
+					});
+
+					$('#report-date').datetimepicker({
+						timepicker : false,
+						format : 'd-m-Y',
+						lang : 'en'
+					});
 				});
 	</script>
 
+	<!-- Init google map here -->
+	<script type="text/javascript">
+		var map;
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('google-maps'), {
+				center : {
+					lat : -34.397,
+					lng : 150.644
+				},
+				zoom : 10
+			});
+		}
+	</script>
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCABAsDXwnbiQ5vSIEwL5hhAmLgf0gLRMM&callback=initMap"
+		async defer></script>
 </body>
 
 </html>
