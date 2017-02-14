@@ -1,5 +1,6 @@
 package vn.wae.spring.controller.ajax;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.mysql.jdbc.StringUtils;
 
 import vn.wae.spring.entity.GpsTrackingLocation;
 import vn.wae.spring.service.GpsTrackingLocationService;
+import vn.wae.spring.utils.HttpClientUtils;
 
 @RestController
 @RequestMapping("/apps/gps-tracking/api")
@@ -28,12 +31,14 @@ public class GpsApiController {
 
 	private final String SECRET_KEY = "f160ffc8ff677e2a10495d23e8f9e088";
 
+	private String apiGoogleAddress = "https://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s";
+
 	@Autowired
 	private GpsTrackingLocationService gpsTrackingLocationService;
 
-	@RequestMapping(value = "/add")
-	public String project(@RequestParam(value = "x", defaultValue = "0") String x,
-			@RequestParam(value = "y", defaultValue = "0") String y,
+	@RequestMapping(value = "/add", produces = "application/json;charset=UTF-8")
+	public String project(@RequestParam(value = "x", defaultValue = "0") String longtitude,
+			@RequestParam(value = "y", defaultValue = "0") String latitude,
 			@RequestParam(value = "device", defaultValue = "") String device,
 			@RequestParam(value = "time", defaultValue = "1970-01-01 00:00:01") String time,
 			@RequestParam(value = "cs", defaultValue = "") String checksum) {
@@ -42,7 +47,7 @@ public class GpsApiController {
 
 			ObjectMapper mapper = new ObjectMapper();
 
-			if (x.equals("0") && y.equals("0")) {
+			if (longtitude.equals("0") && latitude.equals("0")) {
 				ObjectNode result = mapper.createObjectNode();
 				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
 				result.put("msg", "Location doesn't mismatch");
@@ -78,14 +83,19 @@ public class GpsApiController {
 				return mapper.writeValueAsString(result);
 			}
 
-			ObjectNode objectLocation = mapper.createObjectNode();
-			objectLocation.put("x", x);
-			objectLocation.put("y", y);
+			String addressFromGeocode = new HttpClientUtils()
+					.get(String.format(apiGoogleAddress, longtitude, latitude));
+			JsonNode rootNode = new ObjectMapper().readValue(addressFromGeocode, JsonNode.class);
+			JsonNode resultNode = rootNode.get("results").get(0);
+			String formattedAddress = resultNode.get("formatted_address").asText();
+			if (StringUtils.isNullOrEmpty(formattedAddress)) {
+				formattedAddress = "";
+			}
 
-			String location = mapper.writeValueAsString(objectLocation);
 			int deviceId = Integer.parseInt(device);
 			Date receiveDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time);
-			GpsTrackingLocation gpsTrackingLocation = new GpsTrackingLocation(deviceId, receiveDate, location);
+			GpsTrackingLocation gpsTrackingLocation = new GpsTrackingLocation(deviceId, receiveDate, longtitude,
+					latitude, formattedAddress);
 
 			long id = gpsTrackingLocationService.saveLocation(gpsTrackingLocation);
 
@@ -100,12 +110,9 @@ public class GpsApiController {
 				result.put("msg", "Database error");
 			}
 			return mapper.writeValueAsString(result);
-		} catch (JsonProcessingException e) {
+		} catch (ParseException | IOException e) {
 			e.printStackTrace();
-			return "{\"errorCode\": " + ERROR_CODE_EXCEPTION + ", \"msg\": \"JsonException\"}";
-		} catch (ParseException e) {
-			e.printStackTrace();
-			return "{\"errorCode\": " + ERROR_CODE_EXCEPTION + ", \"msg\": \"TimeFormatException\"}";
+			return "{\"errorCode\": " + ERROR_CODE_EXCEPTION + ", \"msg\": \"" + e.getMessage() + "\"}";
 		}
 	}
 }

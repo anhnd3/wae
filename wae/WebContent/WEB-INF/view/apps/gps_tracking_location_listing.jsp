@@ -125,28 +125,34 @@
 						</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
-							<div class="col-lg-6">
+							<div class="col-lg-7">
 								<table class="table table-striped table-bordered table-hover"
 									id="blog-category-table">
 									<thead>
 										<tr>
 											<th>Thời gian</th>
 											<th>Địa điểm</th>
+											<th>Bản đồ</th>
 										</tr>
 									</thead>
 									<tbody>
 										<c:forEach items="${locations }" var="tmpLocation">
 											<tr>
 												<td>${tmpLocation.time }</td>
+												<td>${tmpLocation.address }</td>
 												<td><a href="javascript:void(0)"
-													onclick="viewMap('${tmpLocation.location }')"></a></td>
+													onclick="viewMap('${tmpLocation.longtitude }', '${tmpLocation.latitude }')">
+														<button type="button" class="btn btn-primary btn-xs">
+															<i class="fa fa-eye"></i>
+														</button>
+												</a></td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
 							</div>
 							<!-- /.table-responsive -->
-							<div class="col-lg-6" style="height: 550px;">
+							<div class="col-lg-5" style="height: 500px;">
 								<div id="google-maps" style="height: 100%;"></div>
 							</div>
 							<!-- /.google-map -->
@@ -199,13 +205,14 @@
 					$('#blog-category-table').DataTable(
 							{
 								responsive : true,
-								"iDisplayLength" : 15,
+								"iDisplayLength" : 10,
 								"aLengthMenu" : [
 										[ 10, 15, 25, 35, 50, 100, -1 ],
 										[ 10, 15, 25, 35, 50, 100, "All" ] ],
 								"oSearch" : {
 									"sSearch" : ""
-								}
+								},
+								"order": [[ 1, "desc" ]]
 							});
 					$('#type-report').change(function() {
 						var type = $(this).val();
@@ -233,8 +240,8 @@
 		function initMap() {
 			map = new google.maps.Map(document.getElementById('google-maps'), {
 				center : {
-					lat : -34.397,
-					lng : 150.644
+					lat : 10.7739855,
+					lng : 106.6898035
 				},
 				zoom : 10
 			});

@@ -38,7 +38,7 @@ public class GpsTrackingLocationDAOImpl implements GpsTrackingLocationDAO {
 	public List<GpsTrackingLocation> getLocations(int pos, int limit) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("FROM GpsTrackingLocation");
+			Query<?> query = currentSession.createQuery("FROM GpsTrackingLocation location ORDER BY location.id DESC");
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);
 			return (ArrayList<GpsTrackingLocation>) query.getResultList();
@@ -54,7 +54,7 @@ public class GpsTrackingLocationDAOImpl implements GpsTrackingLocationDAO {
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> query = currentSession.createQuery(
-					"FROM GpsTrackingLocation location WHERE location.time >= :fromTime AND location.time <= :toTime");
+					"FROM GpsTrackingLocation location WHERE location.time >= :fromTime AND location.time <= :toTime ORDER BY location.id DESC");
 			query.setParameter("fromTime", fromTime);
 			query.setParameter("toTime", toTime);
 

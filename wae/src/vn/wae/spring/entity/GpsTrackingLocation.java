@@ -33,24 +33,33 @@ public class GpsTrackingLocation implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	Date time;
 
-	@Column(name = "`location`")
-	String location;
-	
+	@Column(name = "`longtitude`")
+	String longtitude;
+
+	@Column(name = "`latitude`")
+	String latitude;
+
+	@Column(name = "`address`")
+	String address;
 
 	public GpsTrackingLocation() {
 	}
 
-	public GpsTrackingLocation(int id, int deviceId, Date time, String location) {
+	public GpsTrackingLocation(long id, int deviceId, Date time, String longtitude, String latitude, String address) {
 		this.id = id;
 		this.deviceId = deviceId;
 		this.time = time;
-		this.location = location;
+		this.longtitude = longtitude;
+		this.latitude = latitude;
+		this.address = address;
 	}
 
-	public GpsTrackingLocation(int deviceId, Date time, String location) {
+	public GpsTrackingLocation(int deviceId, Date time, String longtitude, String latitude, String address) {
 		this.deviceId = deviceId;
 		this.time = time;
-		this.location = location;
+		this.longtitude = longtitude;
+		this.latitude = latitude;
+		this.address = address;
 	}
 
 	public long getId() {
@@ -77,17 +86,33 @@ public class GpsTrackingLocation implements Serializable {
 		this.time = time;
 	}
 
-	public String getLocation() {
-		return location;
+	public String getLongtitude() {
+		return longtitude;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setLongtitude(String longtitude) {
+		this.longtitude = longtitude;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	@Override
 	public String toString() {
-		return "GpsTrackingLocation [id=" + id + ", deviceId=" + deviceId + ", time=" + time + ", location="
-				+ location + "]";
+		return "GpsTrackingLocation [id=" + id + ", deviceId=" + deviceId + ", time=" + time + ", longtitude="
+				+ longtitude + ", latitude=" + latitude + ", address=" + address + "]";
 	}
 }
