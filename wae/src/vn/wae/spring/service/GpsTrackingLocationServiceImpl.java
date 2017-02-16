@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.wae.spring.dao.GpsTrackingLocationDAO;
-import vn.wae.spring.entity.GpsTrackingLocation;
+import vn.wae.spring.entity.GpsLocation;
 
 @Service
 public class GpsTrackingLocationServiceImpl implements GpsTrackingLocationService {
@@ -17,19 +17,19 @@ public class GpsTrackingLocationServiceImpl implements GpsTrackingLocationServic
 
 	@Override
 	@Transactional
-	public long saveLocation(GpsTrackingLocation location) {
+	public long saveLocation(GpsLocation location) {
 		return gpsTrackingLocationDAO.saveLocation(location);
 	}
 
 	@Override
 	@Transactional
-	public List<GpsTrackingLocation> getLocations(int pos, int limit) {
+	public List<GpsLocation> getLocations(int pos, int limit) {
 		return gpsTrackingLocationDAO.getLocations(pos, limit);
 	}
 
 	@Override
 	@Transactional
-	public List<GpsTrackingLocation> getLocationsByTime(String fromTime, String toTime) {
+	public List<GpsLocation> getLocationsByTime(String fromTime, String toTime) {
 		return gpsTrackingLocationDAO.getLocationsByTime(fromTime, toTime);
 	}
 

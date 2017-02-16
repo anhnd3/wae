@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "gps_tracking_location")
-public class GpsTrackingLocation implements Serializable {
+public class GpsLocation implements Serializable {
 
 	/**
 	 * 
@@ -42,10 +42,10 @@ public class GpsTrackingLocation implements Serializable {
 	@Column(name = "`address`")
 	String address;
 
-	public GpsTrackingLocation() {
+	public GpsLocation() {
 	}
 
-	public GpsTrackingLocation(long id, int deviceId, Date time, String longtitude, String latitude, String address) {
+	public GpsLocation(long id, int deviceId, Date time, String longtitude, String latitude, String address) {
 		this.id = id;
 		this.deviceId = deviceId;
 		this.time = time;
@@ -54,7 +54,7 @@ public class GpsTrackingLocation implements Serializable {
 		this.address = address;
 	}
 
-	public GpsTrackingLocation(int deviceId, Date time, String longtitude, String latitude, String address) {
+	public GpsLocation(int deviceId, Date time, String longtitude, String latitude, String address) {
 		this.deviceId = deviceId;
 		this.time = time;
 		this.longtitude = longtitude;

@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import vn.wae.spring.entity.GpsTrackingLocation;
+import vn.wae.spring.entity.GpsLocation;
 
 @Repository
 public class GpsTrackingLocationDAOImpl implements GpsTrackingLocationDAO {
@@ -22,7 +22,7 @@ public class GpsTrackingLocationDAOImpl implements GpsTrackingLocationDAO {
 	}
 
 	@Override
-	public long saveLocation(GpsTrackingLocation location) {
+	public long saveLocation(GpsLocation location) {
 		try {
 			Session currentSession = getCurrentSession();
 			currentSession.saveOrUpdate(location);
@@ -35,13 +35,13 @@ public class GpsTrackingLocationDAOImpl implements GpsTrackingLocationDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<GpsTrackingLocation> getLocations(int pos, int limit) {
+	public List<GpsLocation> getLocations(int pos, int limit) {
 		try {
 			Session currentSession = getCurrentSession();
-			Query<?> query = currentSession.createQuery("FROM GpsTrackingLocation location ORDER BY location.id DESC");
+			Query<?> query = currentSession.createQuery("FROM GpsLocation location ORDER BY location.id DESC");
 			query.setFirstResult(pos);
 			query.setMaxResults(limit);
-			return (ArrayList<GpsTrackingLocation>) query.getResultList();
+			return (ArrayList<GpsLocation>) query.getResultList();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -50,15 +50,15 @@ public class GpsTrackingLocationDAOImpl implements GpsTrackingLocationDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<GpsTrackingLocation> getLocationsByTime(String fromTime, String toTime) {
+	public List<GpsLocation> getLocationsByTime(String fromTime, String toTime) {
 		try {
 			Session currentSession = getCurrentSession();
 			Query<?> query = currentSession.createQuery(
-					"FROM GpsTrackingLocation location WHERE location.time >= :fromTime AND location.time <= :toTime ORDER BY location.id DESC");
+					"FROM GpsLocation location WHERE location.time >= :fromTime AND location.time <= :toTime ORDER BY location.id DESC");
 			query.setParameter("fromTime", fromTime);
 			query.setParameter("toTime", toTime);
 
-			return (ArrayList<GpsTrackingLocation>) query.getResultList();
+			return (ArrayList<GpsLocation>) query.getResultList();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

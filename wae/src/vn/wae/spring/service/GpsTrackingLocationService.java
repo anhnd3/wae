@@ -2,14 +2,14 @@ package vn.wae.spring.service;
 
 import java.util.List;
 
-import vn.wae.spring.entity.GpsTrackingLocation;
+import vn.wae.spring.entity.GpsLocation;
 
 public interface GpsTrackingLocationService {
 
-	public long saveLocation(GpsTrackingLocation location);
+	public long saveLocation(GpsLocation location);
 
-	public List<GpsTrackingLocation> getLocations(int pos, int limit);
+	public List<GpsLocation> getLocations(int pos, int limit);
 
-	public List<GpsTrackingLocation> getLocationsByTime(String fromTime, String toTime);
+	public List<GpsLocation> getLocationsByTime(String fromTime, String toTime);
 
 }

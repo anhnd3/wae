@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.mysql.jdbc.StringUtils;
 
-import vn.wae.spring.entity.GpsTrackingLocation;
+import vn.wae.spring.entity.GpsLocation;
 import vn.wae.spring.service.GpsTrackingLocationService;
 import vn.wae.spring.utils.HttpClientUtils;
 
@@ -37,8 +36,8 @@ public class GpsApiController {
 	private GpsTrackingLocationService gpsTrackingLocationService;
 
 	@RequestMapping(value = "/add", produces = "application/json;charset=UTF-8")
-	public String project(@RequestParam(value = "x", defaultValue = "0") String longtitude,
-			@RequestParam(value = "y", defaultValue = "0") String latitude,
+	public String project(@RequestParam(value = "lng", defaultValue = "0") String longtitude,
+			@RequestParam(value = "lat", defaultValue = "0") String latitude,
 			@RequestParam(value = "device", defaultValue = "") String device,
 			@RequestParam(value = "time", defaultValue = "1970-01-01 00:00:01") String time,
 			@RequestParam(value = "cs", defaultValue = "") String checksum) {
@@ -84,18 +83,19 @@ public class GpsApiController {
 			}
 
 			String addressFromGeocode = new HttpClientUtils()
-					.get(String.format(apiGoogleAddress, longtitude, latitude));
+					.get(String.format(apiGoogleAddress, latitude, longtitude));
 			JsonNode rootNode = new ObjectMapper().readValue(addressFromGeocode, JsonNode.class);
 			JsonNode resultNode = rootNode.get("results").get(0);
-			String formattedAddress = resultNode.get("formatted_address").asText();
-			if (StringUtils.isNullOrEmpty(formattedAddress)) {
-				formattedAddress = "";
+			JsonNode address = resultNode.get("formatted_address");
+			String formattedAddress = "";
+			if (address != null) {
+				formattedAddress = address.asText();
 			}
 
 			int deviceId = Integer.parseInt(device);
 			Date receiveDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time);
-			GpsTrackingLocation gpsTrackingLocation = new GpsTrackingLocation(deviceId, receiveDate, longtitude,
-					latitude, formattedAddress);
+			GpsLocation gpsTrackingLocation = new GpsLocation(deviceId, receiveDate, longtitude, latitude,
+					formattedAddress);
 
 			long id = gpsTrackingLocationService.saveLocation(gpsTrackingLocation);
 

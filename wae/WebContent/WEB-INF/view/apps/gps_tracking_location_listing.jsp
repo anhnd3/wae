@@ -79,12 +79,19 @@
 				</a>
 			</div>
 			<!-- /.navbar-header -->
+			<ul class="nav navbar-top-links navbar-right">
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#" aria-expanded="false"> <i
+						class="fa fa-user fa-fw"></i><span> Tên người thực hiện</span>
+				</a>
+			</ul>
+			<!-- /.user -->
 			<div class="navbar-default sidebar" role="navigation">
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 						<li><a
 							href="${pageContext.request.contextPath }/apps/gps-tracking"><i
-								class="fa fa-location-arrow fa-fw"></i> Thống kê vị trí</a></li>
+								class="fa fa-location-arrow fa-fw"></i> Định vị vị trí</a></li>
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->
@@ -113,10 +120,9 @@
 								</select>
 							</div>
 							<div class="form-group col-lg-4">
-								<label>Kiểu thống kê</label> <select class="form-control"
-									id="type-report">
+								<label>Kiểu hiển thị</label> <select class="form-control"
+									disabled="disabled">
 									<option value="0">Tất cả</option>
-									<option value="1">Theo ngày</option>
 								</select>
 							</div>
 							<div class="form-group col-lg-4" style="display: none;">
@@ -141,7 +147,7 @@
 												<td>${tmpLocation.time }</td>
 												<td>${tmpLocation.address }</td>
 												<td><a href="javascript:void(0)"
-													onclick="viewMap('${tmpLocation.longtitude }', '${tmpLocation.latitude }')">
+													onclick="viewMap('${tmpLocation.latitude }', '${tmpLocation.longtitude }')">
 														<button type="button" class="btn btn-primary btn-xs">
 															<i class="fa fa-eye"></i>
 														</button>
@@ -184,7 +190,7 @@
 
 	<!-- DataTables JavaScript -->
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
+		src="${pageContext.request.contextPath }/resources/admin/vendor/datatables/js/jquery.dataTables.js"></script>
 	<script
 		src="${pageContext.request.contextPath }/resources/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 	<script
@@ -212,7 +218,7 @@
 								"oSearch" : {
 									"sSearch" : ""
 								},
-								"order": [[ 1, "desc" ]]
+								"order" : []
 							});
 					$('#type-report').change(function() {
 						var type = $(this).val();
@@ -234,17 +240,63 @@
 				});
 	</script>
 
-	<!-- Init google map here -->
+	<!-- Google map here -->
 	<script type="text/javascript">
 		var map;
+		var marker;
+		var geocoder;
+		var infowindow;
+
 		function initMap() {
+			geocoder = new google.maps.Geocoder();
+			infowindow = new google.maps.InfoWindow();
+
+			var longtitude = parseFloat('${lastLongtitude}');
+			var latitude = parseFloat('${lastLatitude}');
+			var myLatLng = {
+				lat : latitude,
+				lng : longtitude
+			};
+
+			// render google map with geocoding
 			map = new google.maps.Map(document.getElementById('google-maps'), {
-				center : {
-					lat : 10.7739855,
-					lng : 106.6898035
-				},
-				zoom : 10
+				center : myLatLng,
+				zoom : 16
 			});
+
+			// marker point in map
+			var marker = new google.maps.Marker({
+				map : map,
+				position : myLatLng
+			});
+		}
+
+		function viewMap(lat, lng) {
+			var latlng = {
+				lat : parseFloat(lat),
+				lng : parseFloat(lng)
+			};
+
+			geocoder.geocode({
+				'location' : latlng
+			}, function(results, status) {
+				if (status === 'OK') {
+					if (results[0]) {
+						map.setZoom(16);
+						var marker = new google.maps.Marker({
+							position : latlng,
+							map : map
+						});
+						infowindow.setContent(results[0].formatted_address);
+						infowindow.open(map, marker);
+					} else {
+						window.alert('Không có kết quả');
+					}
+				} else {
+					window.alert('Toạ độ không chính xác: ' + status);
+				}
+			});
+
 		}
 	</script>
 	<script type="text/javascript"
