@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.DigestUtils;
+import org.springframework.util.NumberUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +28,7 @@ public class GpsApiController {
 	private final int ERROR_CODE_PARAM_ERROR = -2;
 	private final int ERROR_CODE_DATABASE_ERROR = -3;
 
-	private final String SECRET_KEY = "f160ffc8ff677e2a10495d23e8f9e088";
+	// private final String SECRET_KEY = "f160ffc8ff677e2a10495d23e8f9e088";
 
 	private String apiGoogleAddress = "https://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s";
 
@@ -38,9 +38,8 @@ public class GpsApiController {
 	@RequestMapping(value = "/add", produces = "application/json;charset=UTF-8")
 	public String project(@RequestParam(value = "lng", defaultValue = "0") String longtitude,
 			@RequestParam(value = "lat", defaultValue = "0") String latitude,
-			@RequestParam(value = "device", defaultValue = "") String device,
-			@RequestParam(value = "time", defaultValue = "1970-01-01 00:00:01") String time,
-			@RequestParam(value = "cs", defaultValue = "") String checksum) {
+			@RequestParam(value = "device", defaultValue = "1") String device,
+			@RequestParam(value = "time", defaultValue = "1970-01-01 00:00:01") String time) {
 
 		try {
 
@@ -53,10 +52,24 @@ public class GpsApiController {
 				return mapper.writeValueAsString(result);
 			}
 
-			if (device.equals("") || !device.matches("\\d+")) {
+			double lng = 0, lat = 0;
+			try {
+				lng = NumberUtils.parseNumber(longtitude, Double.class);
+			} catch (Exception ex) {
+				ex.printStackTrace();
 				ObjectNode result = mapper.createObjectNode();
 				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
-				result.put("msg", "Device doesn't mismatch");
+				result.put("msg", "Longtitude doesn't mismatch");
+				return mapper.writeValueAsString(result);
+			}
+
+			try {
+				lat = NumberUtils.parseNumber(latitude, Double.class);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				ObjectNode result = mapper.createObjectNode();
+				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
+				result.put("msg", "Latitude doesn't mismatch");
 				return mapper.writeValueAsString(result);
 			}
 
@@ -67,23 +80,7 @@ public class GpsApiController {
 				return mapper.writeValueAsString(result);
 			}
 
-			if (checksum.equals("")) {
-				ObjectNode result = mapper.createObjectNode();
-				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
-				result.put("msg", "Checksum doesn't mismatch");
-				return mapper.writeValueAsString(result);
-			}
-
-			String cs = DigestUtils.md5DigestAsHex((SECRET_KEY + device + time).getBytes());
-			if (!cs.equals(checksum)) {
-				ObjectNode result = mapper.createObjectNode();
-				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
-				result.put("msg", "Checksum doesn't match");
-				return mapper.writeValueAsString(result);
-			}
-
-			String addressFromGeocode = new HttpClientUtils()
-					.get(String.format(apiGoogleAddress, latitude, longtitude));
+			String addressFromGeocode = new HttpClientUtils().get(String.format(apiGoogleAddress, lat, lng));
 			JsonNode rootNode = new ObjectMapper().readValue(addressFromGeocode, JsonNode.class);
 			JsonNode resultNode = rootNode.get("results").get(0);
 			JsonNode address = resultNode.get("formatted_address");
@@ -94,17 +91,16 @@ public class GpsApiController {
 
 			int deviceId = Integer.parseInt(device);
 			Date receiveDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time);
-			GpsLocation gpsTrackingLocation = new GpsLocation(deviceId, receiveDate, longtitude, latitude,
-					formattedAddress);
+			GpsLocation gpsLocation = new GpsLocation(deviceId, receiveDate, longtitude, latitude, formattedAddress);
 
-			long id = gpsTrackingLocationService.saveLocation(gpsTrackingLocation);
+			long id = gpsTrackingLocationService.saveLocation(gpsLocation);
 
 			ObjectNode result = mapper.createObjectNode();
 
 			if (id > 0) {
 				result.put("errorCode", ERROR_CODE_SUCCESSFUL);
 				result.put("msg", "Successful");
-				result.put("data", gpsTrackingLocation.toString());
+				result.put("data", gpsLocation.toString());
 			} else {
 				result.put("errorCode", ERROR_CODE_DATABASE_ERROR);
 				result.put("msg", "Database error");
