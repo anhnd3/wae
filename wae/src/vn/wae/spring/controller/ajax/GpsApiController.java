@@ -3,6 +3,7 @@ package vn.wae.spring.controller.ajax;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class GpsApiController {
 	public String project(@RequestParam(value = "lng", defaultValue = "0") String longtitude,
 			@RequestParam(value = "lat", defaultValue = "0") String latitude,
 			@RequestParam(value = "device", defaultValue = "1") String device,
-			@RequestParam(value = "time", defaultValue = "1970-01-01 00:00:01") String time) {
+			@RequestParam(value = "time", defaultValue = "19700101000001") String time) {
 
 		try {
 
@@ -73,7 +74,7 @@ public class GpsApiController {
 				return mapper.writeValueAsString(result);
 			}
 
-			if (time.equals("1970-01-01 00:00:01")) {
+			if (time.equals("19700101000001")) {
 				ObjectNode result = mapper.createObjectNode();
 				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
 				result.put("msg", "Time doesn't mismatch");
@@ -90,8 +91,11 @@ public class GpsApiController {
 			}
 
 			int deviceId = Integer.parseInt(device);
-			Date receiveDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(time);
-			GpsLocation gpsLocation = new GpsLocation(deviceId, receiveDate, longtitude, latitude, formattedAddress);
+			Date receiveDate = new SimpleDateFormat("yyyyMMddHHmmss").parse(time);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(receiveDate);
+			calendar.add(Calendar.HOUR_OF_DAY, 7);
+			GpsLocation gpsLocation = new GpsLocation(deviceId, calendar.getTime(), longtitude, latitude, formattedAddress);
 
 			long id = gpsTrackingLocationService.saveLocation(gpsLocation);
 

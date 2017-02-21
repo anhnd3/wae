@@ -27,6 +27,7 @@ public class AppGpsTrackingController {
 			GpsLocation lastLocation = locations.get(0);
 			model.addAttribute("lastLongtitude", lastLocation.getLongtitude());
 			model.addAttribute("lastLatitude", lastLocation.getLatitude());
+			model.addAttribute("lastAddress", lastLocation.getAddress());
 		} else {
 			model.addAttribute("lastLatitude", defaultLat);
 			model.addAttribute("lastLongtitude", defaultLng);

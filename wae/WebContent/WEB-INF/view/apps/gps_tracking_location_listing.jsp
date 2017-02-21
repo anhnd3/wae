@@ -269,6 +269,9 @@
 				map : map,
 				position : myLatLng
 			});
+			
+			infowindow.setContent('${lastAddress}');
+			infowindow.open(map, marker);
 		}
 
 		function viewMap(lat, lng) {
