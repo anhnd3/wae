@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Hệ thống hỗ trợ tham gia giao thông an toàn</title>
+<title>Hệ thống theo dõi vị trí thời gian thực</title>
 
 <!-- Bootstrap Core CSS -->
 <link
@@ -72,9 +72,9 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath }/apps/gps-tracking"
-					style="padding: 0px;"> <img alt="logo-quangtrung"
-					src="${pageContext.request.contextPath }/resources/admin/apps/images/logocqt.png"
+					href="${pageContext.request.contextPath }/apps/location"
+					style="padding: 0px;"> <img alt="logo-wae"
+					src="${pageContext.request.contextPath }/resources/mainsite/images/logo.png"
 					style="width: 250px; height: 50px;">
 				</a>
 			</div>
@@ -82,7 +82,7 @@
 			<ul class="nav navbar-top-links navbar-right">
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#" aria-expanded="false"> <i
-						class="fa fa-user fa-fw"></i><span> Phan Hoàng Phước - Nguyễn Văn Phước</span>
+						class="fa fa-user fa-fw"></i><span> WAE</span>
 				</a>
 			</ul>
 			<!-- /.user -->
@@ -90,8 +90,12 @@
 				<div class="sidebar-nav navbar-collapse">
 					<ul class="nav" id="side-menu">
 						<li><a
-							href="${pageContext.request.contextPath }/apps/gps-tracking"><i
-								class="fa fa-location-arrow fa-fw"></i> Định vị vị trí</a></li>
+							href="${pageContext.request.contextPath }/apps/location"><i
+								class="fa fa-location-arrow fa-fw"></i> Theo dõi vị trí</a></li>
+						<li><a href="javascript:void(0);"><i
+								class="fa fa-mobile-phone fa-fw"></i> Quản lý thiết bị</a></li>
+						<li><a href="javascript:void(0);"><i
+								class="fa fa-map-marker fa-fw"></i> Tìm kiếm địa điểm</a></li>
 					</ul>
 				</div>
 				<!-- /.sidebar-collapse -->
@@ -103,8 +107,8 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Hệ thống hỗ trợ tham gia giao thông an
-						toàn</h1>
+					<h1 class="page-header">Hệ thống theo dõi vị trí thời gian
+						thực</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
@@ -121,8 +125,9 @@
 							</div>
 							<div class="form-group col-lg-4">
 								<label>Kiểu hiển thị</label> <select class="form-control"
-									disabled="disabled">
+									id="report-type">
 									<option value="0">Tất cả</option>
+									<option value="1">Theo ngày</option>
 								</select>
 							</div>
 							<div class="form-group col-lg-4" style="display: none;">
@@ -220,7 +225,7 @@
 								},
 								"order" : []
 							});
-					$('#type-report').change(function() {
+					$('#report-type').change(function() {
 						var type = $(this).val();
 						switch (parseInt(type)) {
 						case 1:
@@ -269,7 +274,7 @@
 				map : map,
 				position : myLatLng
 			});
-			
+
 			infowindow.setContent('${lastAddress}');
 			infowindow.open(map, marker);
 		}
