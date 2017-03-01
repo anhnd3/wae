@@ -82,7 +82,8 @@
 			<ul class="nav navbar-top-links navbar-right">
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#" aria-expanded="false"> <i
-						class="fa fa-user fa-fw"></i><span> Phan Hoàng Phước - Nguyễn Văn Phước</span>
+						class="fa fa-user fa-fw"></i><span> Phan Hoàng Phước -
+							Nguyễn Văn Phước</span>
 				</a>
 			</ul>
 			<!-- /.user -->
@@ -113,19 +114,22 @@
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading" style="min-height: 80px;">
-							<div class="form-group col-lg-4">
-								<label>Thiết bị</label> <select class="form-control"
-									disabled="disabled">
+							<div class="form-group col-lg-3">
+								<label>Thiết bị
+									<button type="button" class="btn btn-primary btn-xs">
+										<i class="fa fa-plus"></i>
+									</button>
+								</label> <select class="form-control">
 									<option>GPS-001</option>
 								</select>
 							</div>
-							<div class="form-group col-lg-4">
+							<div class="form-group col-lg-3">
 								<label>Kiểu hiển thị</label> <select class="form-control"
 									disabled="disabled">
 									<option value="0">Tất cả</option>
 								</select>
 							</div>
-							<div class="form-group col-lg-4" style="display: none;">
+							<div class="form-group col-lg-3" style="display: none;">
 								<label>Ngày</label> <input class="form-control" id="report-date">
 							</div>
 						</div>
@@ -269,7 +273,7 @@
 				map : map,
 				position : myLatLng
 			});
-			
+
 			infowindow.setContent('${lastAddress}');
 			infowindow.open(map, marker);
 		}
