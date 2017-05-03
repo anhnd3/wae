@@ -11,7 +11,6 @@ import vn.wae.spring.entity.GpsLocation;
 import vn.wae.spring.service.GpsTrackingLocationService;
 
 @Controller
-@RequestMapping(value = "/apps")
 public class AppsController {
 
 	private double defaultLat = 10.771918;
@@ -20,7 +19,7 @@ public class AppsController {
 	@Autowired
 	private GpsTrackingLocationService gpsTrackingLocationService;
 
-	@RequestMapping(value = "/gps-tracking")
+	@RequestMapping(value = "/apps/gps-tracking")
 	public String gpsTracking(Model model) {
 		List<GpsLocation> locations = gpsTrackingLocationService.getLocations(0, 1000);
 		if (locations != null && !locations.isEmpty()) {
@@ -37,7 +36,7 @@ public class AppsController {
 		return "apps/gps_tracking_location_listing";
 	}
 
-	@RequestMapping(value = "/location")
+	@RequestMapping(value = "/apps/location")
 	public String gpsTrackingLocation(Model model) {
 		List<GpsLocation> locations = gpsTrackingLocationService.getLocations(0, 1000);
 		if (locations != null && !locations.isEmpty()) {
@@ -54,9 +53,9 @@ public class AppsController {
 		return "apps/gps_tracking_location_listing2";
 	}
 
-	@RequestMapping(value = "/mec")
+	@RequestMapping(value = "/apps/he-thong-giam-sat-vuon-thong-minh")
 	public String monitoringEnvironmentalCondition(Model model) {
-		return "apps/monitoring_environmental_environmet";
+		return "apps/monitor_env_condition";
 	}
 
 }
