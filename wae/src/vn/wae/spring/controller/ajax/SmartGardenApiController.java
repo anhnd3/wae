@@ -46,11 +46,11 @@ public class SmartGardenApiController {
 				return mapper.writeValueAsString(result);
 			}
 
-			int dripTimeRunning = 0, sprayTimeRunning = 0;
+			double dripTimeRunning = 0, sprayTimeRunning = 0;
 			boolean isDripError, isSprayError;
 			try {
-				dripTimeRunning = NumberUtils.parseNumber(dripTime, Integer.class);
-				sprayTimeRunning = NumberUtils.parseNumber(sprayTime, Integer.class);
+				dripTimeRunning = NumberUtils.parseNumber(dripTime, Double.class);
+				sprayTimeRunning = NumberUtils.parseNumber(sprayTime, Double.class);
 
 				isDripError = NumberUtils.parseNumber(dripError, Integer.class) == 1;
 				isSprayError = NumberUtils.parseNumber(sprayError, Integer.class) == 1;

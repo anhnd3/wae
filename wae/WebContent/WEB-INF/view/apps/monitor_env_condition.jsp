@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="vn.wae.spring.utils.*"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,6 +55,26 @@
 	href="${pageContext.request.contextPath }/resources/admin/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
+<!-- Custom #page-wrapper -->
+<style type="text/css">
+#page-wrapper {
+	margin: 0;
+}
+
+@media ( min-width : 768px) {
+	#page-wrapper {
+		position: inherit;
+		margin: 0;
+		padding: 0 30px;
+		border-left: 1px solid #e7e7e7;
+	}
+}
+
+.pull-left {
+	font-weight: bold;
+}
+</style>
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -69,39 +90,21 @@
 		<nav class="navbar navbar-default navbar-static-top" role="navigation"
 			style="margin-bottom: 0;">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
 				<a class="navbar-brand"
 					href="${pageContext.request.contextPath }/apps/mec"
-					style="padding: 0px 15px;"> <img
-					style="height: 50px; width: 50px; float:left;" alt="logo wae"
-					src="${pageContext.request.contextPath }/resources/mainsite/images/logo-wae.png">
-					<h4 style="line-height: 30px; margin-left: 60px;">Hệ Thống Giám Sát Vườn Thông Minh</h4>
+					style="padding: 0px 15px;"> <span
+					style="font-size: 18px; line-height: 50px; font-weight: bold;">Hệ
+						Thống Giám Sát Vườn Thông Minh</span>
 				</a>
 			</div>
 			<!-- /.navbar-header -->
 			<ul class="nav navbar-top-links navbar-right">
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="javascript:void(0);"
-					aria-expanded="false"> <i class="fa fa-bell fa-fw"></i><span>
-							Cập nhật lần cuối: 2017-05-01 12:00:00</span>
+				<li><a href="javascript:void(0);"> <i
+						class="fa fa-bell fa-fw"></i><span> Cập nhật lần cuối:
+							${TimeUtils.timestampToString(lastStatus.time, "HH:mm:ss - dd/MM/yyyy") }</span>
 				</a>
 			</ul>
 			<!-- /.user -->
-			<div class="navbar-default sidebar" role="navigation">
-				<div class="sidebar-nav navbar-collapse">
-					<ul class="nav" id="side-menu">
-						<li><a href="${pageContext.request.contextPath }/apps/mec"><i
-								class="fa fa-location-arrow fa-fw"></i> Tổng hợp thông tin</a></li>
-					</ul>
-				</div>
-				<!-- /.sidebar-collapse -->
-			</div>
-			<!-- /.navbar-static-side -->
 		</nav>
 		<!-- /Navigation -->
 
@@ -114,7 +117,7 @@
 			</div>
 			<!-- /.row -->
 			<div class="row">
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-4 col-md-6">
 					<div class="panel panel-red">
 						<div class="panel-heading">
 							<div class="row">
@@ -122,43 +125,42 @@
 									<i class="fa fa-thermometer-half fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class="huge">26</div>
+									<div class="huge">${lastStatus.temperature }</div>
 									<div>(Đơn vị: độ C)</div>
 								</div>
 							</div>
 						</div>
-						<a href="javascript:void(0)">
+						<a>
 							<div class="panel-footer">
-								<span class="pull-left">Nhiệt Độ</span> <span class="pull-right"><i
-									class="fa fa-arrow-circle-right"></i></span>
+								<span class="pull-left">Nhiệt Độ</span>
 								<div class="clearfix"></div>
 							</div>
 						</a>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-4 col-md-6">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-xs-3">
-									<i class="fa fa-tint fa-5x"></i>
+									<i class="fa fa-cloud fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class="huge">12</div>
+									<div class="huge">${lastStatus.airHumidity }</div>
 									<div>(Đơn vị: %)</div>
 								</div>
 							</div>
 						</div>
-						<a href="javascript:void(0);">
+						<a>
 							<div class="panel-footer">
-								<span class="pull-left">Độ ẩm môi trường</span> <span
-									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+								<span class="pull-left">Độ ẩm môi trường</span>
 								<div class="clearfix"></div>
 							</div>
 						</a>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
+
+				<div class="col-lg-4 col-md-6">
 					<div class="panel panel-primary">
 						<div class="panel-heading">
 							<div class="row">
@@ -166,15 +168,14 @@
 									<i class="fa fa-globe fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class="huge">40</div>
+									<div class="huge">${lastStatus.groundHumidity }</div>
 									<div>(Đơn vị: %)</div>
 								</div>
 							</div>
 						</div>
-						<a href="javascript:void(0);">
+						<a>
 							<div class="panel-footer">
-								<span class="pull-left">Độ ẩm đất</span> <span
-									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+								<span class="pull-left">Độ ẩm đất</span>
 								<div class="clearfix"></div>
 							</div>
 						</a>
@@ -185,38 +186,83 @@
 						<div class="panel-heading">
 							<div class="row">
 								<div class="col-xs-3">
-									<i class="fa fa-toggle-on fa-5x"></i>
+									<i class="fa fa-tint fa-5x"></i>
 								</div>
 								<div class="col-xs-9 text-right">
-									<div class="huge">ON</div>
-									<div>(Máy bơm)</div>
+									<div class="huge">${lastStatus.dripTime }</div>
+									<div>(Đơn vị: giây)</div>
 								</div>
 							</div>
 						</div>
-						<a href="javascript:void(0)">
+						<a>
 							<div class="panel-footer">
-								<span class="pull-left">Lịch sử hoạt động</span> <span
-									class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+								<span class="pull-left">Thời gian phun nhỏ giọt</span>
 								<div class="clearfix"></div>
 							</div>
 						</a>
 					</div>
 				</div>
-				<div class="col-lg-12 col-md-12 col-xm-12 col-xs-12">
-					<div style="width: 30%; margin: auto;">
-						<div class="panel panel-danger">
-							<div class="panel-heading">
-								<div class="row">
-									<div class="col-xs-3">
-										<i class="fa fa-exclamation-triangle fa-5x"></i>
-									</div>
-									<div class="col-xs-9 text-right">
-										<div class="huge">Lỗi</div>
-										<div>(Máy bơm)</div>
-									</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="panel panel-danger">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-3">
+									<i class="fa fa-exclamation-triangle fa-5x"></i>
+								</div>
+								<div class="col-xs-9 text-right">
+									<div class="huge">Lỗi</div>
+									<div style="height: 20px;"></div>
 								</div>
 							</div>
 						</div>
+						<a>
+							<div class="panel-footer">
+								<span class="pull-left">Phun nhỏ giọt</span>
+								<div class="clearfix"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="panel panel-green">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-3">
+									<i class="fa fa-shower fa-5x"></i>
+								</div>
+								<div class="col-xs-9 text-right">
+									<div class="huge">${lastStatus.sprayTime }</div>
+									<div>(Đơn vị: giây)</div>
+								</div>
+							</div>
+						</div>
+						<a>
+							<div class="panel-footer">
+								<span class="pull-left">Thời gian phun sương</span>
+								<div class="clearfix"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-3">
+									<i class="fa fa-thumbs-up fa-5x"></i>
+								</div>
+								<div class="col-xs-9 text-right">
+									<div class="huge">Tốt</div>
+									<div style="height: 20px;"></div>
+								</div>
+							</div>
+						</div>
+						<a>
+							<div class="panel-footer">
+								<span class="pull-left">Phun sương</span>
+								<div class="clearfix"></div>
+							</div>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -436,13 +482,69 @@
 							period : '2017-05-01 12:00:00',
 							air : 100,
 							ground : 10
+						}, {
+							period : '2017-05-01 13:00:00',
+							air : 28,
+							ground : 30
+						}, {
+							period : '2017-05-01 14:00:00',
+							air : 29,
+							ground : 31
+						}, {
+							period : '2017-05-01 15:00:00',
+							air : 28,
+							ground : 30
+						}, {
+							period : '2017-05-01 16:00:00',
+							air : 27,
+							ground : 29
+						}, {
+							period : '2017-05-01 17:00:00',
+							air : 28,
+							ground : 28
+						}, {
+							period : '2017-05-01 18:00:00',
+							air : 32,
+							ground : 40
+						}, {
+							period : '2017-05-01 19:00:00',
+							air : 56,
+							ground : 62
+						}, {
+							period : '2017-05-01 20:00:00',
+							air : 45,
+							ground : 50
+						}, {
+							period : '2017-05-01 21:00:00',
+							air : 60,
+							ground : 42
+						}, {
+							period : '2017-05-01 22:00:00',
+							air : 54,
+							ground : 55
+						}, {
+							period : '2017-05-01 23:00:00',
+							air : 10,
+							ground : 34
+						}, {
+							period : '2017-05-02 00:00:00',
+							air : 67,
+							ground : 89
+						}, {
+							period : '2017-05-02 01:00:00',
+							air : 100,
+							ground : 10
+						}, {
+							period : '2017-05-02 01:02:00',
+							air : 100,
+							ground : 10
 						} ],
 						xkey : 'period',
 						ykeys : [ 'air', 'ground' ],
 						labels : [ "Độ ẩm không khí", "Độ ẩm đất" ],
 						pointSize : 1,
 						hideHover : 'auto',
-						resize : true
+						resize : false
 					});
 				});
 	</script>

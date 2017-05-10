@@ -36,13 +36,13 @@ public class SmartGardenStatus implements Serializable {
 	String groundHumidity;
 
 	@Column(name = "`drip_time`")
-	int dripTime;
+	double dripTime;
 
 	@Column(name = "`drip_error`", columnDefinition = "TINYINT(1)")
 	boolean isDripError;
 
 	@Column(name = "`spray_time`")
-	int sprayTime;
+	double sprayTime;
 
 	@Column(name = "`spray_error`", columnDefinition = "TINYINT(1)")
 	boolean isSprayError;
@@ -51,7 +51,7 @@ public class SmartGardenStatus implements Serializable {
 	}
 
 	public SmartGardenStatus(long id, long time, String temperature, String airHumidity, String groundHumidity,
-			int droppingsTime, boolean isDroppingsError, int sprayTime, boolean isSprayError) {
+			double droppingsTime, boolean isDroppingsError, double sprayTime, boolean isSprayError) {
 		super();
 		this.id = id;
 		this.time = time;
@@ -65,7 +65,7 @@ public class SmartGardenStatus implements Serializable {
 	}
 
 	public SmartGardenStatus(long time, String temperature, String airHumidity, String groundHumidity,
-			int droppingsTime, boolean isDroppingsError, int sprayTime, boolean isSprayError) {
+			double droppingsTime, boolean isDroppingsError, double sprayTime, boolean isSprayError) {
 		super();
 		this.time = time;
 		this.temperature = temperature;
@@ -117,27 +117,27 @@ public class SmartGardenStatus implements Serializable {
 		this.groundHumidity = groundHumidity;
 	}
 
-	public int getDroppingsTime() {
+	public double getDripTime() {
 		return dripTime;
 	}
 
-	public void setDroppingsTime(int droppingsTime) {
-		this.dripTime = droppingsTime;
+	public void setDripTime(double dripTime) {
+		this.dripTime = dripTime;
 	}
 
-	public boolean isDroppingsError() {
+	public boolean isDripError() {
 		return isDripError;
 	}
 
-	public void setDroppingsError(boolean isDroppingsError) {
-		this.isDripError = isDroppingsError;
+	public void setDripError(boolean isDripError) {
+		this.isDripError = isDripError;
 	}
 
-	public int getSprayTime() {
+	public double getSprayTime() {
 		return sprayTime;
 	}
 
-	public void setSprayTime(int sprayTime) {
+	public void setSprayTime(double sprayTime) {
 		this.sprayTime = sprayTime;
 	}
 

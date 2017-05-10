@@ -1,4 +1,4 @@
-package vn.wae.spring.controller;
+package vn.wae.spring.controller.app;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import vn.wae.spring.entity.GpsLocation;
 import vn.wae.spring.service.GpsTrackingLocationService;
 
 @Controller
-public class AppsController {
+public class AppsGpsController {
 
 	private double defaultLat = 10.771918;
 	private double defaultLng = 106.6961583;
@@ -52,10 +52,4 @@ public class AppsController {
 
 		return "apps/gps_tracking_location_listing2";
 	}
-
-	@RequestMapping(value = "/apps/he-thong-giam-sat-vuon-thong-minh")
-	public String monitoringEnvironmentalCondition(Model model) {
-		return "apps/monitor_env_condition";
-	}
-
 }
