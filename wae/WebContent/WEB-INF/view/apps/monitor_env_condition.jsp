@@ -202,27 +202,53 @@
 						</a>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="panel panel-danger">
-						<div class="panel-heading">
-							<div class="row">
-								<div class="col-xs-3">
-									<i class="fa fa-exclamation-triangle fa-5x"></i>
-								</div>
-								<div class="col-xs-9 text-right">
-									<div class="huge">Lỗi</div>
-									<div style="height: 20px;"></div>
+				<c:if test="${lastStatus.dripError }">
+					<div class="col-lg-3 col-md-6">
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-xs-3">
+										<i class="fa fa-exclamation-triangle fa-5x"></i>
+									</div>
+									<div class="col-xs-9 text-right">
+										<div class="huge">Lỗi</div>
+										<div style="height: 20px;"></div>
+									</div>
 								</div>
 							</div>
+							<a>
+								<div class="panel-footer">
+									<span class="pull-left">Hệ thống phun nhỏ giọt</span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
 						</div>
-						<a>
-							<div class="panel-footer">
-								<span class="pull-left">Phun nhỏ giọt</span>
-								<div class="clearfix"></div>
-							</div>
-						</a>
 					</div>
-				</div>
+				</c:if>
+				<c:if test="${not lastStatus.dripError }">
+					<div class="col-lg-3 col-md-6">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-xs-3">
+										<i class="fa fa-thumbs-up fa-5x"></i>
+									</div>
+									<div class="col-xs-9 text-right">
+										<div class="huge">Tốt</div>
+										<div style="height: 20px;"></div>
+									</div>
+								</div>
+							</div>
+							<a>
+								<div class="panel-footer">
+									<span class="pull-left">Hệ thống phun nhỏ giọt</span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</c:if>
+
 				<div class="col-lg-3 col-md-6">
 					<div class="panel panel-green">
 						<div class="panel-heading">
@@ -244,27 +270,52 @@
 						</a>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="panel panel-info">
-						<div class="panel-heading">
-							<div class="row">
-								<div class="col-xs-3">
-									<i class="fa fa-thumbs-up fa-5x"></i>
-								</div>
-								<div class="col-xs-9 text-right">
-									<div class="huge">Tốt</div>
-									<div style="height: 20px;"></div>
+				<c:if test="${lastStatus.sprayError }">
+					<div class="col-lg-3 col-md-6">
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-xs-3">
+										<i class="fa fa-exclamation-triangle fa-5x"></i>
+									</div>
+									<div class="col-xs-9 text-right">
+										<div class="huge">Lỗi</div>
+										<div style="height: 20px;"></div>
+									</div>
 								</div>
 							</div>
+							<a>
+								<div class="panel-footer">
+									<span class="pull-left">Hệ thống phun sương</span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
 						</div>
-						<a>
-							<div class="panel-footer">
-								<span class="pull-left">Phun sương</span>
-								<div class="clearfix"></div>
-							</div>
-						</a>
 					</div>
-				</div>
+				</c:if>
+				<c:if test="${not lastStatus.sprayError }">
+					<div class="col-lg-3 col-md-6">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<div class="row">
+									<div class="col-xs-3">
+										<i class="fa fa-thumbs-up fa-5x"></i>
+									</div>
+									<div class="col-xs-9 text-right">
+										<div class="huge">Tốt</div>
+										<div style="height: 20px;"></div>
+									</div>
+								</div>
+							</div>
+							<a>
+								<div class="panel-footer">
+									<span class="pull-left">Hệ thống phun sương</span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</c:if>
 			</div>
 			<!-- /.row -->
 			<div class="row">
@@ -275,19 +326,10 @@
 			</div>
 			<!-- /.row -->
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<i class="fa fa-bar-chart-o fa-fw"></i> Đồ thị nhiệt độ
-							<div class="pull-right">
-								<div class="btn-group">
-									<button type="button"
-										class="btn btn-default btn-xs dropdown-toggle"
-										data-toggle="dropdown">
-										Actions <span class="caret"></span>
-									</button>
-								</div>
-							</div>
 						</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
@@ -296,20 +338,11 @@
 						<!-- /.panel-body -->
 					</div>
 				</div>
-				<!-- /.end col-lg-6 -->
-				<div class="col-lg-6">
+				<!-- /.end col-lg-12 -->
+				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<i class="fa fa-bar-chart-o fa-fw"></i> Đồ thị độ ẩm
-							<div class="pull-right">
-								<div class="btn-group">
-									<button type="button"
-										class="btn btn-default btn-xs dropdown-toggle"
-										data-toggle="dropdown">
-										Actions <span class="caret"></span>
-									</button>
-								</div>
-							</div>
 						</div>
 						<!-- /.panel-heading -->
 						<div class="panel-body">
@@ -318,7 +351,7 @@
 						<!-- /.panel-body -->
 					</div>
 				</div>
-				<!-- /.end col-lg-6 -->
+				<!-- /.end col-lg-12 -->
 			</div>
 			<!-- /.row -->
 		</div>
@@ -378,48 +411,11 @@
 								"order" : []
 							});
 
+					var temperatureData = JSON.parse('${temperatureJson}');
+					var humidityData = JSON.parse('${humidityJson}');
 					Morris.Line({
 						element : 'morris-area-chart-temperature',
-						data : [ {
-							period : '2017-05-01 00:00:00',
-							temperature : 28,
-						}, {
-							period : '2017-05-01 01:00:00',
-							temperature : 26,
-						}, {
-							period : '2017-05-01 02:00:00',
-							temperature : 24,
-						}, {
-							period : '2017-05-01 03:00:00',
-							temperature : 24,
-						}, {
-							period : '2017-05-01 04:00:00',
-							temperature : 24,
-						}, {
-							period : '2017-05-01 05:00:00',
-							temperature : 25,
-						}, {
-							period : '2017-05-01 06:00:00',
-							temperature : 26,
-						}, {
-							period : '2017-05-01 07:00:00',
-							temperature : 27,
-						}, {
-							period : '2017-05-01 08:00:00',
-							temperature : 28,
-						}, {
-							period : '2017-05-01 09:00:00',
-							temperature : 28,
-						}, {
-							period : '2017-05-01 10:00:00',
-							temperature : 30,
-						}, {
-							period : '2017-05-01 11:00:00',
-							temperature : 30,
-						}, {
-							period : '2017-05-01 12:00:00',
-							temperature : 33,
-						} ],
+						data : temperatureData,
 						xkey : 'period',
 						ykeys : [ 'temperature' ],
 						labels : [ 'Nhiệt độ' ],
@@ -430,115 +426,7 @@
 
 					Morris.Line({
 						element : 'morris-area-chart-humidity',
-						data : [ {
-							period : '2017-05-01 00:00:00',
-							air : 28,
-							ground : 30
-						}, {
-							period : '2017-05-01 01:00:00',
-							air : 29,
-							ground : 31
-						}, {
-							period : '2017-05-01 02:00:00',
-							air : 28,
-							ground : 30
-						}, {
-							period : '2017-05-01 03:00:00',
-							air : 27,
-							ground : 29
-						}, {
-							period : '2017-05-01 04:00:00',
-							air : 28,
-							ground : 28
-						}, {
-							period : '2017-05-01 05:00:00',
-							air : 32,
-							ground : 40
-						}, {
-							period : '2017-05-01 06:00:00',
-							air : 56,
-							ground : 62
-						}, {
-							period : '2017-05-01 07:00:00',
-							air : 45,
-							ground : 50
-						}, {
-							period : '2017-05-01 08:00:00',
-							air : 60,
-							ground : 42
-						}, {
-							period : '2017-05-01 09:00:00',
-							air : 54,
-							ground : 55
-						}, {
-							period : '2017-05-01 10:00:00',
-							air : 10,
-							ground : 34
-						}, {
-							period : '2017-05-01 11:00:00',
-							air : 67,
-							ground : 89
-						}, {
-							period : '2017-05-01 12:00:00',
-							air : 100,
-							ground : 10
-						}, {
-							period : '2017-05-01 13:00:00',
-							air : 28,
-							ground : 30
-						}, {
-							period : '2017-05-01 14:00:00',
-							air : 29,
-							ground : 31
-						}, {
-							period : '2017-05-01 15:00:00',
-							air : 28,
-							ground : 30
-						}, {
-							period : '2017-05-01 16:00:00',
-							air : 27,
-							ground : 29
-						}, {
-							period : '2017-05-01 17:00:00',
-							air : 28,
-							ground : 28
-						}, {
-							period : '2017-05-01 18:00:00',
-							air : 32,
-							ground : 40
-						}, {
-							period : '2017-05-01 19:00:00',
-							air : 56,
-							ground : 62
-						}, {
-							period : '2017-05-01 20:00:00',
-							air : 45,
-							ground : 50
-						}, {
-							period : '2017-05-01 21:00:00',
-							air : 60,
-							ground : 42
-						}, {
-							period : '2017-05-01 22:00:00',
-							air : 54,
-							ground : 55
-						}, {
-							period : '2017-05-01 23:00:00',
-							air : 10,
-							ground : 34
-						}, {
-							period : '2017-05-02 00:00:00',
-							air : 67,
-							ground : 89
-						}, {
-							period : '2017-05-02 01:00:00',
-							air : 100,
-							ground : 10
-						}, {
-							period : '2017-05-02 01:02:00',
-							air : 100,
-							ground : 10
-						} ],
+						data : humidityData,
 						xkey : 'period',
 						ykeys : [ 'air', 'ground' ],
 						labels : [ "Độ ẩm không khí", "Độ ẩm đất" ],

@@ -39,42 +39,42 @@ public class SmartGardenStatus implements Serializable {
 	double dripTime;
 
 	@Column(name = "`drip_error`", columnDefinition = "TINYINT(1)")
-	boolean isDripError;
+	boolean dripError;
 
 	@Column(name = "`spray_time`")
 	double sprayTime;
 
 	@Column(name = "`spray_error`", columnDefinition = "TINYINT(1)")
-	boolean isSprayError;
+	boolean sprayError;
 
 	public SmartGardenStatus() {
 	}
 
 	public SmartGardenStatus(long id, long time, String temperature, String airHumidity, String groundHumidity,
-			double droppingsTime, boolean isDroppingsError, double sprayTime, boolean isSprayError) {
+			double dripTime, boolean isDripError, double sprayTime, boolean isSprayError) {
 		super();
 		this.id = id;
 		this.time = time;
 		this.temperature = temperature;
 		this.airHumidity = airHumidity;
 		this.groundHumidity = groundHumidity;
-		this.dripTime = droppingsTime;
-		this.isDripError = isDroppingsError;
+		this.dripTime = dripTime;
+		this.dripError = isDripError;
 		this.sprayTime = sprayTime;
-		this.isSprayError = isSprayError;
+		this.sprayError = isSprayError;
 	}
 
-	public SmartGardenStatus(long time, String temperature, String airHumidity, String groundHumidity,
-			double droppingsTime, boolean isDroppingsError, double sprayTime, boolean isSprayError) {
+	public SmartGardenStatus(long time, String temperature, String airHumidity, String groundHumidity, double dripTime,
+			boolean isDripError, double sprayTime, boolean isSprayError) {
 		super();
 		this.time = time;
 		this.temperature = temperature;
 		this.airHumidity = airHumidity;
 		this.groundHumidity = groundHumidity;
-		this.dripTime = droppingsTime;
-		this.isDripError = isDroppingsError;
+		this.dripTime = dripTime;
+		this.dripError = isDripError;
 		this.sprayTime = sprayTime;
-		this.isSprayError = isSprayError;
+		this.sprayError = isSprayError;
 	}
 
 	public long getId() {
@@ -126,11 +126,11 @@ public class SmartGardenStatus implements Serializable {
 	}
 
 	public boolean isDripError() {
-		return isDripError;
+		return dripError;
 	}
 
-	public void setDripError(boolean isDripError) {
-		this.isDripError = isDripError;
+	public void setDripError(boolean dripError) {
+		this.dripError = dripError;
 	}
 
 	public double getSprayTime() {
@@ -142,11 +142,11 @@ public class SmartGardenStatus implements Serializable {
 	}
 
 	public boolean isSprayError() {
-		return isSprayError;
+		return sprayError;
 	}
 
-	public void setSprayError(boolean isSprayError) {
-		this.isSprayError = isSprayError;
+	public void setSprayError(boolean sprayError) {
+		this.sprayError = sprayError;
 	}
 
 	public static long getSerialversionuid() {
@@ -157,7 +157,7 @@ public class SmartGardenStatus implements Serializable {
 	public String toString() {
 		return "SmartGardenStatus [id=" + id + ", time=" + time + ", temperature=" + temperature + ", airHumidity="
 				+ airHumidity + ", groundHumidity=" + groundHumidity + ", dripTime=" + dripTime + ", isDripError="
-				+ isDripError + ", sprayTime=" + sprayTime + ", isSprayError=" + isSprayError + "]";
+				+ dripError + ", sprayTime=" + sprayTime + ", isSprayError=" + sprayError + "]";
 	}
 
 }
