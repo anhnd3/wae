@@ -434,6 +434,20 @@
 						hideHover : 'auto',
 						resize : false
 					});
+
+					setInterval(function() {
+						$.ajax({
+							type : "GET",
+							url : "/apps/smart-garden/api/isNew",
+							dataType : "application/json",
+							success : function(resp) {
+								if (resp.data == "true") {
+									window.location.reload();
+								}
+							}
+						});
+					}, 5000);
+
 				});
 	</script>
 </body>

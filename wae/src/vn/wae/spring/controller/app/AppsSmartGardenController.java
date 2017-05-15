@@ -52,13 +52,30 @@ public class AppsSmartGardenController {
 		for (SmartGardenStatus status : statusInDays) {
 			ObjectNode temperatureObject = temperatureMapper.createObjectNode();
 			temperatureObject.put("period", TimeUtils.timestampToString(status.getTime(), "dd-MM-yyyy HH:mm:ss"));
-			temperatureObject.put("temperature", NumberUtils.parseNumber(status.getTemperature(), Double.class));
+			double temperature;
+			try{
+				temperature = NumberUtils.parseNumber(status.getTemperature(), Double.class);
+			}catch(Exception ex) {
+				temperature = 0;
+			}
+			temperatureObject.put("temperature", temperature);
 			temperatureArray.add(temperatureObject);
 
 			ObjectNode humidityObject = temperatureMapper.createObjectNode();
+			double airHumidity, groundHumidity;
+			try{
+				airHumidity = NumberUtils.parseNumber(status.getAirHumidity(), Double.class);
+			}catch(Exception ex){
+				airHumidity = 0;
+			}
+			try{
+				groundHumidity = NumberUtils.parseNumber(status.getGroundHumidity(), Double.class);
+			}catch(Exception ex){
+				groundHumidity = 0;
+			}
 			humidityObject.put("period", TimeUtils.timestampToString(status.getTime(), "dd-MM-yyyy HH:mm:ss"));
-			humidityObject.put("air", NumberUtils.parseNumber(status.getAirHumidity(), Double.class));
-			humidityObject.put("ground", NumberUtils.parseNumber(status.getGroundHumidity(), Double.class));
+			humidityObject.put("air", airHumidity);
+			humidityObject.put("ground", groundHumidity);
 			humidityArray.add(humidityObject);
 		}
 

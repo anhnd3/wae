@@ -23,6 +23,8 @@ public class SmartGardenApiController {
 	private final int ERROR_CODE_PARAM_ERROR = -2;
 	private final int ERROR_CODE_DATABASE_ERROR = -3;
 
+	public static volatile boolean IS_NEW_STATUS_RECORD = false;
+
 	@Autowired
 	SmartGardenStatusService smartGardenStatusService;
 
@@ -39,7 +41,8 @@ public class SmartGardenApiController {
 
 			ObjectMapper mapper = new ObjectMapper();
 
-			if (temperature.equals("0") || airHumidity.equals("0") || groundHumidity.equals("0")) {
+			if (temperature == "nan" || airHumidity == "nan" || groundHumidity == "nan" || dripTime == "nan"
+					|| dripError == "nan" || sprayTime == "nan" || sprayError == "nan") {
 				ObjectNode result = mapper.createObjectNode();
 				result.put("errorCode", ERROR_CODE_PARAM_ERROR);
 				result.put("msg", "Param error");
@@ -75,10 +78,32 @@ public class SmartGardenApiController {
 				result.put("errorCode", ERROR_CODE_SUCCESSFUL);
 				result.put("msg", "Successful");
 				result.put("data", status.toString());
+				IS_NEW_STATUS_RECORD = true;
 			} else {
 				result.put("errorCode", ERROR_CODE_DATABASE_ERROR);
 				result.put("msg", "Database error");
 			}
+			return mapper.writeValueAsString(result);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return "{\"errorCode\": " + ERROR_CODE_EXCEPTION + ", \"msg\": \"" + e.getMessage() + "\"}";
+		}
+	}
+
+	@RequestMapping(value = "/isNew", produces = "application/json;charset=UTF-8")
+	public String checkNewStatus() {
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+
+			ObjectNode result = mapper.createObjectNode();
+
+			result.put("errorCode", ERROR_CODE_SUCCESSFUL);
+			result.put("msg", "Successful");
+			result.put("data", IS_NEW_STATUS_RECORD);
+			if (IS_NEW_STATUS_RECORD) {
+				IS_NEW_STATUS_RECORD = false;
+			}
+
 			return mapper.writeValueAsString(result);
 		} catch (IOException e) {
 			e.printStackTrace();
