@@ -17,42 +17,42 @@
 
 <!-- Bootstrap Core CSS -->
 <link
-	href="${pageContext.request.contextPath }/resources/admin/vendor/bootstrap/css/bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/admin/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- MetisMenu CSS -->
 <link
-	href="${pageContext.request.contextPath }/resources/admin/vendor/metisMenu/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/admin/vendor/metisMenu/metisMenu.min.css"
 	rel="stylesheet">
 
 <!-- DataTables CSS -->
 <link
-	href="${pageContext.request.contextPath }/resources/admin/vendor/datatables-plugins/dataTables.bootstrap.css"
+	href="${pageContext.request.contextPath}/resources/admin/vendor/datatables-plugins/dataTables.bootstrap.css"
 	rel="stylesheet">
 
 <!-- DataTables Responsive CSS -->
 <link
-	href="${pageContext.request.contextPath }/resources/admin/vendor/datatables-responsive/dataTables.responsive.css"
+	href="${pageContext.request.contextPath}/resources/admin/vendor/datatables-responsive/dataTables.responsive.css"
 	rel="stylesheet">
 
 <!-- Datetime picker CSS -->
 <link
-	href="${pageContext.request.contextPath }/resources/admin/vendor/datetime-picker/jquery.datetimepicker.css"
+	href="${pageContext.request.contextPath}/resources/admin/vendor/datetime-picker/jquery.datetimepicker.css"
 	rel="stylesheet">
 
 <!-- Custom CSS -->
 <link
-	href="${pageContext.request.contextPath }/resources/admin/dist/css/sb-admin-2.css"
+	href="${pageContext.request.contextPath}/resources/admin/dist/css/sb-admin-2.css"
 	rel="stylesheet">
 
 <!-- Morris Charts CSS -->
 <link
-	href="${pageContext.request.contextPath }/resources/admin/vendor/morrisjs/morris.css"
+	href="${pageContext.request.contextPath}/resources/admin/vendor/morrisjs/morris.css"
 	rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link
-	href="${pageContext.request.contextPath }/resources/admin/vendor/font-awesome/css/font-awesome.min.css"
+	href="${pageContext.request.contextPath}/resources/admin/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
 <!-- Custom #page-wrapper -->
@@ -91,7 +91,7 @@
 			style="margin-bottom: 0;">
 			<div class="navbar-header">
 				<a class="navbar-brand"
-					href="${pageContext.request.contextPath }/apps/mec"
+					href="${pageContext.request.contextPath}/apps/mec"
 					style="padding: 0px 15px;"> <span
 					style="font-size: 18px; line-height: 50px; font-weight: bold;">Hệ
 						Thống Giám Sát Vườn Thông Minh</span>
@@ -362,37 +362,37 @@
 
 	<!-- jQuery -->
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/vendor/jquery/jquery.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/admin/vendor/jquery/jquery.min.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- Metis Menu Plugin JavaScript -->
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/vendor/metisMenu/metisMenu.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/admin/vendor/metisMenu/metisMenu.min.js"></script>
 
 	<!-- DataTables JavaScript -->
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/vendor/datatables/js/jquery.dataTables.js"></script>
+		src="${pageContext.request.contextPath}/resources/admin/vendor/datatables/js/jquery.dataTables.js"></script>
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
+		src="${pageContext.request.contextPath}/resources/admin/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
 	<!-- Datetime picker JavaScript -->
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/vendor/datetime-picker/jquery.datetimepicker.js"></script>
+		src="${pageContext.request.contextPath}/resources/admin/vendor/datetime-picker/jquery.datetimepicker.js"></script>
 
 	<!-- Morris Charts JavaScript -->
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/vendor/raphael/raphael.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/admin/vendor/raphael/raphael.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/vendor/morrisjs/morris.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/admin/vendor/morrisjs/morris.min.js"></script>
 
 	<!-- Custom Theme JavaScript -->
 	<script
-		src="${pageContext.request.contextPath }/resources/admin/dist/js/sb-admin-2.js"></script>
+		src="${pageContext.request.contextPath}/resources/admin/dist/js/sb-admin-2.js"></script>
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
 	<script type="text/javascript">
@@ -438,10 +438,10 @@
 					setInterval(function() {
 						$.ajax({
 							type : "GET",
-							url : "/apps/smart-garden/api/isNew",
-							dataType : "application/json",
+							url : "${pageContext.request.contextPath}/apps/smart-garden/api/isNew",
+							dataType : "json",
 							success : function(resp) {
-								if (resp.data == "true") {
+								if (resp.data) {
 									window.location.reload();
 								}
 							}

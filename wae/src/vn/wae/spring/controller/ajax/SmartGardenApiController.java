@@ -96,7 +96,6 @@ public class SmartGardenApiController {
 			ObjectMapper mapper = new ObjectMapper();
 
 			ObjectNode result = mapper.createObjectNode();
-
 			result.put("errorCode", ERROR_CODE_SUCCESSFUL);
 			result.put("msg", "Successful");
 			result.put("data", IS_NEW_STATUS_RECORD);
