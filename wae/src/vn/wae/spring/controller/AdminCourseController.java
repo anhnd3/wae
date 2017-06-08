@@ -64,7 +64,7 @@ public class AdminCourseController {
 		return "admin/course_form";
 	}
 
-	@RequestMapping("/waetools/course-form-execute")
+	@RequestMapping(value="/waetools/course-form-execute")
 	public String courseFormExecute(@Valid @ModelAttribute("course") Course course, BindingResult result,
 			HttpServletResponse response, RedirectAttributes redirectAttrs) {
 
@@ -73,6 +73,7 @@ public class AdminCourseController {
 			redirectAttrs.addFlashAttribute("course", course);
 			return "redirect:/waetools/course-form";
 		}
+		
 		adminService.saveCourse(course);
 		return "redirect:/waetools/course";
 	}

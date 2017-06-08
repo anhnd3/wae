@@ -1,10 +1,14 @@
 package vn.wae.spring.dao;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.jdbc.ReturningWork;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,7 +22,18 @@ public class CourseDAOImpl implements CourseDAO {
 	SessionFactory sessionFactory;
 
 	private Session getCurrentSession() {
-		return sessionFactory.getCurrentSession();
+		Session s = sessionFactory.getCurrentSession();
+		s.doReturningWork(new ReturningWork<Object>() {
+
+			@Override
+			public Object execute(Connection conn) throws SQLException {
+				try (Statement stmt = conn.createStatement()) {
+					stmt.executeQuery("SET NAMES utf8mb4");
+				}
+				return null;
+			}
+		});
+		return s;
 	}
 
 	@Override

@@ -30,7 +30,7 @@
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
 		<property name="jdbcUrl"
-			value="jdbc:mysql://127.0.0.1:3306/wae?useSSL=false&amp;useUnicode=yes&amp;characterEncoding=UTF-8&amp;autoReconnect=true" />
+			value="jdbc:mysql://127.0.0.1:3306/wae?useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="user" value="wae" />
 		<property name="password" value="123qwe!@#" />
 
