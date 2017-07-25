@@ -69,4 +69,9 @@ public class MainsiteHomeController {
 		mainsiteService.increaseAccess(LogAccessType.COUNTDOWN.getValue());
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/zohoverify/verifyforzoho.html")
+	public String zohoverify(Model model){
+		return "mainsite/zohoverify";
+	}
 }
