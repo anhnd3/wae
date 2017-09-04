@@ -50,10 +50,11 @@
 						</section>
 						<!-- cd-intro -->
 						<!-- /.slider -->
-						<h2 class="wow fadeInUp animated" data-wow-delay=".6s">Với
+						<!-- <h2 class="wow fadeInUp animated" data-wow-delay=".6s">Với
 							một thời gian dài trong việc đào tạo về kỹ thuật điện tử, chúng
 							tôi tự hào có thể giúp bạn nhanh chóng nắm bắt và trở thành một
-							kỹ thuật viên hoặc một nhà sáng tạo trẻ trong lĩnh vực điện tử.</h2>
+							kỹ thuật viên hoặc một nhà sáng tạo trẻ trong lĩnh vực điện tử.</h2> -->
+						<h2 class="wow fadeInUp animated" data-wow-delay=".6s">Website đang được bảo trì và nâng cấp.</h2>
 						<c:if test="${showSectionWork}">
 							<a
 								class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green"
@@ -114,8 +115,8 @@
 			<c:if test="${showBlog}">
 				<div class="container">
 					<div class="section-heading">
-						<h1 class="title wow fadeInDown" data-wow-delay=".3s">Tin tức - Hoạt
-							động</h1>
+						<h1 class="title wow fadeInDown" data-wow-delay=".3s">Tin tức
+							- Hoạt động</h1>
 					</div>
 					<div class="row">
 						<c:forEach items="${blogs}" var="tmpBlog">
@@ -127,13 +128,17 @@
 											alt="this is a title">
 										<div class="overlay">
 											<div class="buttons">
-												<a target="_blank" href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}">Chi tiết</a>
+												<a target="_blank"
+													href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}">Chi
+													tiết</a>
 											</div>
 										</div>
 									</div>
 									<figcaption>
 										<h4>
-											<a href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}"> ${tmpBlog.title } </a>
+											<a
+												href="${pageContext.request.contextPath }/news/${convertString.getTitleFilterCharVn(tmpBlog.title) }/${tmpBlog.id}">
+												${tmpBlog.title } </a>
 										</h4>
 										<p>${tmpBlog.shortDesc }</p>
 									</figcaption>
